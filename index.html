@@ -12,7 +12,6 @@
 
   <link rel="canonical" href="https://atenas.top/">
 
-  <!-- Tipografías gratuitas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -112,6 +111,62 @@
       letter-spacing: 5px;
       text-transform: uppercase;
       margin-bottom: 22px;
+    }
+
+    /* Cormorant Garamond original con textura grunge */
+    .distressed {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+    }
+
+    .distressed::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      pointer-events: none;
+      white-space: nowrap;
+
+      background-image:
+        radial-gradient(
+          ellipse at 12% 32%,
+          #151311 0 1.2px,
+          transparent 2px
+        ),
+        radial-gradient(
+          ellipse at 38% 71%,
+          #151311 0 1.5px,
+          transparent 2.5px
+        ),
+        radial-gradient(
+          ellipse at 63% 24%,
+          #151311 0 1px,
+          transparent 2px
+        ),
+        radial-gradient(
+          ellipse at 84% 62%,
+          #151311 0 1.4px,
+          transparent 2.4px
+        ),
+        repeating-linear-gradient(
+          105deg,
+          transparent 0 13px,
+          rgba(21, 19, 17, 0.75) 13px 14px,
+          transparent 14px 25px
+        );
+
+      background-size:
+        47px 39px,
+        61px 43px,
+        39px 51px,
+        57px 37px,
+        100% 100%;
+
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.58;
     }
 
     h1 {
@@ -244,7 +299,7 @@
         Independent music
       </div>
 
-      <h1>Atenas</h1>
+      <h1 class="distressed" data-text="Atenas">Atenas</h1>
 
       <h2 class="subtitle spanish">
         Música, discos e historias.
