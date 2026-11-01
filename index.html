@@ -12,7 +12,7 @@
 
   <link rel="canonical" href="https://atenas.top/">
 
-  <!-- Tipografías gratuitas -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -43,13 +43,64 @@
       border-bottom: 1px solid rgba(238, 234, 227, 0.13);
     }
 
-    /* Logotipo */
+    /* Nombre Atenas */
     .logo {
       font-family: 'Rubik Distressed', sans-serif;
       font-size: 31px;
       font-weight: 400;
       letter-spacing: 1px;
       color: #eeeae3;
+    }
+
+    /* Textura adicional de desgaste */
+    .grunge-name {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+    }
+
+    .grunge-name::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      pointer-events: none;
+      white-space: nowrap;
+
+      background-image:
+        repeating-linear-gradient(
+          113deg,
+          transparent 0 9px,
+          rgba(17, 16, 15, 0.75) 9px 10px,
+          transparent 10px 17px
+        ),
+        repeating-linear-gradient(
+          7deg,
+          transparent 0 15px,
+          rgba(17, 16, 15, 0.55) 15px 16px,
+          transparent 16px 25px
+        ),
+        radial-gradient(
+          circle,
+          rgba(17, 16, 15, 0.8) 0 1px,
+          transparent 1.8px
+        );
+
+      background-size:
+        37px 29px,
+        53px 41px,
+        17px 19px;
+
+      background-position:
+        3px 2px,
+        11px 7px,
+        5px 9px;
+
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      opacity: 0.58;
     }
 
     .language {
@@ -115,7 +166,7 @@
       margin-bottom: 22px;
     }
 
-    /* Nombre principal con textura desgastada */
+    /* Nombre principal */
     h1 {
       font-family: 'Rubik Distressed', sans-serif;
       font-size: clamp(95px, 17vw, 180px);
@@ -124,7 +175,6 @@
       line-height: 1;
       color: #f1ece3;
       margin-left: -5px;
-      text-shadow: 1px 1px 0 rgba(190, 112, 83, 0.14);
     }
 
     .subtitle {
@@ -235,7 +285,7 @@
 <body>
 
   <header>
-    <div class="logo">Atenas</div>
+    <div class="logo grunge-name" data-text="Atenas">Atenas</div>
 
     <button class="language" onclick="toggleLanguage()">
       ENGLISH
@@ -249,7 +299,7 @@
         Independent music
       </div>
 
-      <h1>Atenas</h1>
+      <h1 class="grunge-name" data-text="Atenas">Atenas</h1>
 
       <h2 class="subtitle spanish">
         Música, discos e historias.
@@ -293,7 +343,7 @@
   </main>
 
   <footer>
-    <strong>Atenas</strong>
+    <strong class="grunge-name" data-text="Atenas">Atenas</strong>
     <span>© 2026 Atenas. Todos los derechos reservados.</span>
   </footer>
 
