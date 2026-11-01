@@ -26,7 +26,6 @@
       --cream: #eeeae3;
       --secondary: #bdb6ad;
       --copper: #bd765c;
-      --electric: #6489cf;
     }
 
     body {
@@ -87,8 +86,8 @@
     }
 
     .language:hover {
-      border-color: var(--electric);
-      color: var(--electric);
+      border-color: var(--copper);
+      color: var(--copper);
     }
 
     /* FONDO FOTOGRÁFICO */
@@ -128,14 +127,6 @@
       max-width: 850px;
     }
 
-    .blue-line {
-      width: 34px;
-      height: 2px;
-      background: var(--electric);
-      margin-bottom: 28px;
-      box-shadow: 0 0 12px rgba(100,137,207,.35);
-    }
-
     /* FRASE PRINCIPAL */
 
     h1 {
@@ -149,11 +140,13 @@
       text-shadow: 0 2px 24px rgba(0,0,0,.35);
     }
 
+    /* ENLACE A LA MÚSICA */
+
     .button {
       display: inline-block;
       margin-top: 48px;
       padding: 15px 22px;
-      border: 1px solid rgba(100,137,207,.75);
+      border: 1px solid rgba(189,118,92,.75);
       color: var(--cream);
       text-decoration: none;
       font-size: 10px;
@@ -164,8 +157,8 @@
     }
 
     .button:hover {
-      background: var(--electric);
-      border-color: var(--electric);
+      background: var(--copper);
+      border-color: var(--copper);
       color: #11100f;
     }
 
@@ -182,12 +175,6 @@
       color: #77716a;
       font-size: 10px;
       letter-spacing: 1px;
-    }
-
-    .footer-mark {
-      color: var(--electric);
-      font-size: 10px;
-      letter-spacing: 2px;
     }
 
     /* IDIOMAS */
@@ -237,10 +224,6 @@
         margin-bottom: 30px;
       }
 
-      .blue-line {
-        margin-bottom: 22px;
-      }
-
       h1 {
         font-size: clamp(39px, 10vw, 58px);
         letter-spacing: 1px;
@@ -275,8 +258,6 @@
     <div class="content">
 
       <img class="logo-main" src="./atenas-logo.png" alt="Atenas">
-
-      <div class="blue-line"></div>
 
       <h1 class="spanish">Siempre es ahora.</h1>
       <h1 class="english">It's always now.</h1>
