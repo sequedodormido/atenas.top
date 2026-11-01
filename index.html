@@ -14,6 +14,7 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -181,7 +182,7 @@
       text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
     }
 
-    /* ESTRUCTURA GENERAL DE SECCIONES */
+    /* SECCIONES GENERALES */
 
     .section {
       padding: 105px 7%;
@@ -218,6 +219,79 @@
       letter-spacing: 2px;
       line-height: 1.8;
       text-transform: uppercase;
+    }
+
+    /* MÚSICA */
+
+    .music-section {
+      text-align: center;
+    }
+
+    .music-copy {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--secondary);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .music-copy p + p {
+      margin-top: 23px;
+    }
+
+    .music-closing {
+      margin-top: 35px !important;
+      color: var(--cream);
+      font-size: 23px;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .spotify-player {
+      width: 100%;
+      max-width: 780px;
+      margin: 58px auto 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #181715;
+    }
+
+    .spotify-player iframe {
+      display: block;
+      width: 100%;
+      height: 352px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .music-actions {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .music-disc-link {
+      display: inline-block;
+      border: 1px solid rgba(238, 234, 227, .35);
+      background: transparent;
+      color: var(--cream);
+      padding: 12px 19px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color .25s ease, color .25s ease;
+    }
+
+    .music-disc-link:hover {
+      border-color: var(--copper);
+      color: var(--copper);
     }
 
     /* DISCOS */
@@ -530,7 +604,7 @@
       letter-spacing: 1px;
     }
 
-    /* TRANSICIONES SUAVES AL HACER SCROLL */
+    /* TRANSICIONES AL HACER SCROLL */
 
     .motion-ready .reveal {
       opacity: 0;
@@ -562,7 +636,7 @@
       }
     }
 
-    /* CONTROL DE IDIOMA */
+    /* IDIOMAS */
 
     .english {
       display: none;
@@ -639,6 +713,14 @@
         margin-bottom: 38px;
       }
 
+      .music-copy {
+        font-size: 20px;
+      }
+
+      .spotify-player {
+        margin-top: 42px;
+      }
+
       .about-copy {
         font-size: 20px;
       }
@@ -663,6 +745,18 @@
 
       .record-actions {
         gap: 12px;
+      }
+
+      .music-copy {
+        font-size: 19px;
+      }
+
+      .music-closing {
+        font-size: 21px;
+      }
+
+      .spotify-player iframe {
+        height: 352px;
       }
 
       .about-copy {
@@ -708,7 +802,7 @@
 <body>
 
   <header>
-    <a class="brand-name" href="#musica" aria-label="Atenas, inicio">ATENAS</a>
+    <a class="brand-name" href="#inicio" aria-label="Atenas, inicio">ATENAS</a>
 
     <nav class="menu" aria-label="Menú principal">
       <a class="menu-item spanish" href="#musica">Música</a>
@@ -730,12 +824,107 @@
     <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
   </header>
 
-  <main id="musica">
+  <!-- PORTADA -->
+
+  <main id="inicio">
     <div class="content">
       <h1 class="spanish">SIEMPRE ES AHORA</h1>
       <h1 class="english">IT'S ALWAYS NOW</h1>
     </div>
   </main>
+
+  <!-- MÚSICA -->
+
+  <section class="section music-section" id="musica">
+    <div class="section-inner">
+
+      <div class="section-heading">
+        <div class="spanish">
+          <h2>Música</h2>
+          <p>Canciones, lugares e historias</p>
+        </div>
+
+        <div class="english section-copy">
+          <h2>Music</h2>
+          <p>Songs, places and stories</p>
+        </div>
+      </div>
+
+      <div class="music-copy spanish">
+
+        <p>
+          Atenas es un viaje a través de canciones, lugares e historias. Un recorrido que atraviesa ciudades y países, pero también paisajes interiores, recuerdos, encuentros, despedidas y mundos que solamente existen en nuestra memoria.
+        </p>
+
+        <p>
+          A lo largo de los años, la música ha tomado muchas formas. Desde el rock, el indie y las guitarras eléctricas hasta las canciones acústicas más íntimas; desde composiciones cargadas de poesía, guitarras y teclados hasta grabaciones espontáneas compartidas con otros músicos. Canciones propias, versiones, experimentos y caminos inesperados que nunca han respondido a una única dirección.
+        </p>
+
+        <p>
+          Cada disco pertenece a un momento distinto. Hay canciones nacidas del amor y el desamor, de la necesidad de escapar, de la libertad, de los cambios de vida y de la reconciliación con uno mismo. Algunas surgieron de encuentros con músicos y amigos en lugares como Malta. Otras nacieron de etapas de introspección, de silencios, de rupturas o de la necesidad de volver a lo esencial.
+        </p>
+
+        <p>
+          Con el tiempo, Atenas ha recorrido diferentes territorios musicales: discos eclécticos, grabaciones eléctricas y crudas, canciones acústicas desnudas, colaboraciones, versiones reinterpretadas y aproximaciones al country. Una trayectoria sin una fórmula fija, construida a través de experiencias que han ido dejando su huella en cada canción.
+        </p>
+
+        <p>
+          Quizá por eso ninguna etapa se parece demasiado a la anterior. Porque cada canción pertenece a un lugar, a una persona o a un instante diferente.
+        </p>
+
+        <p class="music-closing">
+          Canciones que nacen de lugares distintos. Historias que a veces no sabemos cómo contar. Música para detenerse un instante y mirar hacia dentro.
+        </p>
+
+      </div>
+
+      <div class="music-copy english">
+
+        <p>
+          Atenas is a journey through songs, places and stories. A journey across cities and countries, but also through inner landscapes, memories, encounters, farewells and worlds that exist only in our minds.
+        </p>
+
+        <p>
+          Over the years, music has taken many different forms. From rock, indie and electric guitars to intimate acoustic songs; from poetic compositions built around guitars and keyboards to spontaneous recordings shared with other musicians. Original songs, covers, experiments and unexpected directions that have never followed a single path.
+        </p>
+
+        <p>
+          Every record belongs to a different moment. There are songs born out of love and heartbreak, the need to escape, freedom, changes in life and the process of finding one's way back to oneself. Some came from encounters with musicians and friends in places like Malta. Others emerged from periods of introspection, silence, endings or the need to return to what matters most.
+        </p>
+
+        <p>
+          Over time, Atenas has explored different musical territories: eclectic records, raw electric recordings, stripped-down acoustic songs, collaborations, reimagined covers and explorations of country music. A journey without a fixed formula, shaped by experiences that have left their mark on every song.
+        </p>
+
+        <p>
+          Perhaps that is why no two chapters sound quite the same. Every song belongs to a different place, a different person or a different moment.
+        </p>
+
+        <p class="music-closing">
+          Songs born in different places. Stories we sometimes struggle to put into words. Music to stop for a moment and look within.
+        </p>
+
+      </div>
+
+      <div class="spotify-player">
+        <iframe
+          title="Atenas on Spotify"
+          src="https://open.spotify.com/embed/artist/08FA4kpmXgGIN6nDR7uPQ6?utm_source=generator"
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="music-actions">
+        <a class="music-disc-link" href="#discos">
+          <span class="spanish">Explorar los discos</span>
+          <span class="english">Explore the records</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
 
   <!-- DISCOS -->
 
@@ -1112,14 +1301,12 @@
 
     <nav class="social-links" aria-label="Redes sociales y plataformas musicales">
 
-      <!-- FACEBOOK -->
       <a class="social-link" href="https://www.facebook.com/davidrubiofacebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path fill="currentColor" d="M13.4 21v-8.1h2.8l.4-3.2h-3.2V7.6c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4v2.2H7v3.2h2.8V21h3.6z"/>
         </svg>
       </a>
 
-      <!-- INSTAGRAM -->
       <a class="social-link" href="https://instagram.com/david_atenas" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -1128,7 +1315,6 @@
         </svg>
       </a>
 
-      <!-- YOUTUBE -->
       <a class="social-link" href="https://www.youtube.com/@david_atenas" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path fill="currentColor" d="M23 7.1a3 3 0 0 0-2.1-2.2C19 4.4 12 4.4 12 4.4s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.9a3 3 0 0 0 2.1 2.2c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.2 31 31 0 0 0 .5-4.9 31 31 0 0 0-.5-4.9Z"/>
@@ -1136,7 +1322,6 @@
         </svg>
       </a>
 
-      <!-- SPOTIFY -->
       <a class="social-link" href="https://open.spotify.com/artist/08FA4kpmXgGIN6nDR7uPQ6" target="_blank" rel="noopener noreferrer" aria-label="Spotify" title="Spotify">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.7"/>
@@ -1144,14 +1329,12 @@
         </svg>
       </a>
 
-      <!-- APPLE MUSIC -->
       <a class="social-link" href="https://music.apple.com/us/artist/atenas/443423009" target="_blank" rel="noopener noreferrer" aria-label="Apple Music" title="Apple Music">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path fill="currentColor" d="M18.1 3.1v13.1c0 1.7-1.3 2.9-3.1 2.9-1.4 0-2.3-.8-2.3-2 0-1.5 1.2-2.4 3-2.7V6.2l-7.2 1.5v10.1c0 1.7-1.3 2.9-3.1 2.9-1.4 0-2.3-.8-2.3-2 0-1.5 1.2-2.4 3-2.7V6.2l10.4-2.1a1.3 1.3 0 0 1 1.6 1.3z"/>
         </svg>
       </a>
 
-      <!-- TIDAL -->
       <a class="social-link" href="https://tidal.com/artist/5100770" target="_blank" rel="noopener noreferrer" aria-label="TIDAL" title="TIDAL">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <g fill="currentColor">
@@ -1165,7 +1348,6 @@
         </svg>
       </a>
 
-      <!-- DEEZER -->
       <a class="social-link" href="https://www.deezer.com/es/artist/1385422?host=0&amp;deferredFl=1" target="_blank" rel="noopener noreferrer" aria-label="Deezer" title="Deezer">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <g fill="currentColor">
@@ -1178,7 +1360,6 @@
         </svg>
       </a>
 
-      <!-- AMAZON MUSIC -->
       <a class="social-link" href="https://music.amazon.es/artists/B009W9YPE2" target="_blank" rel="noopener noreferrer" aria-label="Amazon Music" title="Amazon Music">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M14.5 4.2v10.1a3.2 3.2 0 1 1-1.8-2.9V7.1l6.1-1.2v6.9a3.2 3.2 0 1 1-1.8-2.9V3.4z" fill="currentColor"/>
@@ -1187,7 +1368,6 @@
         </svg>
       </a>
 
-      <!-- QOBUZ -->
       <a class="social-link" href="https://open.qobuz.com/artist/3173070" target="_blank" rel="noopener noreferrer" aria-label="Qobuz" title="Qobuz">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M12 2.8a8.7 8.7 0 1 0 5.3 15.6l2.3 2.3 1.4-1.4-2.3-2.3A8.7 8.7 0 0 0 12 2.8Zm0 2a6.7 6.7 0 1 1 0 13.4 6.7 6.7 0 0 1 0-13.4Z" fill="currentColor"/>
@@ -1202,7 +1382,7 @@
 
   </footer>
 
-  <!-- WIDGET DE BANDＳINTOWN -->
+  <!-- WIDGET DE BANDSINTOWN -->
 
   <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
 
@@ -1220,7 +1400,7 @@
 
     (function () {
       const revealElements = document.querySelectorAll(
-        ".section-heading, .record, .shipping-note, .shows-widget, .shows-fallback, .about-copy p, .contact-form"
+        ".section-heading, .record, .shipping-note, .shows-widget, .shows-fallback, .about-copy p, .contact-form, .music-copy p, .spotify-player, .music-actions"
       );
 
       if (
