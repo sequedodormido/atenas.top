@@ -39,39 +39,52 @@ body {
     flex-direction: column;
 }
 
-/* LOGOTIPO ORIGINAL, COLOREADO MEDIANTE CSS */
+/* LOGOTIPO */
 
 .brand-logo {
+    position: relative;
     display: block;
+    line-height: 0;
     flex-shrink: 0;
+}
+
+.brand-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+}
+
+.brand-logo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-color: var(--corporate);
 
-    -webkit-mask-image: url('./atenas-logo.png.png');
+    -webkit-mask-image: url("./atenas-logo.png");
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
-    -webkit-mask-size: contain;
+    -webkit-mask-size: 100% 100%;
 
-    mask-image: url('./atenas-logo.png.png');
+    mask-image: url("./atenas-logo.png");
     mask-repeat: no-repeat;
     mask-position: center;
-    mask-size: contain;
+    mask-size: 100% 100%;
     mask-mode: alpha;
 }
 
 .brand-logo-header {
-    width: 125px;
-    aspect-ratio: 2.7 / 1;
+    width: 90px;
 }
 
 .brand-logo-main {
-    width: min(100%, 620px);
-    aspect-ratio: 2.7 / 1;
+    width: min(100%, 420px);
     margin-left: -5px;
+    margin-bottom: 26px;
 }
 
 .brand-logo-footer {
-    width: 95px;
-    aspect-ratio: 2.7 / 1;
+    width: 75px;
 }
 
 /* HEADER */
@@ -156,7 +169,7 @@ main::after {
     font-weight: 500;
     font-style: italic;
     color: #c58b72;
-    margin-top: 38px;
+    margin-top: 0;
     margin-bottom: 25px;
 }
 
@@ -224,12 +237,13 @@ body.lang-en .english {
 /* MÓVIL */
 
 @media(max-width:650px) {
+
     header {
         padding: 22px 7%;
     }
 
     .brand-logo-header {
-        width: 105px;
+        width: 82px;
     }
 
     main {
@@ -238,12 +252,13 @@ body.lang-en .english {
     }
 
     .brand-logo-main {
-        width: 100%;
+        width: min(100%, 340px);
         margin-left: -3px;
+        margin-bottom: 24px;
     }
 
     .subtitle {
-        margin-top: 30px;
+        margin-top: 0;
     }
 
     footer {
@@ -252,6 +267,10 @@ body.lang-en .english {
         align-items: flex-start;
         gap: 10px;
     }
+
+    .brand-logo-footer {
+        width: 68px;
+    }
 }
 </style>
 </head>
@@ -259,9 +278,9 @@ body.lang-en .english {
 <body>
 
 <header>
-    <div class="brand-logo brand-logo-header"
-         role="img"
-         aria-label="Atenas"></div>
+    <div class="brand-logo brand-logo-header">
+        <img src="./atenas-logo.png" alt="Atenas">
+    </div>
 
     <button class="language" onclick="toggleLanguage()">ENGLISH</button>
 </header>
@@ -271,9 +290,9 @@ body.lang-en .english {
 
         <div class="label">Independent music</div>
 
-        <h1 class="brand-logo brand-logo-main"
-            role="img"
-            aria-label="Atenas"></h1>
+        <div class="brand-logo brand-logo-main">
+            <img src="./atenas-logo.png" alt="Atenas">
+        </div>
 
         <h2 class="subtitle spanish">Música, discos e historias.</h2>
         <h2 class="subtitle english">Music, records and stories.</h2>
@@ -304,9 +323,9 @@ body.lang-en .english {
 </main>
 
 <footer>
-    <div class="brand-logo brand-logo-footer"
-         role="img"
-         aria-label="Atenas"></div>
+    <div class="brand-logo brand-logo-footer">
+        <img src="./atenas-logo.png" alt="Atenas">
+    </div>
 
     <span>© 2026 Atenas. Todos los derechos reservados.</span>
 </footer>
