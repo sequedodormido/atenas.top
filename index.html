@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Atenas | Siempre es ahora</title>
-  <meta name="description" content="Atenas. Siempre es ahora. Música, discos e historias.">
+  <title>Atenas | Artista &amp; songwriter · Música y otras historias</title>
+  <meta name="description" content="Atenas es un proyecto musical construido a través de canciones e historias. Música, discos y canciones. Descubre su universo musical.">
   <meta name="author" content="Atenas">
   <meta name="theme-color" content="#11100f">
 
@@ -393,7 +393,8 @@
       margin-bottom: 34px;
       font-size: 23px;
       line-height: 1.5;
-      text-align: center;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     /* CONTACTO */
@@ -522,6 +523,38 @@
       color: var(--muted);
       font-size: 10px;
       letter-spacing: 1px;
+    }
+
+    /* TRANSICIONES SUAVES AL HACER SCROLL */
+
+    .motion-ready .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(3px);
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+    }
+
+    .motion-ready .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .motion-ready .reveal,
+      .motion-ready .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
     }
 
     /* CONTROL DE IDIOMA */
@@ -846,7 +879,7 @@
           </div>
         </article>
 
-        <!-- CRUDOLOGÍA -->
+        <!-- CRUDОLOGÍA -->
 
         <article class="record">
           <img class="record-cover" src="./crudologia-cover-1500x1500.jpg" alt="Portada de Crudología" loading="lazy">
@@ -1104,6 +1137,48 @@
       document.documentElement.lang = english ? "en" : "es";
       document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
     }
+
+    /* Aparición suave al entrar en pantalla.
+       Si el navegador no admite IntersectionObserver,
+       la página permanece completamente visible. */
+
+    (function () {
+      const revealElements = document.querySelectorAll(
+        ".section-heading, .record, .shipping-note, .shows-widget, .shows-fallback, .about-copy p, .contact-form"
+      );
+
+      if (
+        !("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        return;
+      }
+
+      document.body.classList.add("motion-ready");
+
+      revealElements.forEach(function (element) {
+        element.classList.add("reveal");
+      });
+
+      const observer = new IntersectionObserver(
+        function (entries, currentObserver) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -35px 0px"
+        }
+      );
+
+      revealElements.forEach(function (element) {
+        observer.observe(element);
+      });
+    })();
   </script>
 
 </body>
