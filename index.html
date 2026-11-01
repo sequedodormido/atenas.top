@@ -39,37 +39,23 @@ body {
     flex-direction: column;
 }
 
-/* LOGOTIPO */
+/* LOGOTIPO: MÁSCARA CON COLOR CORPORATIVO */
 
 .brand-logo {
-    position: relative;
     display: block;
-    line-height: 0;
     flex-shrink: 0;
-}
-
-.brand-logo img {
-    display: block;
-    width: 100%;
-    height: auto;
-    opacity: 0;
-}
-
-.brand-logo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--corporate);
+    background-color: #ECE0E0;
+    aspect-ratio: 2.7 / 1;
 
     -webkit-mask-image: url("./atenas-logo.png");
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
-    -webkit-mask-size: 100% 100%;
+    -webkit-mask-size: contain;
 
     mask-image: url("./atenas-logo.png");
     mask-repeat: no-repeat;
     mask-position: center;
-    mask-size: 100% 100%;
+    mask-size: contain;
     mask-mode: alpha;
 }
 
@@ -237,7 +223,6 @@ body.lang-en .english {
 /* MÓVIL */
 
 @media(max-width:650px) {
-
     header {
         padding: 22px 7%;
     }
@@ -278,9 +263,9 @@ body.lang-en .english {
 <body>
 
 <header>
-    <div class="brand-logo brand-logo-header">
-        <img src="./atenas-logo.png" alt="Atenas">
-    </div>
+    <div class="brand-logo brand-logo-header"
+         role="img"
+         aria-label="Atenas"></div>
 
     <button class="language" onclick="toggleLanguage()">ENGLISH</button>
 </header>
@@ -290,9 +275,9 @@ body.lang-en .english {
 
         <div class="label">Independent music</div>
 
-        <div class="brand-logo brand-logo-main">
-            <img src="./atenas-logo.png" alt="Atenas">
-        </div>
+        <div class="brand-logo brand-logo-main"
+             role="img"
+             aria-label="Atenas"></div>
 
         <h2 class="subtitle spanish">Música, discos e historias.</h2>
         <h2 class="subtitle english">Music, records and stories.</h2>
@@ -323,9 +308,9 @@ body.lang-en .english {
 </main>
 
 <footer>
-    <div class="brand-logo brand-logo-footer">
-        <img src="./atenas-logo.png" alt="Atenas">
-    </div>
+    <div class="brand-logo brand-logo-footer"
+         role="img"
+         aria-label="Atenas"></div>
 
     <span>© 2026 Atenas. Todos los derechos reservados.</span>
 </footer>
