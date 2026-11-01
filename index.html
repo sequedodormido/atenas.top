@@ -31,7 +31,7 @@
       flex-direction: column;
     }
 
-    /* LOGOTIPO ORIGINAL */
+    /* LOGOTIPO */
 
     .logo {
       display: block;
@@ -80,7 +80,7 @@
       border-color: #8d4936;
     }
 
-    /* FONDO PRINCIPAL ORIGINAL */
+    /* FONDO PRINCIPAL CON PORTADA4 */
 
     main {
       flex: 1;
@@ -93,12 +93,20 @@
       overflow: hidden;
 
       background:
+        linear-gradient(
+          rgba(17,16,15,.42),
+          rgba(17,16,15,.42)
+        ),
         radial-gradient(
           ellipse at 78% 35%,
-          rgba(111,48,32,.36),
+          rgba(111,48,32,.30),
           transparent 48%
         ),
-        #151311;
+        url("./portada4");
+
+      background-size: cover, cover, cover;
+      background-position: center, center, center;
+      background-repeat: no-repeat;
     }
 
     main::after {
@@ -246,7 +254,6 @@
 
   <header>
     <img class="logo" src="./atenas-logo.png" alt="Atenas">
-
     <button class="language" onclick="toggleLanguage()">ENGLISH</button>
   </header>
 
@@ -284,16 +291,13 @@
 
   <footer>
     <img class="footer-logo" src="./atenas-logo.png" alt="Atenas">
-
     <span>© 2026 Atenas. Todos los derechos reservados.</span>
   </footer>
 
   <script>
     function toggleLanguage() {
       const english = document.body.classList.toggle("lang-en");
-
       document.documentElement.lang = english ? "en" : "es";
-
       document.querySelector(".language").textContent =
         english ? "ESPAÑOL" : "ENGLISH";
     }
