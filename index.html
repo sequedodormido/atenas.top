@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,17 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Atenas | Sitio oficial</title>
-
   <meta name="description" content="Web oficial de Atenas. Música, canciones, discos y vídeos.">
   <meta name="author" content="Atenas">
-  <meta name="theme-color" content="#11100f">
-
+  <meta name="theme-color" content="#100e0d">
   <link rel="canonical" href="https://atenas.top/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -26,7 +24,7 @@
 
     body {
       min-height: 100vh;
-      background: #11100f;
+      background: #100e0d;
       color: #eeeae3;
       font-family: 'DM Sans', Arial, sans-serif;
       display: flex;
@@ -39,7 +37,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(238, 234, 227, 0.13);
+      border-bottom: 1px solid rgba(238, 234, 227, 0.12);
+      position: relative;
+      z-index: 5;
     }
 
     .logo {
@@ -63,8 +63,8 @@
     }
 
     .language:hover {
-      background: #8d4936;
-      border-color: #8d4936;
+      background: #823d2e;
+      border-color: #823d2e;
     }
 
     main {
@@ -73,110 +73,146 @@
       flex-direction: column;
       justify-content: center;
       padding: 100px 10%;
-      min-height: 650px;
+      min-height: 680px;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
 
       background:
-        radial-gradient(
-          ellipse at 78% 35%,
-          rgba(111, 48, 32, 0.36),
-          transparent 48%
+        radial-gradient(ellipse at 75% 43%, rgba(91, 35, 27, 0.28), transparent 48%),
+        radial-gradient(ellipse at 15% 90%, rgba(64, 48, 37, 0.16), transparent 42%),
+        linear-gradient(115deg, #171412 0%, #12100f 55%, #19110f 100%);
+    }
+
+    /* Textura ambiental */
+    main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          rgba(255,255,255,0.025) 1px,
+          transparent 2px,
+          transparent 5px
         ),
-        #151311;
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          rgba(0,0,0,0.12) 1px,
+          transparent 2px,
+          transparent 7px
+        );
+      mix-blend-mode: screen;
     }
 
     main::after {
       content: "";
       position: absolute;
-      width: 500px;
-      height: 500px;
-      right: -180px;
-      bottom: -280px;
-      border: 1px solid rgba(190, 112, 83, 0.14);
+      width: 620px;
+      height: 620px;
+      right: -300px;
+      bottom: -390px;
+      border: 1px solid rgba(166, 82, 57, 0.18);
       border-radius: 50%;
+      box-shadow:
+        0 0 0 35px rgba(166, 82, 57, 0.025),
+        0 0 0 90px rgba(166, 82, 57, 0.018);
       pointer-events: none;
     }
 
     .content {
       position: relative;
       z-index: 1;
-      max-width: 850px;
+      max-width: 900px;
     }
 
     .label {
-      color: #bd765c;
-      font-size: 11px;
+      color: #b77a62;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 5px;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
-    /* Cormorant Garamond original con textura grunge */
-    .distressed {
+    /* Título con volumen, desgaste y atmósfera */
+    .title-wrap {
       position: relative;
       display: inline-block;
+      margin-left: -10px;
       isolation: isolate;
     }
 
-    .distressed::after {
-      content: attr(data-text);
+    h1 {
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(105px, 19vw, 205px);
+      font-weight: 700;
+      letter-spacing: -7px;
+      line-height: 0.78;
+      color: #e9e1d6;
+      text-shadow:
+        2px 3px 0 rgba(80, 43, 34, 0.7),
+        4px 6px 0 rgba(0, 0, 0, 0.32),
+        0 0 35px rgba(157, 70, 49, 0.13);
+    }
+
+    /* Capa de tinta irregular sobre las mismas letras */
+    .title-wrap::after {
+      content: "Atenas";
       position: absolute;
       inset: 0;
-      color: transparent;
+      z-index: 2;
       pointer-events: none;
-      white-space: nowrap;
-
-      background-image:
-        radial-gradient(
-          ellipse at 12% 32%,
-          #151311 0 1.2px,
-          transparent 2px
-        ),
-        radial-gradient(
-          ellipse at 38% 71%,
-          #151311 0 1.5px,
-          transparent 2.5px
-        ),
-        radial-gradient(
-          ellipse at 63% 24%,
-          #151311 0 1px,
-          transparent 2px
-        ),
-        radial-gradient(
-          ellipse at 84% 62%,
-          #151311 0 1.4px,
-          transparent 2.4px
-        ),
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(105px, 19vw, 205px);
+      font-weight: 700;
+      letter-spacing: -7px;
+      line-height: 0.78;
+      color: transparent;
+      background:
         repeating-linear-gradient(
-          105deg,
-          transparent 0 13px,
-          rgba(21, 19, 17, 0.75) 13px 14px,
-          transparent 14px 25px
-        );
-
+          167deg,
+          transparent 0px 9px,
+          rgba(16, 14, 13, 0.8) 10px 11px,
+          transparent 12px 22px
+        ),
+        radial-gradient(ellipse at 20% 35%, rgba(16,14,13,0.95) 0 1px, transparent 3px),
+        radial-gradient(ellipse at 46% 70%, rgba(16,14,13,0.8) 0 2px, transparent 4px),
+        radial-gradient(ellipse at 72% 24%, rgba(16,14,13,0.9) 0 1px, transparent 3px),
+        radial-gradient(ellipse at 90% 63%, rgba(16,14,13,0.85) 0 2px, transparent 4px);
       background-size:
-        47px 39px,
-        61px 43px,
-        39px 51px,
-        57px 37px,
-        100% 100%;
-
+        100% 100%,
+        43px 37px,
+        59px 47px,
+        37px 53px,
+        51px 41px;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      opacity: 0.58;
+      opacity: 0.48;
     }
 
-    h1 {
+    /* Sombra desplazada, como tinta de impresión */
+    .title-shadow {
+      position: absolute;
+      inset: 0;
+      transform: translate(3px, 5px);
+      color: rgba(112, 48, 36, 0.32);
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(100px, 18vw, 190px);
+      font-size: clamp(105px, 19vw, 205px);
       font-weight: 700;
-      letter-spacing: -5px;
-      line-height: 0.85;
-      color: #f1ece3;
-      margin-left: -8px;
+      letter-spacing: -7px;
+      line-height: 0.78;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(1px);
     }
 
     .subtitle {
@@ -184,9 +220,10 @@
       font-size: clamp(29px, 4vw, 43px);
       font-weight: 500;
       font-style: italic;
-      color: #c58b72;
-      margin-top: 38px;
+      color: #c18a73;
+      margin-top: 43px;
       margin-bottom: 25px;
+      letter-spacing: 0.2px;
     }
 
     .description {
@@ -201,7 +238,7 @@
       display: inline-block;
       margin-top: 36px;
       padding: 16px 25px;
-      border: 1px solid #a65e45;
+      border: 1px solid #94513d;
       color: #f1ece3;
       text-decoration: none;
       font-size: 10px;
@@ -209,10 +246,12 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: all 0.3s ease;
+      background: rgba(24, 17, 15, 0.25);
     }
 
     .button:hover {
-      background: #a65e45;
+      background: #873e2e;
+      border-color: #873e2e;
       color: #fff;
     }
 
@@ -220,13 +259,13 @@
       margin-top: 65px;
       color: #77716a;
       font-size: 10px;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
     }
 
     footer {
       padding: 24px 8%;
-      border-top: 1px solid rgba(238, 234, 227, 0.13);
+      border-top: 1px solid rgba(238, 234, 227, 0.12);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -259,17 +298,22 @@
       }
 
       main {
-        min-height: 580px;
+        min-height: 600px;
         padding: 80px 7%;
       }
 
-      h1 {
-        letter-spacing: -3px;
-        margin-left: -4px;
+      .title-wrap {
+        margin-left: -5px;
+      }
+
+      h1,
+      .title-wrap::after,
+      .title-shadow {
+        letter-spacing: -4px;
       }
 
       .subtitle {
-        margin-top: 30px;
+        margin-top: 34px;
       }
 
       footer {
@@ -279,6 +323,23 @@
         gap: 10px;
       }
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .content {
+        animation: appear 1.1s ease both;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
   </style>
 </head>
 
@@ -286,20 +347,18 @@
 
   <header>
     <div class="logo">Atenas</div>
-
-    <button class="language" onclick="toggleLanguage()">
-      ENGLISH
-    </button>
+    <button class="language" onclick="toggleLanguage()">ENGLISH</button>
   </header>
 
   <main>
     <div class="content">
 
-      <div class="label">
-        Independent music
-      </div>
+      <div class="label">Independent music</div>
 
-      <h1 class="distressed" data-text="Atenas">Atenas</h1>
+      <div class="title-wrap">
+        <div class="title-shadow" aria-hidden="true">Atenas</div>
+        <h1>Atenas</h1>
+      </div>
 
       <h2 class="subtitle spanish">
         Música, discos e historias.
@@ -311,7 +370,6 @@
 
       <p class="description spanish">
         Nueva web en construcción.
-
         Estoy preparando un nuevo espacio para Atenas.
         Mientras tanto, puedes encontrar toda mi música,
         vídeos, redes sociales y plataformas en el siguiente enlace.
@@ -319,7 +377,6 @@
 
       <p class="description english">
         New website under construction.
-
         I'm preparing a new home for Atenas.
         In the meantime, you can find all my music,
         videos, social media and music platforms at the link below.
@@ -335,9 +392,7 @@
         <span class="english">Listen and discover</span>
       </a>
 
-      <div class="bottom-line">
-        Independent music
-      </div>
+      <div class="bottom-line">Independent music</div>
 
     </div>
   </main>
