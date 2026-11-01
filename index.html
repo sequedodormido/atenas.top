@@ -1586,7 +1586,7 @@
           setStatus(selectedTitle);
 
           if (embedController) {
-            embedController.loadEntity(item.url);
+            embedController.loadUri(item.uri);
           } else {
             window.open(item.url, "_blank", "noopener,noreferrer");
           }
