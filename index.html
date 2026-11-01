@@ -15,9 +15,18 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { min-height: 100vh; background: #11100f; color: #eeeae3; font-family: 'DM Sans', Arial, sans-serif; display: flex; flex-direction: column; }
 
-    /* LOGOTIPO: TU ARCHIVO PNG */
+    body {
+      min-height: 100vh;
+      background: #11100f;
+      color: #C9B09E;
+      font-family: 'DM Sans', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* LOGOTIPO: SE MANTIENE TU ARCHIVO ORIGINAL */
+
     .logo {
       display: block;
       width: 90px;
@@ -37,36 +46,196 @@
       height: auto;
     }
 
-    header { width: 100%; padding: 27px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(238,234,227,0.13); }
-    .language { background: transparent; color: #eeeae3; border: 1px solid #65534b; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 2px; cursor: pointer; transition: all .3s ease; }
-    .language:hover { background: #8d4936; border-color: #8d4936; }
-    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 100px 10%; min-height: 650px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 78% 35%, rgba(111,48,32,.36), transparent 48%), #151311; }
-    main::after { content: ""; position: absolute; width: 500px; height: 500px; right: -180px; bottom: -280px; border: 1px solid rgba(190,112,83,.14); border-radius: 50%; pointer-events: none; }
-    .content { position: relative; z-index: 1; max-width: 850px; }
-    .label { color: #bd765c; font-size: 11px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 22px; }
-    .subtitle { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(29px,4vw,43px); font-weight: 500; font-style: italic; color: #c58b72; margin-top: 38px; margin-bottom: 25px; }
-    .description { color: #bdb6ad; font-size: 15px; line-height: 1.9; max-width: 550px; font-weight: 400; }
-    .button { display: inline-block; margin-top: 36px; padding: 16px 25px; border: 1px solid #a65e45; color: #f1ece3; text-decoration: none; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all .3s ease; }
-    .button:hover { background: #a65e45; color: #fff; }
-    .bottom-line { margin-top: 65px; color: #77716a; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
-    footer { padding: 24px 8%; border-top: 1px solid rgba(238,234,227,.13); display: flex; justify-content: space-between; align-items: center; color: #77716a; font-size: 11px; }
-    .english { display: none; }
-    body.lang-en .spanish { display: none; }
-    body.lang-en .english { display: initial; }
+    /* CABECERA */
+
+    header {
+      width: 100%;
+      padding: 27px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(201,176,158,0.15);
+    }
+
+    .language {
+      background: transparent;
+      color: #C9B09E;
+      border: 1px solid #65534b;
+      padding: 9px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+
+    .language:hover {
+      background: #8d4936;
+      border-color: #8d4936;
+    }
+
+    /* CONTENIDO PRINCIPAL */
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 10%;
+      min-height: 650px;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          ellipse at 78% 35%,
+          rgba(111,48,32,.36),
+          transparent 48%
+        ),
+        #151311;
+    }
+
+    main::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -180px;
+      bottom: -280px;
+      border: 1px solid rgba(190,112,83,.14);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .label {
+      color: #bd765c;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(29px,4vw,43px);
+      font-weight: 500;
+      font-style: italic;
+      color: #C9B09E;
+      margin-top: 38px;
+      margin-bottom: 25px;
+    }
+
+    .description {
+      color: #bdb6ad;
+      font-size: 15px;
+      line-height: 1.9;
+      max-width: 550px;
+      font-weight: 400;
+    }
+
+    /* BOTÓN */
+
+    .button {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 16px 25px;
+      border: 1px solid #a65e45;
+      color: #C9B09E;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all .3s ease;
+    }
+
+    .button:hover {
+      background: #a65e45;
+      color: #fff;
+    }
+
+    .bottom-line {
+      margin-top: 65px;
+      color: #77716a;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* PIE DE PÁGINA */
+
+    footer {
+      padding: 24px 8%;
+      border-top: 1px solid rgba(201,176,158,.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #77716a;
+      font-size: 11px;
+    }
+
+    /* IDIOMAS */
+
+    .english {
+      display: none;
+    }
+
+    body.lang-en .spanish {
+      display: none;
+    }
+
+    body.lang-en .english {
+      display: initial;
+    }
+
+    /* MÓVIL */
 
     @media (max-width: 650px) {
-      header { padding: 22px 7%; }
-      .logo { width: 82px; }
-      main { min-height: 580px; padding: 80px 7%; }
-      .main-logo { width: min(100%, 340px); margin-left: -3px; }
-      .subtitle { margin-top: 30px; }
-      footer { padding: 22px 7%; flex-direction: column; align-items: flex-start; gap: 10px; }
-      .footer-logo { width: 68px; }
+      header {
+        padding: 22px 7%;
+      }
+
+      .logo {
+        width: 82px;
+      }
+
+      main {
+        min-height: 580px;
+        padding: 80px 7%;
+      }
+
+      .main-logo {
+        width: min(100%, 340px);
+        margin-left: -3px;
+      }
+
+      .subtitle {
+        margin-top: 30px;
+      }
+
+      footer {
+        padding: 22px 7%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .footer-logo {
+        width: 68px;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <header>
     <img class="logo" src="./atenas-logo.png" alt="Atenas">
     <button class="language" onclick="toggleLanguage()">ENGLISH</button>
@@ -74,6 +243,7 @@
 
   <main>
     <div class="content">
+
       <div class="label">Independent music</div>
 
       <img class="main-logo" src="./atenas-logo.png" alt="Atenas">
@@ -81,13 +251,25 @@
       <h2 class="subtitle spanish">Música, discos e historias.</h2>
       <h2 class="subtitle english">Music, records and stories.</h2>
 
-      <p class="description spanish">Nueva web en construcción. Estoy preparando un nuevo espacio para Atenas. Mientras tanto, puedes encontrar toda mi música, vídeos, redes sociales y plataformas en el siguiente enlace.</p>
+      <p class="description spanish">
+        Nueva web en construcción. Estoy preparando un nuevo espacio para Atenas.
+        Mientras tanto, puedes encontrar toda mi música, vídeos, redes sociales
+        y plataformas en el siguiente enlace.
+      </p>
 
-      <p class="description english">New website under construction. I'm preparing a new home for Atenas. In the meantime, you can find all my music, videos, social media and music platforms at the link below.</p>
+      <p class="description english">
+        New website under construction. I'm preparing a new home for Atenas.
+        In the meantime, you can find all my music, videos, social media
+        and music platforms at the link below.
+      </p>
 
-      <a class="button" href="https://linktr.ee/davidatenas" target="_blank" rel="noopener noreferrer"><span class="spanish">Escuchar y descubrir</span><span class="english">Listen and discover</span></a>
+      <a class="button" href="https://linktr.ee/davidatenas" target="_blank" rel="noopener noreferrer">
+        <span class="spanish">Escuchar y descubrir</span>
+        <span class="english">Listen and discover</span>
+      </a>
 
       <div class="bottom-line">Independent music</div>
+
     </div>
   </main>
 
@@ -100,8 +282,10 @@
     function toggleLanguage() {
       const english = document.body.classList.toggle("lang-en");
       document.documentElement.lang = english ? "en" : "es";
-      document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
+      document.querySelector(".language").textContent =
+        english ? "ESPAÑOL" : "ENGLISH";
     }
   </script>
+
 </body>
 </html>
