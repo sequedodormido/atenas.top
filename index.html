@@ -7,31 +7,36 @@
   <title>Atenas | Sitio oficial</title>
   <meta name="description" content="Web oficial de Atenas. Música, canciones, discos y vídeos.">
   <meta name="author" content="Atenas">
-  <meta name="theme-color" content="#C9B09E">
+  <meta name="theme-color" content="#11100f">
+
   <link rel="canonical" href="https://atenas.top/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Rubik+Distressed&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       min-height: 100vh;
-      background: #C9B09E;
-      color: #251C18;
+      background: #11100f;
+      color: #eeeae3;
       font-family: 'DM Sans', Arial, sans-serif;
       display: flex;
       flex-direction: column;
     }
 
-    /* LOGOTIPO */
+    /* LOGOTIPO ORIGINAL */
 
     .logo {
       display: block;
       width: 90px;
       height: auto;
-      filter: brightness(0) saturate(100%);
     }
 
     .main-logo {
@@ -39,14 +44,12 @@
       width: min(100%, 420px);
       height: auto;
       margin-left: -5px;
-      filter: brightness(0) saturate(100%);
     }
 
     .footer-logo {
       display: block;
       width: 75px;
       height: auto;
-      filter: brightness(0) saturate(100%);
     }
 
     /* CABECERA */
@@ -57,13 +60,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(37,28,24,.20);
+      border-bottom: 1px solid rgba(238,234,227,0.13);
     }
 
     .language {
       background: transparent;
-      color: #251C18;
-      border: 1px solid #765B4B;
+      color: #eeeae3;
+      border: 1px solid #65534b;
       padding: 9px 14px;
       font-family: 'DM Sans', sans-serif;
       font-size: 10px;
@@ -73,12 +76,11 @@
     }
 
     .language:hover {
-      background: #76503E;
-      border-color: #76503E;
-      color: #F1E6DC;
+      background: #8d4936;
+      border-color: #8d4936;
     }
 
-    /* FONDO PRINCIPAL */
+    /* FONDO PRINCIPAL ORIGINAL */
 
     main {
       flex: 1;
@@ -92,16 +94,11 @@
 
       background:
         radial-gradient(
-          ellipse at 22% 78%,
-          rgba(237,216,196,.48),
-          transparent 55%
-        ),
-        radial-gradient(
           ellipse at 78% 35%,
-          rgba(111,48,32,.19),
+          rgba(111,48,32,.36),
           transparent 48%
         ),
-        #C9B09E;
+        #151311;
     }
 
     main::after {
@@ -111,7 +108,7 @@
       height: 500px;
       right: -180px;
       bottom: -280px;
-      border: 1px solid rgba(65,39,29,.20);
+      border: 1px solid rgba(190,112,83,.14);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -125,7 +122,7 @@
     /* TEXTOS */
 
     .label {
-      color: #704734;
+      color: #bd765c;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 5px;
@@ -138,13 +135,13 @@
       font-size: clamp(29px,4vw,43px);
       font-weight: 500;
       font-style: italic;
-      color: #684433;
+      color: #c58b72;
       margin-top: 38px;
       margin-bottom: 25px;
     }
 
     .description {
-      color: #382C25;
+      color: #bdb6ad;
       font-size: 15px;
       line-height: 1.9;
       max-width: 550px;
@@ -157,8 +154,8 @@
       display: inline-block;
       margin-top: 36px;
       padding: 16px 25px;
-      border: 1px solid #76503E;
-      color: #251C18;
+      border: 1px solid #a65e45;
+      color: #f1ece3;
       text-decoration: none;
       font-size: 10px;
       font-weight: 600;
@@ -168,13 +165,13 @@
     }
 
     .button:hover {
-      background: #76503E;
-      color: #F1E6DC;
+      background: #a65e45;
+      color: #fff;
     }
 
     .bottom-line {
       margin-top: 65px;
-      color: #715C4F;
+      color: #77716a;
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -184,11 +181,11 @@
 
     footer {
       padding: 24px 8%;
-      border-top: 1px solid rgba(37,28,24,.20);
+      border-top: 1px solid rgba(238,234,227,.13);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #715C4F;
+      color: #77716a;
       font-size: 11px;
     }
 
@@ -249,6 +246,7 @@
 
   <header>
     <img class="logo" src="./atenas-logo.png" alt="Atenas">
+
     <button class="language" onclick="toggleLanguage()">ENGLISH</button>
   </header>
 
@@ -286,13 +284,16 @@
 
   <footer>
     <img class="footer-logo" src="./atenas-logo.png" alt="Atenas">
+
     <span>© 2026 Atenas. Todos los derechos reservados.</span>
   </footer>
 
   <script>
     function toggleLanguage() {
       const english = document.body.classList.toggle("lang-en");
+
       document.documentElement.lang = english ? "en" : "es";
+
       document.querySelector(".language").textContent =
         english ? "ESPAÑOL" : "ENGLISH";
     }
