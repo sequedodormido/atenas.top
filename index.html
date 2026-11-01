@@ -19,13 +19,13 @@
     body {
       min-height: 100vh;
       background: #11100f;
-      color: #C9B09E;
+      color: #eeeae3;
       font-family: 'DM Sans', Arial, sans-serif;
       display: flex;
       flex-direction: column;
     }
 
-    /* LOGOTIPO: SE MANTIENE TU ARCHIVO ORIGINAL */
+    /* LOGOTIPO */
 
     .logo {
       display: block;
@@ -54,12 +54,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(201,176,158,0.15);
+      border-bottom: 1px solid rgba(238,234,227,0.13);
     }
 
     .language {
       background: transparent;
-      color: #C9B09E;
+      color: #eeeae3;
       border: 1px solid #65534b;
       padding: 9px 14px;
       font-family: 'DM Sans', sans-serif;
@@ -74,7 +74,7 @@
       border-color: #8d4936;
     }
 
-    /* CONTENIDO PRINCIPAL */
+    /* FONDO PRINCIPAL */
 
     main {
       flex: 1;
@@ -87,6 +87,11 @@
       overflow: hidden;
 
       background:
+        radial-gradient(
+          ellipse at 22% 78%,
+          rgba(201,176,158,.22),
+          transparent 55%
+        ),
         radial-gradient(
           ellipse at 78% 35%,
           rgba(111,48,32,.36),
@@ -102,7 +107,7 @@
       height: 500px;
       right: -180px;
       bottom: -280px;
-      border: 1px solid rgba(190,112,83,.14);
+      border: 1px solid rgba(201,176,158,.18);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -112,6 +117,8 @@
       z-index: 1;
       max-width: 850px;
     }
+
+    /* TEXTOS: COLORES ORIGINALES */
 
     .label {
       color: #bd765c;
@@ -127,7 +134,7 @@
       font-size: clamp(29px,4vw,43px);
       font-weight: 500;
       font-style: italic;
-      color: #C9B09E;
+      color: #c58b72;
       margin-top: 38px;
       margin-bottom: 25px;
     }
@@ -147,7 +154,7 @@
       margin-top: 36px;
       padding: 16px 25px;
       border: 1px solid #a65e45;
-      color: #C9B09E;
+      color: #f1ece3;
       text-decoration: none;
       font-size: 10px;
       font-weight: 600;
@@ -173,7 +180,7 @@
 
     footer {
       padding: 24px 8%;
-      border-top: 1px solid rgba(201,176,158,.15);
+      border-top: 1px solid rgba(201,176,158,.16);
       display: flex;
       justify-content: space-between;
       align-items: center;
