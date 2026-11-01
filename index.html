@@ -80,7 +80,7 @@
       border-color: #8d4936;
     }
 
-    /* FONDO PRINCIPAL CON PORTADA4 */
+    /* FONDO CON PORTADA4.JPG */
 
     main {
       flex: 1;
@@ -92,20 +92,20 @@
       position: relative;
       overflow: hidden;
 
-      background:
+      background-image:
         linear-gradient(
-          rgba(17,16,15,.42),
-          rgba(17,16,15,.42)
+          rgba(17,16,15,.48),
+          rgba(17,16,15,.48)
         ),
         radial-gradient(
           ellipse at 78% 35%,
           rgba(111,48,32,.30),
           transparent 48%
         ),
-        url("./portada4");
+        url("./portada4.jpg");
 
-      background-size: cover, cover, cover;
-      background-position: center, center, center;
+      background-size: cover;
+      background-position: center center;
       background-repeat: no-repeat;
     }
 
@@ -225,6 +225,7 @@
       main {
         min-height: 580px;
         padding: 80px 7%;
+        background-position: center center;
       }
 
       .main-logo {
