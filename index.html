@@ -7,7 +7,7 @@
   <title>Atenas | Sitio oficial</title>
   <meta name="description" content="Web oficial de Atenas. Música, canciones, discos y vídeos.">
   <meta name="author" content="Atenas">
-  <meta name="theme-color" content="#11100f">
+  <meta name="theme-color" content="#C9B09E">
   <link rel="canonical" href="https://atenas.top/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,8 @@
 
     body {
       min-height: 100vh;
-      background: #11100f;
-      color: #eeeae3;
+      background: #C9B09E;
+      color: #251C18;
       font-family: 'DM Sans', Arial, sans-serif;
       display: flex;
       flex-direction: column;
@@ -31,6 +31,7 @@
       display: block;
       width: 90px;
       height: auto;
+      filter: brightness(0) saturate(100%);
     }
 
     .main-logo {
@@ -38,12 +39,14 @@
       width: min(100%, 420px);
       height: auto;
       margin-left: -5px;
+      filter: brightness(0) saturate(100%);
     }
 
     .footer-logo {
       display: block;
       width: 75px;
       height: auto;
+      filter: brightness(0) saturate(100%);
     }
 
     /* CABECERA */
@@ -54,13 +57,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(238,234,227,0.13);
+      border-bottom: 1px solid rgba(37,28,24,.20);
     }
 
     .language {
       background: transparent;
-      color: #eeeae3;
-      border: 1px solid #65534b;
+      color: #251C18;
+      border: 1px solid #765B4B;
       padding: 9px 14px;
       font-family: 'DM Sans', sans-serif;
       font-size: 10px;
@@ -70,8 +73,9 @@
     }
 
     .language:hover {
-      background: #8d4936;
-      border-color: #8d4936;
+      background: #76503E;
+      border-color: #76503E;
+      color: #F1E6DC;
     }
 
     /* FONDO PRINCIPAL */
@@ -89,15 +93,15 @@
       background:
         radial-gradient(
           ellipse at 22% 78%,
-          rgba(201,176,158,.22),
+          rgba(237,216,196,.48),
           transparent 55%
         ),
         radial-gradient(
           ellipse at 78% 35%,
-          rgba(111,48,32,.36),
+          rgba(111,48,32,.19),
           transparent 48%
         ),
-        #151311;
+        #C9B09E;
     }
 
     main::after {
@@ -107,7 +111,7 @@
       height: 500px;
       right: -180px;
       bottom: -280px;
-      border: 1px solid rgba(201,176,158,.18);
+      border: 1px solid rgba(65,39,29,.20);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -118,10 +122,10 @@
       max-width: 850px;
     }
 
-    /* TEXTOS: COLORES ORIGINALES */
+    /* TEXTOS */
 
     .label {
-      color: #bd765c;
+      color: #704734;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 5px;
@@ -134,13 +138,13 @@
       font-size: clamp(29px,4vw,43px);
       font-weight: 500;
       font-style: italic;
-      color: #c58b72;
+      color: #684433;
       margin-top: 38px;
       margin-bottom: 25px;
     }
 
     .description {
-      color: #bdb6ad;
+      color: #382C25;
       font-size: 15px;
       line-height: 1.9;
       max-width: 550px;
@@ -153,8 +157,8 @@
       display: inline-block;
       margin-top: 36px;
       padding: 16px 25px;
-      border: 1px solid #a65e45;
-      color: #f1ece3;
+      border: 1px solid #76503E;
+      color: #251C18;
       text-decoration: none;
       font-size: 10px;
       font-weight: 600;
@@ -164,13 +168,13 @@
     }
 
     .button:hover {
-      background: #a65e45;
-      color: #fff;
+      background: #76503E;
+      color: #F1E6DC;
     }
 
     .bottom-line {
       margin-top: 65px;
-      color: #77716a;
+      color: #715C4F;
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -180,11 +184,11 @@
 
     footer {
       padding: 24px 8%;
-      border-top: 1px solid rgba(201,176,158,.16);
+      border-top: 1px solid rgba(37,28,24,.20);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #77716a;
+      color: #715C4F;
       font-size: 11px;
     }
 
