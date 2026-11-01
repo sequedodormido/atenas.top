@@ -48,7 +48,7 @@
       color: inherit;
     }
 
-    /* CABECERA Y LOGOTIPO */
+    /* CABECERA */
 
     header {
       width: 100%;
@@ -64,10 +64,20 @@
       z-index: 5;
     }
 
-    .logo-header {
-      display: block;
-      width: 125px;
-      height: auto;
+    .brand-name {
+      display: inline-block;
+      color: var(--cream);
+      font-family: 'DM Sans', Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .3s ease;
+    }
+
+    .brand-name:hover {
+      color: var(--copper);
     }
 
     /* MENÚ */
@@ -124,6 +134,7 @@
       position: relative;
       overflow: hidden;
       text-align: center;
+
       background-image:
         linear-gradient(
           90deg,
@@ -137,6 +148,7 @@
           transparent 55%
         ),
         url("./atenas-hero.jpg");
+
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -191,15 +203,6 @@
       font-weight: 400;
       letter-spacing: 1.5px;
       line-height: 1.1;
-      text-transform: uppercase;
-    }
-
-    .section-heading p {
-      margin-top: 13px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 2px;
-      line-height: 1.8;
       text-transform: uppercase;
     }
 
@@ -300,6 +303,18 @@
       font-size: 11px;
       line-height: 1.8;
       text-align: center;
+    }
+
+    .shipping-note a {
+      color: var(--secondary);
+      text-decoration: underline;
+      text-decoration-color: rgba(189,182,173,.4);
+      text-underline-offset: 3px;
+      transition: color .25s ease;
+    }
+
+    .shipping-note a:hover {
+      color: var(--copper);
     }
 
     /* SOBRE ATENAS */
@@ -446,8 +461,9 @@
         padding: 19px 7% 16px;
       }
 
-      .logo-header {
-        width: 110px;
+      .brand-name {
+        font-size: 16px;
+        letter-spacing: 2.5px;
       }
 
       .menu {
@@ -526,9 +542,7 @@
 <body>
 
   <header>
-    <a href="#musica" aria-label="Atenas, inicio">
-      <img class="logo-header" src="./atenas-logo.png" alt="Atenas">
-    </a>
+    <a class="brand-name" href="#musica" aria-label="Atenas, inicio">ATENAS</a>
 
     <nav class="menu" aria-label="Menú principal">
       <a class="menu-item spanish" href="#musica">Música</a>
@@ -556,6 +570,7 @@
 
   <section class="section" id="discos">
     <div class="section-inner">
+
       <div class="section-heading">
         <div class="spanish">
           <h2>Discos</h2>
@@ -570,21 +585,29 @@
         <!-- La flor se hace bosque -->
         <article class="record">
           <img class="record-cover" src="./lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque" loading="lazy">
+
           <div class="record-info">
             <h3>La flor se hace bosque</h3>
             <p class="record-meta spanish">2011 · CD · 10 canciones</p>
             <p class="record-meta english">2011 · CD · 10 tracks</p>
+
             <div class="record-actions">
               <span class="record-price spanish">12,95 €</span>
               <span class="record-price english">€12.95</span>
+
               <a class="record-link" href="https://beatclap.es/la-flor-se-hace-bosque-louFkL" target="_blank" rel="noopener noreferrer">
-                <span class="spanish">Escuchar</span><span class="english">Listen</span>
+                <span class="spanish">Escuchar</span>
+                <span class="english">Listen</span>
               </a>
+
               <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="KQUJ6XVBU8BQA">
                 <input type="hidden" name="currency_code" value="EUR">
-                <button class="buy-button" type="submit"><span class="spanish">Comprar</span><span class="english">Buy</span></button>
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
               </form>
             </div>
           </div>
@@ -593,21 +616,29 @@
         <!-- Wine, guitars, covers & friends -->
         <article class="record">
           <img class="record-cover" src="./wgcf-cover-1500x1500.jpg" alt="Portada de Wine, guitars, covers & friends" loading="lazy">
+
           <div class="record-info">
             <h3>Wine, guitars, covers &amp; friends</h3>
             <p class="record-meta spanish">2013 · CD · 10 canciones</p>
             <p class="record-meta english">2013 · CD · 10 tracks</p>
+
             <div class="record-actions">
               <span class="record-price spanish">7,95 €</span>
               <span class="record-price english">€7.95</span>
+
               <a class="record-link" href="https://beatclap.es/wine-guitars-covers-friends-VKtvjj" target="_blank" rel="noopener noreferrer">
-                <span class="spanish">Escuchar</span><span class="english">Listen</span>
+                <span class="spanish">Escuchar</span>
+                <span class="english">Listen</span>
               </a>
+
               <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="JV9NCB3ZJW2C4">
                 <input type="hidden" name="currency_code" value="EUR">
-                <button class="buy-button" type="submit"><span class="spanish">Comprar</span><span class="english">Buy</span></button>
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
               </form>
             </div>
           </div>
@@ -616,18 +647,24 @@
         <!-- Todas esas cosas que jamás llegarán ni se irán -->
         <article class="record">
           <img class="record-cover" src="./tecqjslnsi-cover-1500x1500.jpg" alt="Portada de Todas esas cosas que jamás llegarán ni se irán" loading="lazy">
+
           <div class="record-info">
             <h3>Todas esas cosas que jamás llegarán ni se irán</h3>
             <p class="record-meta spanish">2018 · EP Digipack · 5 canciones</p>
             <p class="record-meta english">2018 · Digipack EP · 5 tracks</p>
+
             <div class="record-actions">
               <span class="record-price spanish">8,95 €</span>
               <span class="record-price english">€8.95</span>
+
               <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="F8EUBL95BKUJW">
                 <input type="hidden" name="currency_code" value="EUR">
-                <button class="buy-button" type="submit"><span class="spanish">Comprar</span><span class="english">Buy</span></button>
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
               </form>
             </div>
           </div>
@@ -636,136 +673,20 @@
         <!-- Otoño y 22 canciones olvidadas en un cajón -->
         <article class="record">
           <img class="record-cover" src="./oy22cgeuc-cover-1500x1500.jpg" alt="Portada de Otoño y 22 canciones olvidadas en un cajón" loading="lazy">
+
           <div class="record-info">
             <h3>Otoño y 22 canciones olvidadas en un cajón (2003 – 2018)</h3>
             <p class="record-meta spanish">2018 · Digital · 22 canciones</p>
             <p class="record-meta english">2018 · Digital · 22 tracks</p>
-            <p class="record-description spanish">Pack digital con 22 canciones en WAV y MP3, imágenes, letras, créditos, agradecimientos y material gráfico del disco. El enlace de descarga se enviará mediante WeTransfer al correo electrónico indicado durante el pago, en un plazo máximo de 72 horas desde la confirmación. Comprueba que la dirección sea correcta para que podamos realizar el envío.</p>
-            <p class="record-description english">Digital collection with 22 songs in WAV and MP3, artwork, lyrics, credits and additional album material. The WeTransfer download link will be sent to the email address provided at checkout within 72 hours of payment confirmation. Please make sure the address is correct.</p>
+
+            <p class="record-description spanish">
+              Pack digital con 22 canciones en WAV y MP3, imágenes, letras, créditos, agradecimientos y material gráfico del disco. El enlace de descarga se enviará mediante WeTransfer al correo electrónico indicado durante el pago, en un plazo máximo de 72 horas desde la confirmación. Comprueba que la dirección sea correcta para que podamos realizar el envío.
+            </p>
+
+            <p class="record-description english">
+              Digital collection with 22 songs in WAV and MP3, artwork, lyrics, credits and additional album material. The WeTransfer download link will be sent to the email address provided at checkout within 72 hours of payment confirmation. Please make sure the address is correct.
+            </p>
+
             <div class="record-actions">
               <span class="record-price spanish">3 €</span>
-              <span class="record-price english">€3</span>
-              <a class="record-link" href="https://beatclap.es/otono-y-22-canciones-olvidadas-en-un-cajon-2003-2018-p1S3gm" target="_blank" rel="noopener noreferrer">
-                <span class="spanish">Escuchar</span><span class="english">Listen</span>
-              </a>
-              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="TUQA6ZQ6T7E5Q">
-                <input type="hidden" name="currency_code" value="EUR">
-                <button class="buy-button" type="submit"><span class="spanish">Comprar</span><span class="english">Buy</span></button>
-              </form>
-            </div>
-          </div>
-        </article>
-
-        <!-- Crudología -->
-        <article class="record">
-          <img class="record-cover" src="./crudologia-cover-1500x1500.jpg" alt="Portada de Crudología" loading="lazy">
-          <div class="record-info">
-            <h3>Crudología</h3>
-            <p class="record-meta spanish">2022 · DIGI-USB Music · 11 canciones</p>
-            <p class="record-meta english">2022 · DIGI-USB Music · 11 tracks</p>
-            <p class="record-description spanish">Una edición física para quienes disfrutan teniendo la música entre las manos. Un formato que une el objeto y el diseño de un disco con la comodidad de la música digital en una memoria USB.</p>
-            <p class="record-description english">A physical edition for listeners who enjoy having music in their hands. A format that brings together the feel and design of an album with the convenience of digital music on a USB drive.</p>
-            <div class="record-actions">
-              <span class="record-price spanish">12,95 €</span>
-              <span class="record-price english">€12.95</span>
-              <a class="record-link" href="https://beatclap.es/crudologia-msj9j3" target="_blank" rel="noopener noreferrer">
-                <span class="spanish">Escuchar</span><span class="english">Listen</span>
-              </a>
-              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="S28MSCCJR3MQ2">
-                <input type="hidden" name="currency_code" value="EUR">
-                <button class="buy-button" type="submit"><span class="spanish">Comprar</span><span class="english">Buy</span></button>
-              </form>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <p class="shipping-note spanish">Envío incluido en Europa para los formatos físicos. Para otros destinos, utiliza el formulario de contacto.</p>
-      <p class="shipping-note english">Shipping to Europe is included for physical formats. For other destinations, please use the contact form.</p>
-    </div>
-  </section>
-
-  <section class="section about-section" id="sobre">
-    <div class="section-inner">
-      <div class="spanish">
-        <h2 class="about-title">Sobre Atenas</h2>
-        <p class="about-copy">Canciones, discos e historias.<br>Siempre es ahora.</p>
-      </div>
-      <div class="english section-copy">
-        <h2 class="about-title">About Atenas</h2>
-        <p class="about-copy">Songs, records and stories.<br>It's always now.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section contact-section" id="contacto">
-    <div class="section-inner">
-      <div class="spanish">
-        <h2 class="contact-title">Contacto</h2>
-        <p class="contact-intro">Envíame un mensaje a través de este formulario.</p>
-      </div>
-      <div class="english section-copy">
-        <h2 class="contact-title">Contact</h2>
-        <p class="contact-intro">Send me a message using this form.</p>
-      </div>
-
-      <form class="contact-form" action="https://formsubmit.app/f/rs4f6ep45w" method="POST">
-        <input type="hidden" name="_subject" value="Nuevo mensaje desde Atenas">
-
-        <div class="contact-field">
-          <label for="contact-name">
-            <span class="spanish">Nombre</span>
-            <span class="english">Name</span>
-          </label>
-          <input id="contact-name" type="text" name="name" autocomplete="name" required>
-        </div>
-
-        <div class="contact-field">
-          <label for="contact-email">
-            <span class="spanish">Correo electrónico</span>
-            <span class="english">Email</span>
-          </label>
-          <input id="contact-email" type="email" name="email" autocomplete="email" required>
-        </div>
-
-        <div class="contact-field">
-          <label for="contact-message">
-            <span class="spanish">Mensaje</span>
-            <span class="english">Message</span>
-          </label>
-          <textarea id="contact-message" name="message" rows="5" required></textarea>
-        </div>
-
-        <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <div class="contact-submit">
-          <button class="buy-button contact-submit-button" type="submit">
-            <span class="spanish">Enviar</span>
-            <span class="english">Send</span>
-          </button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <span class="spanish">© 2026 Atenas. Todos los derechos reservados.</span>
-    <span class="english">© 2026 Atenas. All rights reserved.</span>
-  </footer>
-
-  <script>
-    function toggleLanguage() {
-      const english = document.body.classList.toggle("lang-en");
-
-      document.documentElement.lang = english ? "en" : "es";
-      document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
-    }
-  </script>
-
-</body>
-</html>
+              <span class="record-price english">€3
