@@ -83,8 +83,22 @@
       transition: color .25s ease;
     }
 
-    .brand-name:hover {
-      color: var(--copper);
+    .brand-name {
+      display: inline-block;
+      padding: 9px 12px;
+      margin: -9px -12px;
+      border: 1px solid transparent;
+      transition:
+        color .25s ease,
+        border-color .25s ease,
+        background-color .25s ease;
+    }
+
+    .brand-name:hover,
+    .brand-name:focus-visible {
+      color: #2C2027;
+      background-color: #ECE0E0;
+      border-color: #ECE0E0;
     }
 
     /* MENÚ */
