@@ -192,27 +192,28 @@
       text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
     }
 
-    /* DESTELLO SUTIL EN LA FRASE DE PORTADA */
+    /* DESTELLO VISIBLE Y ELEGANTE EN LA FRASE DE PORTADA */
     main .content h1 {
       color: transparent;
+      -webkit-text-fill-color: transparent;
       background-image: linear-gradient(
         110deg,
         var(--cream) 0%,
-        var(--cream) 43%,
-        rgba(255, 255, 255, .96) 50%,
-        var(--cream) 57%,
+        var(--cream) 46%,
+        rgba(255, 255, 255, .98) 50%,
+        var(--cream) 54%,
         var(--cream) 100%
       );
-      background-size: 220% 100%;
-      background-position: 120% 0;
+      background-size: 300% 100%;
+      background-position: 130% 0;
       background-clip: text;
       -webkit-background-clip: text;
-      animation: hero-title-shimmer 12s ease-in-out infinite;
+      animation: hero-title-shimmer 8s linear infinite;
     }
 
     @keyframes hero-title-shimmer {
-      0%, 100% { background-position: 120% 0; }
-      42%, 58% { background-position: -120% 0; }
+      0% { background-position: 130% 0; }
+      30%, 100% { background-position: -130% 0; }
     }
 
     /* SECCIONES GENERALES */
