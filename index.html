@@ -30,6 +30,9 @@
       --cream: #eeeae3;
       --secondary: #bdb6ad;
       --copper: #bd765c;
+      --rose: #ECE0E0;
+      --rose-wash: rgba(236, 224, 224, .065);
+      --rose-border: rgba(236, 224, 224, .42);
       --muted: #77716a;
       --line: rgba(238, 234, 227, .14);
     }
@@ -111,7 +114,7 @@
 
     .menu-item:hover,
     .menu-item:focus-visible {
-      color: var(--copper);
+      color: var(--rose);
     }
 
     .language {
@@ -126,9 +129,12 @@
       transition: color .25s ease, border-color .25s ease;
     }
 
-    .language:hover {
-      border-color: var(--copper);
-      color: var(--copper);
+    .language:hover,
+    .language:focus-visible {
+      border-color: var(--rose-border);
+      background: var(--rose-wash);
+      color: var(--rose);
+      outline: none;
     }
 
     /* PORTADA PRINCIPAL */
@@ -212,6 +218,17 @@
       text-transform: uppercase;
     }
 
+    .section-heading h2::after,
+    .about-title::after,
+    .contact-title::after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 1px;
+      margin: 15px auto 0;
+      background: rgba(236, 224, 224, .46);
+    }
+
     .section-heading p {
       margin-top: 13px;
       color: var(--muted);
@@ -289,9 +306,12 @@
       transition: border-color .25s ease, color .25s ease;
     }
 
-    .music-disc-link:hover {
-      border-color: var(--copper);
-      color: var(--copper);
+    .music-disc-link:hover,
+    .music-disc-link:focus-visible {
+      border-color: var(--rose-border);
+      background: var(--rose-wash);
+      color: var(--rose);
+      outline: none;
     }
 
     /* DISCOS */
@@ -374,9 +394,13 @@
     }
 
     .record-link:hover,
-    .buy-button:hover {
-      border-color: var(--copper);
-      color: var(--copper);
+    .buy-button:hover,
+    .record-link:focus-visible,
+    .buy-button:focus-visible {
+      border-color: var(--rose-border);
+      background: var(--rose-wash);
+      color: var(--rose);
+      outline: none;
     }
 
     .buy-form {
@@ -401,8 +425,9 @@
       transition: color .25s ease;
     }
 
-    .shipping-note a:hover {
-      color: var(--copper);
+    .shipping-note a:hover,
+    .shipping-note a:focus-visible {
+      color: var(--rose);
     }
 
     /* EN DIRECTO */
@@ -436,9 +461,11 @@
       transition: color .25s ease, border-color .25s ease;
     }
 
-    .shows-fallback:hover {
-      color: var(--copper);
-      border-color: var(--copper);
+    .shows-fallback:hover,
+    .shows-fallback:focus-visible {
+      color: var(--rose);
+      border-color: var(--rose-border);
+      outline: none;
     }
 
     /* SOBRE ATENAS */
@@ -513,7 +540,8 @@
 
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: var(--copper);
+      border-color: var(--rose-border);
+      box-shadow: 0 0 0 2px rgba(236, 224, 224, .055);
     }
 
     .contact-form textarea {
@@ -537,9 +565,12 @@
       transition: border-color .25s ease, color .25s ease;
     }
 
-    .contact-form button:hover {
-      border-color: var(--copper);
-      color: var(--copper);
+    .contact-form button:hover,
+    .contact-form button:focus-visible {
+      border-color: var(--rose-border);
+      background: var(--rose-wash);
+      color: var(--rose);
+      outline: none;
     }
 
     .form-honeypot {
@@ -583,7 +614,7 @@
 
     .social-link:hover,
     .social-link:focus-visible {
-      color: var(--copper);
+      color: var(--rose);
       transform: translateY(-2px);
     }
 
