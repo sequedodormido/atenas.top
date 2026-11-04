@@ -878,82 +878,46 @@
 
 
     
-    /* ÓRBITAS LUMINOSAS FUGACES */
-    .cursor-orbit {
+    /* ESTELA DE PARTÍCULAS EN ROSA EMPOLVADO */
+    .cursor-particle {
       position: fixed;
       z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 52px;
-      height: 30px;
+      width: var(--particle-size, 5px);
+      height: var(--particle-size, 5px);
+      border-radius: 50%;
+      background: rgba(236, 224, 224, .95);
+      box-shadow:
+        0 0 8px rgba(236, 224, 224, .72),
+        0 0 16px rgba(236, 224, 224, .32);
       pointer-events: none;
-      opacity: 0;
-      transform: translate(-50%, -50%) rotate(var(--orbit-start, 0deg)) scale(.72);
-      animation: cursorOrbitFade 820ms ease-out forwards;
+      animation: cursorParticleFade .68s ease-out forwards;
       will-change: transform, opacity;
-      --orbit-line: rgba(236, 224, 224, .82);
-      --orbit-dot: rgba(236, 224, 224, .98);
-      --orbit-glow: rgba(236, 224, 224, .42);
     }
 
-    .cursor-orbit svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      filter: drop-shadow(0 0 4px var(--orbit-glow));
+    .cursor-particle.is-interactive {
+      width: 7px;
+      height: 7px;
+      background: #ECE0E0;
+      box-shadow:
+        0 0 10px rgba(236, 224, 224, .95),
+        0 0 22px rgba(236, 224, 224, .55);
     }
 
-    .cursor-orbit .orbit-ring {
-      fill: none;
-      stroke: var(--orbit-line);
-      stroke-width: .95;
-      opacity: .82;
-    }
-
-    .cursor-orbit .orbit-core {
-      fill: rgba(255, 249, 249, .98);
-    }
-
-    .cursor-orbit .orbit-satellite {
-      fill: var(--orbit-dot);
-      transform-box: view-box;
-      transform-origin: 24px 14px;
-      animation: orbitSatelliteSpin 820ms linear forwards;
-    }
-
-    .cursor-orbit.is-blue {
-      --orbit-line: rgba(115, 180, 255, .78);
-      --orbit-dot: rgba(74, 157, 255, 1);
-      --orbit-glow: rgba(45, 145, 255, .5);
-    }
-
-    .cursor-orbit.is-interactive {
-      --orbit-line: rgba(236, 224, 224, .98);
-      --orbit-dot: rgba(255, 249, 249, 1);
-      --orbit-glow: rgba(236, 224, 224, .68);
-    }
-
-    @keyframes cursorOrbitFade {
+    @keyframes cursorParticleFade {
       0% {
         opacity: .92;
-        transform: translate(-50%, -50%) rotate(var(--orbit-start, 0deg)) scale(.72);
+        transform: translate(-50%, -50%) scale(.65);
       }
       100% {
         opacity: 0;
-        transform: translate(-50%, -50%) rotate(var(--orbit-end, 12deg)) scale(1.12);
+        transform: translate(-50%, -50%) translateY(-15px) scale(1.55);
       }
     }
 
-    @keyframes orbitSatelliteSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(300deg); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .cursor-orbit {
-        display: none !important;
+      .cursor-particle {
         animation: none !important;
+        display: none !important;
       }
     }
 
@@ -1610,73 +1574,49 @@
 
   
   <script>
-    /* Pequeñas órbitas de luz alrededor del movimiento del ratón */
+    /* Estela de partículas rosa para dispositivos con ratón */
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (!finePointer.matches || reducedMotion.matches) return;
 
-      const orbits = [];
-      const maxOrbits = 6;
       let lastX = null;
       let lastY = null;
-      let lastTime = 0;
 
-      function createOrbit(x, y, onHero, interactive, dx, dy) {
-        const orbit = document.createElement("span");
-        orbit.className = "cursor-orbit" +
-          (onHero ? " is-blue" : "") +
+      function createParticle(x, y, interactive, extra) {
+        const particle = document.createElement("span");
+        particle.className = "cursor-particle" +
           (interactive ? " is-interactive" : "");
-        orbit.style.left = x + "px";
-        orbit.style.top = y + "px";
-
-        const angle = Math.atan2(dy, dx) * 0.35;
-        orbit.style.setProperty("--orbit-start", angle.toFixed(1) + "deg");
-        orbit.style.setProperty("--orbit-end", (angle + 13).toFixed(1) + "deg");
-
-        orbit.innerHTML =
-          '<svg viewBox="0 0 48 28" aria-hidden="true">' +
-            '<ellipse class="orbit-ring" cx="24" cy="14" rx="18" ry="8.6"/>' +
-            '<path class="orbit-ring" d="M7 17 C12 25 35 25 41 11" opacity=".32"/>' +
-            '<circle class="orbit-satellite" cx="6" cy="14" r="1.8"/>' +
-            '<circle class="orbit-core" cx="24" cy="14" r="1.45"/>' +
-            '<path class="orbit-core" d="M24 9.5 L25.1 12.9 L28.5 14 L25.1 15.1 L24 18.5 L22.9 15.1 L19.5 14 L22.9 12.9 Z"/>' +
-          '</svg>';
-
-        document.body.appendChild(orbit);
-        orbits.push(orbit);
-
-        while (orbits.length > maxOrbits) {
-          const oldest = orbits.shift();
-          if (oldest && oldest.isConnected) oldest.remove();
+        const spread = extra ? 9 : 5;
+        particle.style.left = (x + (Math.random() - 0.5) * spread * 2) + "px";
+        particle.style.top = (y + (Math.random() - 0.5) * spread * 2) + "px";
+        if (!interactive && Math.random() > 0.55) {
+          particle.style.setProperty("--particle-size", "3px");
         }
 
-        orbit.addEventListener("animationend", function () {
-          const index = orbits.indexOf(orbit);
-          if (index !== -1) orbits.splice(index, 1);
-          orbit.remove();
+        document.body.appendChild(particle);
+        particle.addEventListener("animationend", function () {
+          particle.remove();
         }, { once: true });
       }
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
 
-        const dx = lastX === null ? 48 : event.clientX - lastX;
-        const dy = lastY === null ? 48 : event.clientY - lastY;
-        const now = performance.now();
-
-        if ((dx * dx) + (dy * dy) < 48 * 48 || now - lastTime < 110) return;
+        const dx = lastX === null ? 20 : event.clientX - lastX;
+        const dy = lastY === null ? 20 : event.clientY - lastY;
+        if ((dx * dx) + (dy * dy) < 100) return;
 
         lastX = event.clientX;
         lastY = event.clientY;
-        lastTime = now;
 
-        const target = event.target instanceof Element ? event.target : null;
-        const onHero = Boolean(target && target.closest("#inicio"));
-        const interactive = Boolean(target &&
-          target.closest("a, button, input, textarea, select, [role='button']"));
+        const interactive = event.target instanceof Element &&
+          event.target.closest("a, button, input, textarea, select, [role='button']");
 
-        createOrbit(event.clientX, event.clientY, onHero, interactive, dx, dy);
+        createParticle(event.clientX, event.clientY, Boolean(interactive), false);
+        if (interactive && Math.random() > 0.45) {
+          createParticle(event.clientX, event.clientY, true, true);
+        }
       });
 
       document.addEventListener("pointerleave", function () {
