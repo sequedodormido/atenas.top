@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Atenas | Artista &amp; songwriter • Música y otras historias</title>
+  <meta name="description" content="Atenas es un proyecto musical construido a través de canciones e historias. Música, discos y canciones. Descubre su universo musical.">
+  <meta name="author" content="Atenas">
+  <meta name="theme-color" content="#11100f">
+
+  <link rel="canonical" href="https://atenas.top/">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --background: #11100f;
+      --cream: #eeeae3;
+      --secondary: #bdb6ad;
+      --copper: #bd765c;
+      --muted: #77716a;
+      --line: rgba(238, 234, 227, .14);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 35px;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--cream);
+      font-family: 'DM Sans', Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    /* CABECERA */
+
+    header {
+      width: 100%;
+      min-height: 96px;
+      padding: 20px 7%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 35px;
+      background: var(--background);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      z-index: 5;
+    }
+
+    .brand-name {
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .25s ease;
+    }
+
+    .brand-name {
+      display: inline-block;
+      padding: 9px 12px;
+      margin: -9px -12px;
+      border: 1px solid transparent;
+      transition:
+        color .25s ease,
+        border-color .25s ease,
+        background-color .25s ease;
+    }
+
+    .brand-name:hover,
+    .brand-name:focus-visible {
+      color: #2C2027;
+      background-color: #ECE0E0;
+      border-color: #ECE0E0;
+    }
+
+    /* MENÚ */
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: clamp(15px, 2.5vw, 34px);
+    }
+
+    .menu-item {
+      color: var(--secondary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.7px;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color .25s ease;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus-visible {
+      color: var(--copper);
+    }
+
+    .language {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(238, 234, 227, .32);
+      padding: 9px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.7px;
+      cursor: pointer;
+      transition: color .25s ease, border-color .25s ease;
+    }
+
+    .language:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    /* PORTADA PRINCIPAL */
+
+    main {
+      min-height: min(780px, calc(100svh - 96px));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 90px 7%;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(12, 12, 15, .68) 0%,
+          rgba(12, 12, 15, .43) 50%,
+          rgba(12, 12, 15, .35) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(12, 12, 15, .48) 0%,
+          transparent 55%
+        ),
+        url("./atenas-hero.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
+    }
+
+    /* SECCIONES GENERALES */
+
+    .section {
+      padding: 105px 7%;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .section-heading h2,
+    .about-title,
+    .contact-title {
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(34px, 4vw, 48px);
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    /* MÚSICA */
+
+    .music-section {
+      text-align: center;
+    }
+
+    .music-copy {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--secondary);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .music-copy p + p {
+      margin-top: 23px;
+    }
+
+    .music-closing {
+      margin-top: 35px !important;
+      color: var(--cream);
+      font-size: 23px;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .spotify-player {
+      width: 100%;
+      max-width: 780px;
+      margin: 58px auto 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #181715;
+    }
+
+    .spotify-player iframe {
+      display: block;
+      width: 100%;
+      height: 352px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .music-actions {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .music-disc-link {
+      display: inline-block;
+      border: 1px solid rgba(238, 234, 227, .35);
+      background: transparent;
+      color: var(--cream);
+      padding: 12px 19px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color .25s ease, color .25s ease;
+    }
+
+    .music-disc-link:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    /* DISCOS */
+
+    .records-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 58px 34px;
+    }
+
+    .record {
+      min-width: 0;
+    }
+
+    .record-cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #1b1917;
+    }
+
+    .record-info {
+      padding-top: 20px;
+    }
+
+    .record h3 {
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .record-meta {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .record-description {
+      margin-top: 13px;
+      color: var(--secondary);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .record-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .record-price {
+      color: var(--cream);
+      font-size: 13px;
+      letter-spacing: .5px;
+    }
+
+    .record-link,
+    .buy-button {
+      display: inline-block;
+      border: 1px solid rgba(238, 234, 227, .35);
+      background: transparent;
+      color: var(--cream);
+      padding: 10px 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color .25s ease, color .25s ease;
+    }
+
+    .record-link:hover,
+    .buy-button:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    .buy-form {
+      display: inline-block;
+    }
+
+    .shipping-note {
+      margin-top: 58px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .shipping-note a {
+      color: var(--secondary);
+      text-decoration: underline;
+      text-decoration-color: rgba(189, 182, 173, .45);
+      text-underline-offset: 3px;
+      transition: color .25s ease;
+    }
+
+    .shipping-note a:hover {
+      color: var(--copper);
+    }
+
+    /* EN DIRECTO */
+
+    .shows-section {
+      text-align: center;
+    }
+
+    .shows-section .section-heading {
+      margin-bottom: 40px;
+    }
+
+    .shows-widget {
+      width: 100%;
+      max-width: 780px;
+      min-height: 100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .shows-fallback {
+      display: inline-block;
+      margin-top: 25px;
+      color: var(--secondary);
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 7px;
+      transition: color .25s ease, border-color .25s ease;
+    }
+
+    .shows-fallback:hover {
+      color: var(--copper);
+      border-color: var(--copper);
+    }
+
+    /* SOBRE ATENAS */
+
+    .about-section {
+      text-align: center;
+    }
+
+    .about-copy {
+      max-width: 760px;
+      margin: 28px auto 0;
+      color: var(--secondary);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .about-copy p + p {
+      margin-top: 20px;
+    }
+
+    .about-intro {
+      margin-bottom: 34px;
+      font-size: 23px;
+      line-height: 1.5;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* CONTACTO */
+
+    .contact-section {
+      text-align: center;
+    }
+
+    .contact-form {
+      width: 100%;
+      max-width: 560px;
+      margin: 35px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--secondary);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      outline: none;
+      background: rgba(255, 255, 255, .02);
+      color: var(--cream);
+      padding: 13px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      transition: border-color .25s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--copper);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      margin-top: 5px;
+      border: 1px solid rgba(238, 234, 227, .38);
+      background: transparent;
+      color: var(--cream);
+      padding: 12px 19px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color .25s ease, color .25s ease;
+    }
+
+    .contact-form button:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    .form-honeypot {
+      position: absolute !important;
+      left: -5000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+
+    /* ICONOS DE REDES Y PLATAFORMAS */
+
+    .social-links {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px 25px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .social-link svg {
+      display: block;
+      width: 21px;
+      height: 21px;
+      overflow: visible;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      color: var(--copper);
+      transform: translateY(-2px);
+    }
+
+    /* PIE DE PÁGINA */
+
+    footer {
+      min-height: 90px;
+      padding: 22px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--background);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* TRANSICIONES AL HACER SCROLL */
+
+    .motion-ready .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(3px);
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+    }
+
+    .motion-ready .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .motion-ready .reveal,
+      .motion-ready .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+    }
+
+    /* IDIOMAS */
+
+    .english {
+      display: none;
+    }
+
+    body.lang-en .spanish {
+      display: none !important;
+    }
+
+    body.lang-en .english {
+      display: revert;
+    }
+
+    body.lang-en .english.section-copy {
+      display: block;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 900px) {
+      .records-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 48px 26px;
+      }
+    }
+
+    /* MÓVIL */
+
+    @media (max-width: 800px) {
+      header {
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        padding: 19px 7% 16px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .menu {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px 20px;
+      }
+
+      .menu-item {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+      }
+
+      .language {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      main {
+        min-height: calc(100svh - 155px);
+        padding: 70px 7%;
+        background-position: center center;
+      }
+
+      h1 {
+        font-size: clamp(29px, 7.2vw, 41px);
+        letter-spacing: 1px;
+      }
+
+      .section {
+        padding: 78px 7%;
+      }
+
+      .section-heading {
+        margin-bottom: 38px;
+      }
+
+      .music-copy {
+        font-size: 20px;
+      }
+
+      .spotify-player {
+        margin-top: 42px;
+      }
+
+      .about-copy {
+        font-size: 20px;
+      }
+
+      footer {
+        min-height: 82px;
+        padding: 18px 7%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .records-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        max-width: 390px;
+        margin: 0 auto;
+      }
+
+      .record h3 {
+        font-size: 27px;
+      }
+
+      .record-actions {
+        gap: 12px;
+      }
+
+      .music-copy {
+        font-size: 19px;
+      }
+
+      .music-closing {
+        font-size: 21px;
+      }
+
+      .spotify-player iframe {
+        height: 352px;
+      }
+
+      .about-copy {
+        font-size: 19px;
+      }
+
+      .about-intro {
+        font-size: 21px;
+      }
+
+      .social-links {
+        gap: 15px 20px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .menu {
+        gap: 12px 15px;
+      }
+
+      .menu-item {
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .social-links {
+        gap: 13px 17px;
+      }
+
+      .social-link {
+        width: 23px;
+        height: 23px;
+      }
+
+      .social-link svg {
+        width: 19px;
+        height: 19px;
+      }
+    }
+
+    /* DETALLES EN ROSA EMPOLVADO */
+    .brand-name:hover,
+    .menu-item:hover,
+    .menu-item:focus-visible,
+    .language:hover,
+    .music-disc-link:hover,
+    .record-link:hover,
+    .buy-button:hover,
+    .contact-form button:hover,
+    .social-link:hover,
+    .social-link:focus-visible,
+    .shipping-note a:hover {
+      color: #ECE0E0;
+    }
+
+    .language:hover,
+    .music-disc-link:hover,
+    .record-link:hover,
+    .buy-button:hover,
+    .contact-form button:hover {
+      border-color: #ECE0E0;
+      background: transparent;
+    }
+
+    .shows-fallback:hover {
+      color: #ECE0E0;
+      border-color: #ECE0E0;
+    }
+
+    /* Marco de la playlist en el mismo rosa */
+    .spotify-player {
+      border: 2px solid #ECE0E0;
+      background: #ECE0E0;
+      padding: 2px;
+    }
+
+    .spotify-player iframe {
+      border-radius: 9px;
+    }
+    
+    /* RELLENO ROSA AL PASAR EL RATÓN POR LOS BOTONES */
+    .language,
+    .music-disc-link,
+    .record-link,
+    .buy-button,
+    .contact-form button,
+    .shows-fallback {
+      transition:
+        color .25s ease,
+        border-color .25s ease,
+        background-color .25s ease;
+    }
+
+    .language:hover,
+    .music-disc-link:hover,
+    .record-link:hover,
+    .buy-button:hover,
+    .contact-form button:hover,
+    .shows-fallback:hover {
+      background-color: #ECE0E0 !important;
+      border-color: #ECE0E0 !important;
+      color: #2C2027 !important;
+    }
+
+
+
+    
+    /* ESTELA DE PARTÍCULAS EN ROSA EMPOLVADO */
+    .cursor-particle {
+      position: fixed;
+      z-index: 9999;
+      width: var(--particle-size, 5px);
+      height: var(--particle-size, 5px);
+      border-radius: 50%;
+      background: rgba(236, 224, 224, .95);
+      box-shadow:
+        0 0 8px rgba(236, 224, 224, .72),
+        0 0 16px rgba(236, 224, 224, .32);
+      pointer-events: none;
+      animation: cursorParticleFade .68s ease-out forwards;
+      will-change: transform, opacity;
+    }
+
+    .cursor-particle.is-interactive {
+      width: 7px;
+      height: 7px;
+      background: #ECE0E0;
+      box-shadow:
+        0 0 10px rgba(236, 224, 224, .95),
+        0 0 22px rgba(236, 224, 224, .55);
+    }
+
+    @keyframes cursorParticleFade {
+      0% {
+        opacity: .92;
+        transform: translate(-50%, -50%) scale(.65);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(-15px) scale(1.55);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-particle {
+        animation: none !important;
+        display: none !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <header>
+    <a class="brand-name" href="#inicio" aria-label="Atenas, inicio">ATENAS</a>
+
+    <nav class="menu" aria-label="Menú principal">
+      <a class="menu-item spanish" href="#musica">Música</a>
+      <a class="menu-item english" href="#musica">Music</a>
+
+      <a class="menu-item spanish" href="#discos">Discos</a>
+      <a class="menu-item english" href="#discos">Records</a>
+
+      <a class="menu-item spanish" href="#actuaciones">En directo</a>
+      <a class="menu-item english" href="#actuaciones">Live shows</a>
+
+      <a class="menu-item spanish" href="#sobre">Sobre Atenas</a>
+      <a class="menu-item english" href="#sobre">About</a>
+
+      <a class="menu-item spanish" href="#contacto">Contacto</a>
+      <a class="menu-item english" href="#contacto">Contact</a>
+    </nav>
+
+    <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
+  </header>
+
+  <!-- PORTADA -->
+
+  <main id="inicio">
+    <div class="content">
+      <h1 class="spanish">SIEMPRE ES AHORA</h1>
+      <h1 class="english">IT'S ALWAYS NOW</h1>
+    </div>
+  </main>
+
+  <!-- MÚSICA -->
+
+  <section class="section music-section" id="musica">
+    <div class="section-inner">
+
+      <div class="section-heading">
+        <div class="spanish">
+          <h2>Música</h2>
+          <p>Canciones, lugares e historias</p>
+        </div>
+
+        <div class="english section-copy">
+          <h2>Music</h2>
+          <p>Songs, places and stories</p>
+        </div>
+      </div>
+
+      <div class="music-copy spanish">
+
+        <p>
+          Atenas es un viaje a través de canciones, lugares e historias. Un recorrido que atraviesa ciudades y países, pero también paisajes interiores, recuerdos, encuentros, despedidas y mundos que solamente existen en nuestra memoria.
+        </p>
+
+        <p>
+          A lo largo de los años, la música ha tomado muchas formas. Desde el rock, el indie y las guitarras eléctricas hasta las canciones acústicas más íntimas; desde composiciones cargadas de poesía, guitarras y teclados hasta grabaciones espontáneas compartidas con otros músicos. Canciones propias, versiones, experimentos y caminos inesperados que nunca han respondido a una única dirección.
+        </p>
+
+        <p>
+          Cada disco pertenece a un momento distinto. Hay canciones nacidas del amor y el desamor, de la necesidad de escapar, de la libertad, de los cambios de vida y de la reconciliación con uno mismo. Algunas surgieron de encuentros con músicos y amigos en lugares como Malta. Otras nacieron de etapas de introspección, de silencios, de rupturas o de la necesidad de volver a lo esencial.
+        </p>
+
+        <p>
+          Con el tiempo, Atenas ha recorrido diferentes territorios musicales: discos eclécticos, grabaciones eléctricas y crudas, canciones acústicas desnudas, colaboraciones, versiones reinterpretadas y aproximaciones al country. Una trayectoria sin una fórmula fija, construida a través de experiencias que han ido dejando su huella en cada canción.
+        </p>
+
+        <p>
+          Quizá por eso ninguna etapa se parece demasiado a la anterior. Porque cada canción pertenece a un lugar, a una persona o a un instante diferente.
+        </p>
+
+        <p class="music-closing">
+          Canciones que nacen de lugares distintos. Historias que a veces no sabemos cómo contar. Música para detenerse un instante y mirar hacia dentro.
+        </p>
+
+      </div>
+
+      <div class="music-copy english">
+
+        <p>
+          Atenas is a journey through songs, places and stories. A journey across cities and countries, but also through inner landscapes, memories, encounters, farewells and worlds that exist only in our minds.
+        </p>
+
+        <p>
+          Over the years, music has taken many different forms. From rock, indie and electric guitars to intimate acoustic songs; from poetic compositions built around guitars and keyboards to spontaneous recordings shared with other musicians. Original songs, covers, experiments and unexpected directions that have never followed a single path.
+        </p>
+
+        <p>
+          Every record belongs to a different moment. There are songs born out of love and heartbreak, the need to escape, freedom, changes in life and the process of finding one's way back to oneself. Some came from encounters with musicians and friends in places like Malta. Others emerged from periods of introspection, silence, endings or the need to return to what matters most.
+        </p>
+
+        <p>
+          Over time, Atenas has explored different musical territories: eclectic records, raw electric recordings, stripped-down acoustic songs, collaborations, reimagined covers and explorations of country music. A journey without a fixed formula, shaped by experiences that have left their mark on every song.
+        </p>
+
+        <p>
+          Perhaps that is why no two chapters sound quite the same. Every song belongs to a different place, a different person or a different moment.
+        </p>
+
+        <p class="music-closing">
+          Songs born in different places. Stories we sometimes struggle to put into words. Music to stop for a moment and look within.
+        </p>
+
+      </div>
+
+      <div class="spotify-player">
+        <iframe
+          title="Atenas • selección musical en Spotify"
+          src="https://open.spotify.com/embed/playlist/4Zo4TE7jvFIo4DIZyTDjyu?utm_source=generator"
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="music-actions">
+        <a class="music-disc-link" href="#discos">
+          <span class="spanish">Explorar los discos</span>
+          <span class="english">Explore the records</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DISCOS -->
+
+  <section class="section" id="discos">
+    <div class="section-inner">
+
+      <div class="section-heading">
+        <div class="spanish">
+          <h2>Discos</h2>
+          <p>La música de Atenas</p>
+        </div>
+        <div class="english section-copy">
+          <h2>Records</h2>
+          <p>The music of Atenas</p>
+        </div>
+      </div>
+
+      <div class="records-grid">
+
+        <!-- LA FLOR SE HACE BOSQUE -->
+
+        <article class="record">
+          <img class="record-cover" src="./lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque" loading="lazy">
+
+          <div class="record-info">
+            <h3>La flor se hace bosque</h3>
+
+            <p class="record-meta spanish">2011 • CD • 10 canciones</p>
+            <p class="record-meta english">2011 • CD • 10 tracks</p>
+
+            <div class="record-actions">
+              <span class="record-price spanish">12,95 €</span>
+              <span class="record-price english">€12.95</span>
+
+              <a class="record-link" href="https://beatclap.es/la-flor-se-hace-bosque-louFkL" target="_blank" rel="noopener noreferrer">
+                <span class="spanish">Escuchar</span>
+                <span class="english">Listen</span>
+              </a>
+
+              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="KQUJ6XVBU8BQA">
+                <input type="hidden" name="currency_code" value="EUR">
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <!-- WINE, GUITARS, COVERS & FRIENDS -->
+
+        <article class="record">
+          <img class="record-cover" src="./wgcf-cover-1500x1500.jpg" alt="Portada de Wine, guitars, covers & friends" loading="lazy">
+
+          <div class="record-info">
+            <h3>Wine, guitars, covers &amp; friends</h3>
+
+            <p class="record-meta spanish">2013 • CD • 10 canciones</p>
+            <p class="record-meta english">2013 • CD • 10 tracks</p>
+
+            <div class="record-actions">
+              <span class="record-price spanish">7,95 €</span>
+              <span class="record-price english">€7.95</span>
+
+              <a class="record-link" href="https://beatclap.es/wine-guitars-covers-friends-VKtvjj" target="_blank" rel="noopener noreferrer">
+                <span class="spanish">Escuchar</span>
+                <span class="english">Listen</span>
+              </a>
+
+              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="JV9NCB3ZJW2C4">
+                <input type="hidden" name="currency_code" value="EUR">
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <!-- TODAS ESAS COSAS QUE JAMÁS LLEGARÁN NI SE IRÁN -->
+
+        <article class="record">
+          <img class="record-cover" src="./tecqjslnsi-cover-1500x1500.jpg" alt="Portada de Todas esas cosas que jamás llegarán ni se irán" loading="lazy">
+
+          <div class="record-info">
+            <h3>Todas esas cosas que jamás llegarán ni se irán</h3>
+
+            <p class="record-meta spanish">2018 • EP Digipack • 5 canciones</p>
+            <p class="record-meta english">2018 • Digipack EP • 5 tracks</p>
+
+            <div class="record-actions">
+              <span class="record-price spanish">8,95 €</span>
+              <span class="record-price english">€8.95</span>
+
+              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="F8EUBL95BKUJW">
+                <input type="hidden" name="currency_code" value="EUR">
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <!-- OTOÑO Y 22 CANCIONES OLVIDADAS EN UN CAJÓN -->
+
+        <article class="record">
+          <img class="record-cover" src="./oy22cgeuc-cover-1500x1500.jpg" alt="Portada de Otoño y 22 canciones olvidadas en un cajón" loading="lazy">
+
+          <div class="record-info">
+            <h3>Otoño y 22 canciones olvidadas en un cajón (2003 – 2018)</h3>
+
+            <p class="record-meta spanish">2018 • Digital • 22 canciones</p>
+            <p class="record-meta english">2018 • Digital • 22 tracks</p>
+
+            <p class="record-description spanish">
+              Pack digital con 22 canciones en WAV y MP3, imágenes, letras, créditos, agradecimientos y material gráfico del disco. El enlace de descarga se enviará mediante WeTransfer al correo electrónico indicado durante el pago, en un plazo máximo de 72 horas desde la confirmación. Comprueba que la dirección sea correcta para que podamos realizar el envío.
+            </p>
+
+            <p class="record-description english">
+              Digital collection with 22 songs in WAV and MP3, artwork, lyrics, credits and additional album material. The WeTransfer download link will be sent to the email address provided at checkout within 72 hours of payment confirmation. Please make sure the address is correct.
+            </p>
+
+            <div class="record-actions">
+              <span class="record-price spanish">3 €</span>
+              <span class="record-price english">€3</span>
+
+              <a class="record-link" href="https://beatclap.es/otono-y-22-canciones-olvidadas-en-un-cajon-2003-2018-p1S3gm" target="_blank" rel="noopener noreferrer">
+                <span class="spanish">Escuchar</span>
+                <span class="english">Listen</span>
+              </a>
+
+              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="TUQA6ZQ6T7E5Q">
+                <input type="hidden" name="currency_code" value="EUR">
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <!-- CRUDOLOGÍA -->
+
+        <article class="record">
+          <img class="record-cover" src="./crudologia-cover-1500x1500.jpg" alt="Portada de Crudología" loading="lazy">
+
+          <div class="record-info">
+            <h3>Crudología</h3>
+
+            <p class="record-meta spanish">2022 • DIGI-USB Music • 11 canciones</p>
+            <p class="record-meta english">2022 • DIGI-USB Music • 11 tracks</p>
+
+            <p class="record-description spanish">
+              Una edición física para quienes disfrutan teniendo la música entre las manos. Un formato que une el objeto y el diseño de un disco con la comodidad de la música digital en una memoria USB.
+            </p>
+
+            <p class="record-description english">
+              A physical edition for listeners who enjoy having music in their hands. A format that brings together the feel and design of an album with the convenience of digital music on a USB drive.
+            </p>
+
+            <div class="record-actions">
+              <span class="record-price spanish">12,95 €</span>
+              <span class="record-price english">€12.95</span>
+
+              <a class="record-link" href="https://beatclap.es/crudologia-msj9j3" target="_blank" rel="noopener noreferrer">
+                <span class="spanish">Escuchar</span>
+                <span class="english">Listen</span>
+              </a>
+
+              <form class="buy-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="S28MSCCJR3MQ2">
+                <input type="hidden" name="currency_code" value="EUR">
+                <button class="buy-button" type="submit">
+                  <span class="spanish">Comprar</span>
+                  <span class="english">Buy</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="shipping-note spanish">
+        Envío incluido en Europa para los formatos físicos. Para envíos fuera de Europa, consulta a través del <a href="#contacto">formulario de contacto</a>.
+      </p>
+
+      <p class="shipping-note english">
+        Shipping within Europe is included for physical formats. For destinations outside Europe, please use the <a href="#contacto">contact form</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- EN DIRECTO -->
+
+  <section class="section shows-section" id="actuaciones">
+    <div class="section-inner">
+
+      <div class="section-heading">
+        <div class="spanish">
+          <h2>En directo</h2>
+          <p>Próximas fechas</p>
+        </div>
+
+        <div class="english section-copy">
+          <h2>Live shows</h2>
+          <p>Upcoming dates</p>
+        </div>
+      </div>
+
+      <div class="shows-widget">
+        <a
+          class="bit-widget-initializer"
+          data-artist-name="id_15525243"
+          data-background-color="rgba(17,16,15,1)"
+          data-separator-color="rgba(238,234,227,0.14)"
+          data-text-color="rgba(238,234,227,1)"
+          data-font="DM Sans"
+          data-auto-style="false">
+        </a>
+      </div>
+
+      <a class="shows-fallback" href="https://bnds.us/jixn87" target="_blank" rel="noopener noreferrer">
+        <span class="spanish">Ver fechas en Bandsintown</span>
+        <span class="english">View dates on Bandsintown</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SOBRE ATENAS -->
+
+  <section class="section about-section" id="sobre">
+    <div class="section-inner">
+
+      <div class="spanish">
+        <h2 class="about-title">Sobre Atenas</h2>
+
+        <div class="about-copy">
+
+          <p class="about-intro">
+            Atenas es un proyecto musical construido a través de canciones e historias. Una mirada personal sobre la identidad, las relaciones, la soledad y las contradicciones de nuestro tiempo. Canciones que no siempre buscan respuestas, pero que dejan algo en quien las escucha.
+          </p>
+
+          <p>
+            Atenas grabó su primer álbum en 2000 con Llul, una de sus primeras bandas. El álbum reunía influencias de hard rock, música alternativa, funky y metal, y fue producido por Carlos Escobedo y Alberto Seara (cantante y técnico de Sôber y Savia).
+          </p>
+
+          <p>
+            Tras sus comienzos, Atenas ha desarrollado una intensa trayectoria musical tocando con múltiples grupos y publicando un total de cuatro álbumes. Ha compartido escenario con Dover, La Cabra Mecánica, Las Niñas, SKA-P, Ilegales, Los Deltonos, Alis, Nacho Vegas y Zahara, entre otros, actuando en algunas ocasiones con Neumática y muchas otras como solista. En 2005, su banda Estrellas Pintadas De Azul fue nombrada Mejor Grupo del Año por la revista Mondo Sonoro.
+          </p>
+
+          <p>
+            En 2009, Atenas llamó la atención de Universal Music Spain y firmó un contrato editorial de tres álbumes, publicando su primer LP oficial en solitario, La Flor Se Hace Bosque. En 2013, se trasladó a Estocolmo para ampliar sus horizontes fuera de España.
+          </p>
+
+          <p>
+            Después de Crudología (LP, 2022), Atenas volvió a sus raíces, actuando en Suecia únicamente con voz y guitarra acústica.
+          </p>
+
+          <p>
+            Actualmente, el proyecto Atenas se encuentra en una pausa natural mientras David se centra en The Horse With No Name, un proyecto de Americana, folk e indie desarrollado entre Suecia y Nashville. Su álbum debut fue masterizado en Nashville, Tennessee, por John Mayfield, cuyos créditos incluyen Dave Matthews Band, Willie Nelson, Sara Evans, Rascal Flatts, Morgan Wallen y muchos otros artistas reconocidos.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="english section-copy">
+        <h2 class="about-title">About Atenas</h2>
+
+        <div class="about-copy">
+
+          <p class="about-intro">
+            Atenas is a music project built around songs and stories. A personal perspective on identity, relationships, loneliness and the contradictions of our time. Songs that don't always seek answers, but leave something behind in those who listen.
+          </p>
+
+          <p>
+            Atenas recorded his first album in 2000 with Llul, one of his first bands. The album was an amalgamation of hard rock, alternative, funky and metal influences, produced by Carlos Escobedo and Alberto Seara (singer and technician of Sôber and Savia).
+          </p>
+
+          <p>
+            After his start, Atenas has had a vibrant career playing with multiple groups and releasing a total of 4 albums. He has played with Dover, La Cabra Mecánica, Las Niñas, SKA-P, Ilegales, Los Deltonos, Alis, Nacho Vegas and Zahara, among others, sometimes performing with Neumática and many times as a solo artist. In 2005, his band Estrellas Pintadas De Azul was named Best Group of the Year by Mondo Sonoro magazine.
+          </p>
+
+          <p>
+            In 2009, Atenas attracted the attention of Universal Music Spain and was signed to a three-album contract, releasing his first official solo LP, La Flor Se Hace Bosque. In 2013, he moved to Stockholm to broaden his horizons outside Spain.
+          </p>
+
+          <p>
+            Following Crudología (LP, 2022), Atenas returned to the basics, performing with only voice and acoustic guitar in Sweden.
+          </p>
+
+          <p>
+            Today, the Atenas project is on a natural hiatus while David focuses on The Horse With No Name, an Americana, folk and indie project developed between Sweden and Nashville. The debut LP was mastered in Nashville, TN, by John Mayfield, whose credits include Dave Matthews Band, Willie Nelson, Sara Evans, Rascal Flatts, Morgan Wallen and many other acclaimed artists.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+
+  <section class="section contact-section" id="contacto">
+    <div class="section-inner">
+
+      <div class="spanish">
+        <h2 class="contact-title">Contacto</h2>
+      </div>
+
+      <div class="english section-copy">
+        <h2 class="contact-title">Contact</h2>
+      </div>
+
+      <form class="contact-form" action="https://formsubmit.app/f/q2u43e7k7h" method="POST">
+
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde Atenas">
+
+        <div>
+          <label for="contact-name">
+            <span class="spanish">Nombre</span>
+            <span class="english">Name</span>
+          </label>
+          <input id="contact-name" type="text" name="name" required>
+        </div>
+
+        <div>
+          <label for="contact-email">
+            <span class="spanish">Correo electrónico</span>
+            <span class="english">Email address</span>
+          </label>
+          <input id="contact-email" type="email" name="email" required>
+        </div>
+
+        <div>
+          <label for="contact-message">
+            <span class="spanish">Mensaje</span>
+            <span class="english">Message</span>
+          </label>
+          <textarea id="contact-message" name="message" required></textarea>
+        </div>
+
+        <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button type="submit">
+          <span class="spanish">Enviar mensaje</span>
+          <span class="english">Send message</span>
+        </button>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ICONOS DE REDES Y PLATAFORMAS -->
+
+  <footer>
+
+    <nav class="social-links" aria-label="Redes sociales y plataformas musicales">
+
+      <a class="social-link" href="https://www.facebook.com/atenas.musica" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M13.4 21v-8.1h2.8l.4-3.2h-3.2V7.6c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4v2.2H7v3.2h2.8V21h3.6z"/>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://www.instagram.com/atenas.musica" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="17.6" cy="6.7" r="1.15" fill="currentColor"/>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://www.youtube.com/@david_atenas" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M23 7.1a3 3 0 0 0-2.1-2.2C19 4.4 12 4.4 12 4.4s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.9a3 3 0 0 0 2.1 2.2c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.2 31 31 0 0 0 .5-4.9 31 31 0 0 0-.5-4.9Z"/>
+          <path fill="#11100f" d="m9.7 15.7 6.1-3.7-6.1-3.7z"/>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://open.spotify.com/artist/08FA4kpmXgGIN6nDR7uPQ6" target="_blank" rel="noopener noreferrer" aria-label="Spotify" title="Spotify">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M5.7 9.2c4.6-1.4 9.3-.9 13.1 1.4M6.5 12.3c3.8-1.1 7.7-.7 10.9 1.2M7.4 15.2c2.9-.8 5.9-.5 8.3.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://music.apple.com/us/artist/atenas/443423009" target="_blank" rel="noopener noreferrer" aria-label="Apple Music" title="Apple Music">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M18.1 3.1v13.1c0 1.7-1.3 2.9-3.1 2.9-1.4 0-2.3-.8-2.3-2 0-1.5 1.2-2.4 3-2.7V6.2l-7.2 1.5v10.1c0 1.7-1.3 2.9-3.1 2.9-1.4 0-2.3-.8-2.3-2 0-1.5 1.2-2.4 3-2.7V6.2l10.4-2.1a1.3 1.3 0 0 1 1.6 1.3z"/>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://tidal.com/artist/5100770" target="_blank" rel="noopener noreferrer" aria-label="TIDAL" title="TIDAL">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <g fill="currentColor">
+            <path d="m6 4 3 3-3 3-3-3z"/>
+            <path d="m12 4 3 3-3 3-3-3z"/>
+            <path d="m18 4 3 3-3 3-3-3z"/>
+            <path d="m12 10 3 3-3 3-3-3z"/>
+            <path d="m6 16 3 3-3 3-3-3z"/>
+            <path d="m18 16 3 3-3 3-3-3z"/>
+          </g>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://www.deezer.com/es/artist/1385422?host=0&amp;deferredFl=1" target="_blank" rel="noopener noreferrer" aria-label="Deezer" title="Deezer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <g fill="currentColor">
+            <path d="M2 15h4v6H2z"/>
+            <path d="M7 12h4v9H7z"/>
+            <path d="M12 9h4v12h-4z"/>
+            <path d="M17 6h5v15h-5z"/>
+            <path d="M2 3h4v2H2zM7 3h4v2H7zM12 3h4v2h-4zM17 3h5v2h-5z"/>
+          </g>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://music.amazon.es/artists/B009W9YPE2" target="_blank" rel="noopener noreferrer" aria-label="Amazon Music" title="Amazon Music">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M14.5 4.2v10.1a3.2 3.2 0 1 1-1.8-2.9V7.1l6.1-1.2v6.9a3.2 3.2 0 1 1-1.8-2.9V3.4z" fill="currentColor"/>
+          <path d="M3.2 18.2c4.4 2.6 10.9 3 16.7.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="m17.6 17.1 2.7 1.1-1.7 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <a class="social-link" href="https://open.qobuz.com/artist/3173070" target="_blank" rel="noopener noreferrer" aria-label="Qobuz" title="Qobuz">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 2.8a8.7 8.7 0 1 0 5.3 15.6l2.3 2.3 1.4-1.4-2.3-2.3A8.7 8.7 0 0 0 12 2.8Zm0 2a6.7 6.7 0 1 1 0 13.4 6.7 6.7 0 0 1 0-13.4Z" fill="currentColor"/>
+          <path d="m12 8-3 3.5 3 3.5 3-3.5z" fill="currentColor"/>
+        </svg>
+      </a>
+      
+      <a class="social-link" href="https://linktr.ee/atenas.musica" target="_blank" rel="noopener noreferrer" aria-label="Linktree" title="Linktree">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 3v18M12 8 6 13M12 8l6 5M6 13v4M18 13v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="4" r="1.5" fill="currentColor"/>
+          <circle cx="6" cy="13" r="1.5" fill="currentColor"/>
+          <circle cx="18" cy="13" r="1.5" fill="currentColor"/>
+        </svg>
+      </a>
+
+    </nav>
+
+    <span class="spanish">© 2026 Atenas. Todos los derechos reservados.</span>
+    <span class="english">© 2026 Atenas. All rights reserved.</span>
+
+  </footer>
+
+  <!-- WIDGET DE BANDSINTOWN -->
+
+  <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+
+  <script>
+    function toggleLanguage() {
+      const english = document.body.classList.toggle("lang-en");
+
+      document.documentElement.lang = english ? "en" : "es";
+      document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
+    }
+
+    /* Aparición suave al entrar en pantalla.
+       Si el navegador no admite IntersectionObserver,
+       la página permanece completamente visible. */
+
+    (function () {
+      const revealElements = document.querySelectorAll(
+        ".section-heading, .record, .shipping-note, .shows-widget, .shows-fallback, .about-copy p, .contact-form, .music-copy p, .spotify-player, .music-actions"
+      );
+
+      if (
+        !("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        return;
+      }
+
+      document.body.classList.add("motion-ready");
+
+      revealElements.forEach(function (element) {
+        element.classList.add("reveal");
+      });
+
+      const observer = new IntersectionObserver(
+        function (entries, currentObserver) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -35px 0px"
+        }
+      );
+
+      revealElements.forEach(function (element) {
+        observer.observe(element);
+      });
+    })();
+  </script>
+
+  
+  <script>
+    /* Estela de partículas rosa para dispositivos con ratón */
+    (function () {
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (!finePointer.matches || reducedMotion.matches) return;
+
+      let lastX = null;
+      let lastY = null;
+
+      function createParticle(x, y, interactive, extra) {
+        const particle = document.createElement("span");
+        particle.className = "cursor-particle" +
+          (interactive ? " is-interactive" : "");
+        const spread = extra ? 9 : 5;
+        particle.style.left = (x + (Math.random() - 0.5) * spread * 2) + "px";
+        particle.style.top = (y + (Math.random() - 0.5) * spread * 2) + "px";
+        if (!interactive && Math.random() > 0.55) {
+          particle.style.setProperty("--particle-size", "3px");
+        }
+
+        document.body.appendChild(particle);
+        particle.addEventListener("animationend", function () {
+          particle.remove();
+        }, { once: true });
+      }
+
+      document.addEventListener("pointermove", function (event) {
+        if (event.pointerType === "touch") return;
+
+        const dx = lastX === null ? 20 : event.clientX - lastX;
+        const dy = lastY === null ? 20 : event.clientY - lastY;
+        if ((dx * dx) + (dy * dy) < 100) return;
+
+        lastX = event.clientX;
+        lastY = event.clientY;
+
+        const interactive = event.target instanceof Element &&
+          event.target.closest("a, button, input, textarea, select, [role='button']");
+
+        createParticle(event.clientX, event.clientY, Boolean(interactive), false);
+        if (interactive && Math.random() > 0.45) {
+          createParticle(event.clientX, event.clientY, true, true);
+        }
+      });
+
+      document.addEventListener("pointerleave", function () {
+        lastX = null;
+        lastY = null;
+      });
+    })();
+  </script>
+
+</body>
+</html>
