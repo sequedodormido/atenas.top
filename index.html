@@ -194,14 +194,14 @@
 
     /* ENTRADA DE LA FRASE DE PORTADA, EN COHERENCIA CON EL SCROLL */
     main .content h1 {
-      animation: hero-title-enter 1.2s ease both;
+      animation: hero-title-enter 2.1s cubic-bezier(.22, .61, .36, 1) both;
     }
 
     @keyframes hero-title-enter {
       from {
         opacity: 0;
-        transform: translateY(110px);
-        filter: blur(3px);
+        transform: translateY(90px);
+        filter: blur(2px);
       }
       to {
         opacity: 1;
