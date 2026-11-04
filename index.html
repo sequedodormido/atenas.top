@@ -94,7 +94,7 @@
     .brand-name:hover,
     .brand-name:focus-visible {
       color: var(--cream);
-      text-shadow: 0 0 5px rgba(236, 224, 224, .28);
+      text-shadow: none;
     }
 
     /* MENÚ */
@@ -835,18 +835,17 @@
       }
     }
 
-    /* ACENTOS DISCRETOS EN ENLACES Y BOTONES */
+    /* INTERACCIONES EN COBRE, SIN BRILLOS NI FONDOS */
     .language,
+    .menu-item,
     .music-disc-link,
     .record-link,
     .buy-button,
     .contact-form button,
-    .shows-fallback {
-      transition:
-        color .3s ease,
-        border-color .3s ease,
-        background-color .3s ease,
-        text-shadow .3s ease;
+    .shows-fallback,
+    .social-link,
+    .shipping-note a {
+      transition: color .3s ease, border-color .3s ease, background-color .3s ease;
     }
 
     .language:hover,
@@ -862,9 +861,9 @@
     .shows-fallback:hover,
     .shows-fallback:focus-visible {
       background: transparent !important;
-      border-color: #D8BFC3 !important;
-      color: #D8BFC3 !important;
-      text-shadow: 0 0 6px rgba(216, 191, 195, .2);
+      border-color: var(--copper) !important;
+      color: var(--copper) !important;
+      text-shadow: none !important;
       box-shadow: none !important;
     }
 
@@ -873,78 +872,8 @@
     .social-link:hover,
     .social-link:focus-visible,
     .shipping-note a:hover {
-      color: #D8BFC3;
-    }
-
-    /* Marco de la playlist */
-    .spotify-player {
-      border: 2px solid #ECE0E0;
-      background: #ECE0E0;
-      padding: 2px;
-    }
-
-    .spotify-player iframe {
-      border-radius: 9px;
-    }
-
-
-
-    
-    /* ESTELA DE PARTÍCULAS EN ROSA EMPOLVADO */
-    .cursor-particle {
-      position: fixed;
-      z-index: 9999;
-      width: var(--particle-size, 5px);
-      height: var(--particle-size, 5px);
-      border-radius: 50%;
-      background: rgba(236, 224, 224, .95);
-      box-shadow:
-        0 0 8px rgba(236, 224, 224, .72),
-        0 0 16px rgba(236, 224, 224, .32);
-      pointer-events: none;
-      animation: cursorParticleFade .68s ease-out forwards;
-      will-change: transform, opacity;
-    }
-
-    .cursor-particle.is-interactive {
-      width: 7px;
-      height: 7px;
-      background: #ECE0E0;
-      box-shadow:
-        0 0 10px rgba(236, 224, 224, .95),
-        0 0 22px rgba(236, 224, 224, .55);
-    }
-
-    @keyframes cursorParticleFade {
-      0% {
-        opacity: .92;
-        transform: translate(-50%, -50%) scale(.65);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) translateY(-15px) scale(1.55);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .cursor-particle {
-        animation: none !important;
-        display: none !important;
-      }
-    }
-
-  
-    /* ACENTOS DISCRETOS: MENÚ Y PIE DE PÁGINA */
-    .menu-item {
-      transition: color .3s ease, text-shadow .3s ease;
-    }
-
-    .menu-item:hover,
-    .menu-item:focus-visible {
-      color: #D8BFC3 !important;
-      background: transparent !important;
-      border-color: transparent !important;
-      text-shadow: 0 0 6px rgba(216, 191, 195, .22);
+      color: var(--copper);
+      text-shadow: none;
     }
 
     footer {
@@ -955,24 +884,19 @@
 
     footer .social-link {
       color: var(--muted);
-      transition: color .3s ease, transform .3s ease;
     }
 
-    footer .social-link:hover,
-    footer .social-link:focus-visible {
-      color: #D8BFC3;
+    /* Spotify integrado en el fondo oscuro */
+    .spotify-player {
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 0;
     }
 
-  
-    .language:hover,
-    .language:focus-visible {
-      background: transparent !important;
-      border-color: #D8BFC3 !important;
-      color: #D8BFC3 !important;
-      box-shadow: none !important;
+    .spotify-player iframe {
+      border-radius: 9px;
     }
 
-  
     /* CORRECCIÓN: mostrar un solo idioma en el menú principal */
     .menu .english {
       display: none !important;
@@ -1637,58 +1561,7 @@
   </script>
 
   
-  <script>
-    /* Estela de partículas rosa para dispositivos con ratón */
-    (function () {
-      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      if (!finePointer.matches || reducedMotion.matches) return;
-
-      let lastX = null;
-      let lastY = null;
-
-      function createParticle(x, y, interactive, extra) {
-        const particle = document.createElement("span");
-        particle.className = "cursor-particle" +
-          (interactive ? " is-interactive" : "");
-        const spread = extra ? 9 : 5;
-        particle.style.left = (x + (Math.random() - 0.5) * spread * 2) + "px";
-        particle.style.top = (y + (Math.random() - 0.5) * spread * 2) + "px";
-        if (!interactive && Math.random() > 0.55) {
-          particle.style.setProperty("--particle-size", "3px");
-        }
-
-        document.body.appendChild(particle);
-        particle.addEventListener("animationend", function () {
-          particle.remove();
-        }, { once: true });
-      }
-
-      document.addEventListener("pointermove", function (event) {
-        if (event.pointerType === "touch") return;
-
-        const dx = lastX === null ? 20 : event.clientX - lastX;
-        const dy = lastY === null ? 20 : event.clientY - lastY;
-        if ((dx * dx) + (dy * dy) < 100) return;
-
-        lastX = event.clientX;
-        lastY = event.clientY;
-
-        const interactive = event.target instanceof Element &&
-          event.target.closest("a, button, input, textarea, select, [role='button']");
-
-        createParticle(event.clientX, event.clientY, Boolean(interactive), false);
-        if (interactive && Math.random() > 0.45) {
-          createParticle(event.clientX, event.clientY, true, true);
-        }
-      });
-
-      document.addEventListener("pointerleave", function () {
-        lastX = null;
-        lastY = null;
-      });
-    })();
-  </script>
+  
 
 </body>
 </html>
