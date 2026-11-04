@@ -878,102 +878,66 @@
 
 
     
-    /* REFLEJO OVALADO: LUZ SOBRE EL AGUA */
-    .cursor-reflection {
+    /* ESTELA DE BURBUJAS SUAVES EN ROSA EMPOLVADO */
+    .cursor-bubble {
       position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9998;
-      width: 30px;
-      height: 10px;
+      z-index: 9999;
+      width: var(--bubble-size, 8px);
+      height: var(--bubble-size, 8px);
+      border: 1px solid rgba(236, 224, 224, .78);
       border-radius: 50%;
-      opacity: 0;
+      background: rgba(236, 224, 224, .12);
+      box-shadow:
+        0 0 7px rgba(236, 224, 224, .24),
+        inset 1px 1px 2px rgba(255, 250, 250, .38);
       pointer-events: none;
-      transform: translate3d(-120px, -120px, 0) translate(-50%, -50%);
-      background: radial-gradient(
-        ellipse at center,
-        rgba(236, 224, 224, .58) 0%,
-        rgba(236, 224, 224, .28) 34%,
-        rgba(236, 224, 224, .08) 66%,
-        transparent 100%
-      );
-      filter: blur(2px);
-      box-shadow: 0 0 12px rgba(236, 224, 224, .16);
-      transition:
-        opacity .28s ease,
-        width .32s ease,
-        height .32s ease,
-        background .32s ease,
-        box-shadow .32s ease;
+      transform: translate(-50%, -50%);
+      opacity: .72;
+      animation: cursorBubbleFloat 980ms ease-out forwards;
       will-change: transform, opacity;
     }
 
-    .cursor-reflection::before {
+    .cursor-bubble::after {
       content: "";
       position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 62%;
+      top: 2px;
+      left: 2px;
+      width: 2px;
       height: 2px;
       border-radius: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255, 247, 247, .64);
-      filter: blur(1.4px);
+      background: rgba(255, 250, 250, .78);
     }
 
-    .cursor-reflection.is-visible {
-      opacity: .72;
-    }
-
-    .cursor-reflection.is-hero {
-      width: 48px;
-      height: 14px;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(236, 224, 224, .56) 0%,
-        rgba(166, 203, 245, .27) 34%,
-        rgba(45, 145, 255, .1) 68%,
-        transparent 100%
-      );
+    .cursor-bubble.is-blue {
+      border-color: rgba(75, 161, 255, .72);
       box-shadow:
-        0 0 15px rgba(236, 224, 224, .18),
-        0 0 20px rgba(45, 145, 255, .12);
+        0 0 7px rgba(45, 145, 255, .28),
+        inset 1px 1px 2px rgba(220, 240, 255, .42);
     }
 
-    .cursor-reflection.is-water {
-      width: 66px;
-      height: 19px;
-      opacity: .86;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(236, 224, 224, .66) 0%,
-        rgba(236, 224, 224, .36) 24%,
-        rgba(73, 165, 255, .28) 52%,
-        rgba(45, 145, 255, .08) 76%,
-        transparent 100%
-      );
+    .cursor-bubble.is-interactive {
+      border-color: rgba(236, 224, 224, .98);
+      background: rgba(236, 224, 224, .2);
       box-shadow:
-        0 0 17px rgba(236, 224, 224, .2),
-        0 0 25px rgba(45, 145, 255, .18);
+        0 0 9px rgba(236, 224, 224, .42),
+        inset 1px 1px 3px rgba(255, 250, 250, .55);
     }
 
-    .cursor-reflection.is-interactive {
-      opacity: .92;
-      box-shadow:
-        0 0 14px rgba(236, 224, 224, .28),
-        0 0 20px rgba(236, 224, 224, .12);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .cursor-reflection {
-        display: block;
+    @keyframes cursorBubbleFloat {
+      0% {
+        opacity: .74;
+        transform: translate(-50%, -50%) translateY(0) scale(.72);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(-22px) scale(1.28);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cursor-reflection {
+      .cursor-bubble {
         display: none !important;
-        transition: none !important;
+        animation: none !important;
       }
     }
 
@@ -981,7 +945,6 @@
 </head>
 
 <body>
-  <div class="cursor-reflection" aria-hidden="true"></div>
 
 
   <header>
@@ -1631,37 +1594,69 @@
 
   
   <script>
-    /* Reflejo suave que sigue al puntero, con azul sobre el agua */
+    /* Burbujas pequeñas y suaves para dispositivos con ratón */
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (!finePointer.matches || reducedMotion.matches) return;
 
-      const reflection = document.querySelector(".cursor-reflection");
-      if (!reflection) return;
+      const bubbles = [];
+      const maxBubbles = 10;
+      let lastX = null;
+      let lastY = null;
+      let lastTime = 0;
+
+      function createBubble(x, y, onHero, interactive) {
+        const bubble = document.createElement("span");
+        bubble.className = "cursor-bubble" +
+          (onHero ? " is-blue" : "") +
+          (interactive ? " is-interactive" : "");
+
+        const sizes = [5, 7, 9, 11];
+        const size = sizes[Math.floor(Math.random() * sizes.length)];
+        bubble.style.setProperty("--bubble-size", size + "px");
+        bubble.style.left = (x + (Math.random() - .5) * 9) + "px";
+        bubble.style.top = (y + (Math.random() - .5) * 9) + "px";
+
+        document.body.appendChild(bubble);
+        bubbles.push(bubble);
+
+        while (bubbles.length > maxBubbles) {
+          const oldest = bubbles.shift();
+          if (oldest && oldest.isConnected) oldest.remove();
+        }
+
+        bubble.addEventListener("animationend", function () {
+          const index = bubbles.indexOf(bubble);
+          if (index !== -1) bubbles.splice(index, 1);
+          bubble.remove();
+        }, { once: true });
+      }
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
 
-        reflection.style.transform =
-          "translate3d(" + event.clientX + "px, " + event.clientY + "px, 0) translate(-50%, -50%)";
+        const dx = lastX === null ? 30 : event.clientX - lastX;
+        const dy = lastY === null ? 30 : event.clientY - lastY;
+        const now = performance.now();
+
+        if ((dx * dx) + (dy * dy) < 32 * 32 || now - lastTime < 85) return;
+
+        lastX = event.clientX;
+        lastY = event.clientY;
+        lastTime = now;
 
         const target = event.target instanceof Element ? event.target : null;
-        const hero = target ? target.closest("#inicio") : null;
+        const onHero = Boolean(target && target.closest("#inicio"));
         const interactive = Boolean(target &&
           target.closest("a, button, input, textarea, select, [role='button']"));
 
-        reflection.classList.add("is-visible");
-        reflection.classList.toggle("is-hero", Boolean(hero));
-        reflection.classList.toggle(
-          "is-water",
-          Boolean(hero && event.clientY > hero.getBoundingClientRect().top + hero.getBoundingClientRect().height * .57)
-        );
-        reflection.classList.toggle("is-interactive", interactive);
+        createBubble(event.clientX, event.clientY, onHero, interactive);
       });
 
       document.addEventListener("pointerleave", function () {
-        reflection.classList.remove("is-visible", "is-hero", "is-water", "is-interactive");
+        lastX = null;
+        lastY = null;
       });
     })();
   </script>
