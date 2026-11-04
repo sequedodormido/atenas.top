@@ -878,67 +878,102 @@
 
 
     
-    /* DESTELLOS SUAVES DE LUZ ROSA */
-    .cursor-glint {
+    /* REFLEJO OVALADO: LUZ SOBRE EL AGUA */
+    .cursor-reflection {
       position: fixed;
-      z-index: 9999;
-      width: 11px;
-      height: 11px;
+      top: 0;
+      left: 0;
+      z-index: 9998;
+      width: 30px;
+      height: 10px;
+      border-radius: 50%;
+      opacity: 0;
       pointer-events: none;
-      opacity: .82;
-      transform: translate(-50%, -50%) rotate(0deg) scale(.72);
-      animation: cursorGlintFade 760ms ease-out forwards;
+      transform: translate3d(-120px, -120px, 0) translate(-50%, -50%);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(236, 224, 224, .58) 0%,
+        rgba(236, 224, 224, .28) 34%,
+        rgba(236, 224, 224, .08) 66%,
+        transparent 100%
+      );
+      filter: blur(2px);
+      box-shadow: 0 0 12px rgba(236, 224, 224, .16);
+      transition:
+        opacity .28s ease,
+        width .32s ease,
+        height .32s ease,
+        background .32s ease,
+        box-shadow .32s ease;
       will-change: transform, opacity;
     }
 
-    .cursor-glint::before,
-    .cursor-glint::after {
+    .cursor-reflection::before {
       content: "";
       position: absolute;
       left: 50%;
       top: 50%;
-      border-radius: 99px;
-      background: rgba(236, 224, 224, .92);
-      box-shadow: 0 0 7px rgba(236, 224, 224, .44);
+      width: 62%;
+      height: 2px;
+      border-radius: 50%;
       transform: translate(-50%, -50%);
+      background: rgba(255, 247, 247, .64);
+      filter: blur(1.4px);
     }
 
-    .cursor-glint::before {
-      width: 1.2px;
-      height: 11px;
+    .cursor-reflection.is-visible {
+      opacity: .72;
     }
 
-    .cursor-glint::after {
-      width: 11px;
-      height: 1.2px;
+    .cursor-reflection.is-hero {
+      width: 48px;
+      height: 14px;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(236, 224, 224, .56) 0%,
+        rgba(166, 203, 245, .27) 34%,
+        rgba(45, 145, 255, .1) 68%,
+        transparent 100%
+      );
+      box-shadow:
+        0 0 15px rgba(236, 224, 224, .18),
+        0 0 20px rgba(45, 145, 255, .12);
     }
 
-    .cursor-glint.is-blue::before,
-    .cursor-glint.is-blue::after {
-      background: rgba(107, 180, 255, .94);
-      box-shadow: 0 0 8px rgba(45, 145, 255, .55);
+    .cursor-reflection.is-water {
+      width: 66px;
+      height: 19px;
+      opacity: .86;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(236, 224, 224, .66) 0%,
+        rgba(236, 224, 224, .36) 24%,
+        rgba(73, 165, 255, .28) 52%,
+        rgba(45, 145, 255, .08) 76%,
+        transparent 100%
+      );
+      box-shadow:
+        0 0 17px rgba(236, 224, 224, .2),
+        0 0 25px rgba(45, 145, 255, .18);
     }
 
-    .cursor-glint.is-interactive {
-      opacity: 1;
-      filter: brightness(1.12);
+    .cursor-reflection.is-interactive {
+      opacity: .92;
+      box-shadow:
+        0 0 14px rgba(236, 224, 224, .28),
+        0 0 20px rgba(236, 224, 224, .12);
     }
 
-    @keyframes cursorGlintFade {
-      0% {
-        opacity: .82;
-        transform: translate(-50%, -50%) rotate(0deg) scale(.72);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) rotate(38deg) scale(1.35);
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-reflection {
+        display: block;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cursor-glint {
+      .cursor-reflection {
         display: none !important;
-        animation: none !important;
+        transition: none !important;
       }
     }
 
@@ -946,6 +981,7 @@
 </head>
 
 <body>
+  <div class="cursor-reflection" aria-hidden="true"></div>
 
 
   <header>
@@ -1595,69 +1631,37 @@
 
   
   <script>
-    /* Destellos sutiles que siguen el ratón */
+    /* Reflejo suave que sigue al puntero, con azul sobre el agua */
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (!finePointer.matches || reducedMotion.matches) return;
 
-      const glints = [];
-      const maxGlints = 9;
-      let lastX = null;
-      let lastY = null;
-      let lastTime = 0;
-
-      function createGlint(x, y, onHero, interactive) {
-        const glint = document.createElement("span");
-        glint.className = "cursor-glint" +
-          (onHero ? " is-blue" : "") +
-          (interactive ? " is-interactive" : "");
-        glint.style.left = (x + (Math.random() - .5) * 13) + "px";
-        glint.style.top = (y + (Math.random() - .5) * 13) + "px";
-
-        const size = 8 + Math.random() * 5;
-        glint.style.width = size + "px";
-        glint.style.height = size + "px";
-
-        document.body.appendChild(glint);
-        glints.push(glint);
-
-        while (glints.length > maxGlints) {
-          const oldest = glints.shift();
-          if (oldest && oldest.isConnected) oldest.remove();
-        }
-
-        glint.addEventListener("animationend", function () {
-          const index = glints.indexOf(glint);
-          if (index !== -1) glints.splice(index, 1);
-          glint.remove();
-        }, { once: true });
-      }
+      const reflection = document.querySelector(".cursor-reflection");
+      if (!reflection) return;
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
 
-        const dx = lastX === null ? 40 : event.clientX - lastX;
-        const dy = lastY === null ? 40 : event.clientY - lastY;
-        const now = performance.now();
-
-        if ((dx * dx) + (dy * dy) < 42 * 42 || now - lastTime < 95) return;
-
-        lastX = event.clientX;
-        lastY = event.clientY;
-        lastTime = now;
+        reflection.style.transform =
+          "translate3d(" + event.clientX + "px, " + event.clientY + "px, 0) translate(-50%, -50%)";
 
         const target = event.target instanceof Element ? event.target : null;
-        const onHero = Boolean(target && target.closest("#inicio"));
+        const hero = target ? target.closest("#inicio") : null;
         const interactive = Boolean(target &&
           target.closest("a, button, input, textarea, select, [role='button']"));
 
-        createGlint(event.clientX, event.clientY, onHero, interactive);
+        reflection.classList.add("is-visible");
+        reflection.classList.toggle("is-hero", Boolean(hero));
+        reflection.classList.toggle(
+          "is-water",
+          Boolean(hero && event.clientY > hero.getBoundingClientRect().top + hero.getBoundingClientRect().height * .57)
+        );
+        reflection.classList.toggle("is-interactive", interactive);
       });
 
       document.addEventListener("pointerleave", function () {
-        lastX = null;
-        lastY = null;
+        reflection.classList.remove("is-visible", "is-hero", "is-water", "is-interactive");
       });
     })();
   </script>
