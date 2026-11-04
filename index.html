@@ -158,19 +158,7 @@
       position: relative;
       overflow: hidden;
       text-align: center;
-      background-image:
-        linear-gradient(
-          90deg,
-          rgba(35, 25, 31, .72) 0%,
-          rgba(35, 25, 31, .48) 50%,
-          rgba(35, 25, 31, .40) 100%
-        ),
-        linear-gradient(
-          0deg,
-          rgba(35, 25, 31, .56) 0%,
-          transparent 58%
-        ),
-        url("./atenas-hero.jpg");
+      background-image: url("./atenas-hero.jpg");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -613,9 +601,9 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: var(--background);
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+      background: #ECE0E0;
+      border-top: 1px solid rgba(44, 32, 39, .14);
+      color: #59454B;
       font-size: 10px;
       letter-spacing: 1px;
     }
@@ -923,22 +911,19 @@
       }
     }
 
-    /* MENÚ ROSA: RECTÁNGULO OSCURO AL PASAR EL RATÓN */
-    .brand-name,
-    .brand-name:hover,
-    .brand-name:focus-visible {
-      color: #2C2027;
+    /* CABECERA OSCURA CON RESALTADO ROSA EN EL MENÚ */
+    header {
+      background: #23191F;
+      border-bottom: 1px solid rgba(236, 224, 224, .18);
+    }
+
+    .brand-name {
+      color: var(--cream);
       mix-blend-mode: normal;
     }
 
-    .brand-name:hover,
-    .brand-name:focus-visible {
-      background: rgba(44, 32, 39, .08);
-      border-color: rgba(44, 32, 39, .25);
-    }
-
     .menu-item {
-      color: rgba(44, 32, 39, .82);
+      color: rgba(244, 233, 232, .88);
       padding: 8px 9px;
       margin: -8px -9px;
       border: 1px solid transparent;
@@ -948,21 +933,24 @@
 
     .menu-item:hover,
     .menu-item:focus-visible {
-      color: #ECE0E0;
-      background: #2C2027;
-      border-color: #2C2027;
+      color: #2C2027;
+      background: #ECE0E0;
+      border-color: #ECE0E0;
     }
 
     header .language {
-      color: #2C2027;
-      border-color: rgba(44, 32, 39, .42);
+      color: var(--cream);
+      border-color: rgba(238, 234, 227, .32);
+      background: transparent;
       mix-blend-mode: normal;
+      transition: color .25s ease, background-color .25s ease, border-color .25s ease;
     }
 
-    header .language:hover {
-      background: #2C2027 !important;
-      border-color: #2C2027 !important;
-      color: #ECE0E0 !important;
+    header .language:hover,
+    header .language:focus-visible {
+      background: #ECE0E0 !important;
+      border-color: #ECE0E0 !important;
+      color: #2C2027 !important;
     }
 
   </style>
