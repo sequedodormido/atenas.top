@@ -878,74 +878,80 @@
 
 
     
-    /* CONSTELACIONES FUGACES EN ROSA Y AZUL */
-    .cursor-constellation {
+    /* ÓRBITAS LUMINOSAS FUGACES */
+    .cursor-orbit {
       position: fixed;
       z-index: 9999;
       left: 0;
       top: 0;
-      width: 64px;
-      height: 36px;
+      width: 52px;
+      height: 30px;
       pointer-events: none;
       opacity: 0;
-      transform: translate(-50%, -50%) rotate(var(--constellation-tilt, 0deg)) scale(.82);
-      animation: constellationFade 920ms ease-out forwards;
+      transform: translate(-50%, -50%) rotate(var(--orbit-start, 0deg)) scale(.72);
+      animation: cursorOrbitFade 820ms ease-out forwards;
       will-change: transform, opacity;
-      --constellation-line: rgba(236, 224, 224, .82);
-      --constellation-dot: rgba(236, 224, 224, .98);
-      --constellation-glow: rgba(236, 224, 224, .45);
+      --orbit-line: rgba(236, 224, 224, .82);
+      --orbit-dot: rgba(236, 224, 224, .98);
+      --orbit-glow: rgba(236, 224, 224, .42);
     }
 
-    .cursor-constellation svg {
+    .cursor-orbit svg {
       display: block;
       width: 100%;
       height: 100%;
       overflow: visible;
-      filter: drop-shadow(0 0 4px var(--constellation-glow));
+      filter: drop-shadow(0 0 4px var(--orbit-glow));
     }
 
-    .cursor-constellation .constellation-line {
+    .cursor-orbit .orbit-ring {
       fill: none;
-      stroke: var(--constellation-line);
-      stroke-width: 1.05;
-      stroke-linecap: round;
+      stroke: var(--orbit-line);
+      stroke-width: .95;
       opacity: .82;
     }
 
-    .cursor-constellation .constellation-dot {
-      fill: var(--constellation-dot);
+    .cursor-orbit .orbit-core {
+      fill: rgba(255, 249, 249, .98);
     }
 
-    .cursor-constellation .constellation-star {
-      fill: rgba(255, 250, 250, .96);
-      filter: drop-shadow(0 0 3px var(--constellation-glow));
+    .cursor-orbit .orbit-satellite {
+      fill: var(--orbit-dot);
+      transform-box: view-box;
+      transform-origin: 24px 14px;
+      animation: orbitSatelliteSpin 820ms linear forwards;
     }
 
-    .cursor-constellation.is-blue {
-      --constellation-line: rgba(155, 199, 255, .74);
-      --constellation-dot: rgba(112, 180, 255, .98);
-      --constellation-glow: rgba(45, 145, 255, .48);
+    .cursor-orbit.is-blue {
+      --orbit-line: rgba(115, 180, 255, .78);
+      --orbit-dot: rgba(74, 157, 255, 1);
+      --orbit-glow: rgba(45, 145, 255, .5);
     }
 
-    .cursor-constellation.is-interactive {
-      --constellation-line: rgba(236, 224, 224, .98);
-      --constellation-dot: rgba(255, 248, 248, 1);
-      --constellation-glow: rgba(236, 224, 224, .7);
+    .cursor-orbit.is-interactive {
+      --orbit-line: rgba(236, 224, 224, .98);
+      --orbit-dot: rgba(255, 249, 249, 1);
+      --orbit-glow: rgba(236, 224, 224, .68);
     }
 
-    @keyframes constellationFade {
+    @keyframes cursorOrbitFade {
       0% {
-        opacity: .9;
-        transform: translate(-50%, -50%) rotate(var(--constellation-tilt, 0deg)) translateY(2px) scale(.82);
+        opacity: .92;
+        transform: translate(-50%, -50%) rotate(var(--orbit-start, 0deg)) scale(.72);
       }
       100% {
         opacity: 0;
-        transform: translate(-50%, -50%) rotate(var(--constellation-tilt, 0deg)) translateY(-8px) scale(1.12);
+        transform: translate(-50%, -50%) rotate(var(--orbit-end, 12deg)) scale(1.12);
       }
     }
 
+    @keyframes orbitSatelliteSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(300deg); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .cursor-constellation {
+      .cursor-orbit {
         display: none !important;
         animation: none !important;
       }
@@ -1604,63 +1610,62 @@
 
   
   <script>
-    /* Constelaciones pequeñas que aparecen al mover el ratón */
+    /* Pequeñas órbitas de luz alrededor del movimiento del ratón */
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (!finePointer.matches || reducedMotion.matches) return;
 
-      const constellations = [];
-      const maxConstellations = 7;
+      const orbits = [];
+      const maxOrbits = 6;
       let lastX = null;
       let lastY = null;
       let lastTime = 0;
 
-      function createConstellation(x, y, onHero, interactive) {
-        const constellation = document.createElement("span");
-        constellation.className = "cursor-constellation" +
+      function createOrbit(x, y, onHero, interactive, dx, dy) {
+        const orbit = document.createElement("span");
+        orbit.className = "cursor-orbit" +
           (onHero ? " is-blue" : "") +
           (interactive ? " is-interactive" : "");
-        constellation.style.left = x + "px";
-        constellation.style.top = (y - 5) + "px";
-        constellation.style.setProperty(
-          "--constellation-tilt",
-          (Math.random() * 20 - 10).toFixed(1) + "deg"
-        );
+        orbit.style.left = x + "px";
+        orbit.style.top = y + "px";
 
-        constellation.innerHTML =
-          '<svg viewBox="0 0 64 36" aria-hidden="true">' +
-            '<path class="constellation-line" d="M5 26 C14 7 24 5 32 16 S48 29 59 8"/>' +
-            '<circle class="constellation-dot" cx="5" cy="26" r="1.65"/>' +
-            '<circle class="constellation-dot" cx="19" cy="9" r="1.25"/>' +
-            '<circle class="constellation-dot" cx="32" cy="16" r="2"/>' +
-            '<circle class="constellation-dot" cx="59" cy="8" r="1.55"/>' +
-            '<path class="constellation-star" d="M32 9 L33.1 14.9 L39 16 L33.1 17.1 L32 23 L30.9 17.1 L25 16 L30.9 14.9 Z"/>' +
+        const angle = Math.atan2(dy, dx) * 0.35;
+        orbit.style.setProperty("--orbit-start", angle.toFixed(1) + "deg");
+        orbit.style.setProperty("--orbit-end", (angle + 13).toFixed(1) + "deg");
+
+        orbit.innerHTML =
+          '<svg viewBox="0 0 48 28" aria-hidden="true">' +
+            '<ellipse class="orbit-ring" cx="24" cy="14" rx="18" ry="8.6"/>' +
+            '<path class="orbit-ring" d="M7 17 C12 25 35 25 41 11" opacity=".32"/>' +
+            '<circle class="orbit-satellite" cx="6" cy="14" r="1.8"/>' +
+            '<circle class="orbit-core" cx="24" cy="14" r="1.45"/>' +
+            '<path class="orbit-core" d="M24 9.5 L25.1 12.9 L28.5 14 L25.1 15.1 L24 18.5 L22.9 15.1 L19.5 14 L22.9 12.9 Z"/>' +
           '</svg>';
 
-        document.body.appendChild(constellation);
-        constellations.push(constellation);
+        document.body.appendChild(orbit);
+        orbits.push(orbit);
 
-        while (constellations.length > maxConstellations) {
-          const oldest = constellations.shift();
+        while (orbits.length > maxOrbits) {
+          const oldest = orbits.shift();
           if (oldest && oldest.isConnected) oldest.remove();
         }
 
-        constellation.addEventListener("animationend", function () {
-          const index = constellations.indexOf(constellation);
-          if (index !== -1) constellations.splice(index, 1);
-          constellation.remove();
+        orbit.addEventListener("animationend", function () {
+          const index = orbits.indexOf(orbit);
+          if (index !== -1) orbits.splice(index, 1);
+          orbit.remove();
         }, { once: true });
       }
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
 
-        const dx = lastX === null ? 42 : event.clientX - lastX;
-        const dy = lastY === null ? 42 : event.clientY - lastY;
+        const dx = lastX === null ? 48 : event.clientX - lastX;
+        const dy = lastY === null ? 48 : event.clientY - lastY;
         const now = performance.now();
 
-        if ((dx * dx) + (dy * dy) < 42 * 42 || now - lastTime < 95) return;
+        if ((dx * dx) + (dy * dy) < 48 * 48 || now - lastTime < 110) return;
 
         lastX = event.clientX;
         lastY = event.clientY;
@@ -1671,7 +1676,7 @@
         const interactive = Boolean(target &&
           target.closest("a, button, input, textarea, select, [role='button']"));
 
-        createConstellation(event.clientX, event.clientY, onHero, interactive);
+        createOrbit(event.clientX, event.clientY, onHero, interactive, dx, dy);
       });
 
       document.addEventListener("pointerleave", function () {
