@@ -927,16 +927,13 @@
       display: inline-block;
       padding: 9px 12px;
       border: 1px solid transparent;
-      transition:
-        color .25s ease,
-        background-color .25s ease,
-        border-color .25s ease;
+      transition: color .25s ease;
     }
 
     .menu-item:hover,
     .menu-item:focus-visible {
-      color: var(--copper) !important;
-      background-color: transparent !important;
+      color: #ECE0E0 !important;
+      background: transparent !important;
       border-color: transparent !important;
     }
 
@@ -956,19 +953,20 @@
     }
 
   
-    /* AJUSTES DE HOVER: MARCA Y SELECTOR DE IDIOMA */
+    /* HOVER DISCRETO: SOLO ILUMINAR EL TEXTO */
     .brand-name:hover,
     .brand-name:focus-visible {
-      color: #2C2027 !important;
-      background-color: #ECE0E0 !important;
-      border-color: #ECE0E0 !important;
+      color: #ECE0E0 !important;
+      background: transparent !important;
+      border-color: transparent !important;
     }
 
     .language:hover,
     .language:focus-visible {
-      background-color: transparent !important;
-      border-color: var(--copper) !important;
-      color: var(--copper) !important;
+      background: transparent !important;
+      border-color: rgba(238, 234, 227, .32) !important;
+      color: #ECE0E0 !important;
+      box-shadow: none !important;
     }
 
   
