@@ -192,21 +192,19 @@
       text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
     }
 
-    /* RESPLANDOR MÁS INTENSO EN LA FRASE DE PORTADA */
+    /* ENTRADA SUTIL DE LA FRASE DE PORTADA */
     main .content h1 {
-      animation: hero-title-glow 4s ease-in-out infinite;
+      animation: hero-title-enter 1.4s cubic-bezier(.2, .7, .25, 1) both;
     }
 
-    @keyframes hero-title-glow {
-      0%, 100% {
-        text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
+    @keyframes hero-title-enter {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
       }
-      50% {
-        text-shadow:
-          0 2px 18px rgba(0, 0, 0, .35),
-          0 0 14px rgba(255, 255, 255, .88),
-          0 0 34px rgba(238, 234, 227, .62),
-          0 0 58px rgba(216, 191, 195, .38);
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -665,12 +663,12 @@
 
       main .content h1 {
         animation: none;
+        opacity: 1;
+        transform: none;
         color: var(--cream);
         background: none;
         -webkit-text-fill-color: var(--cream);
-        text-shadow:
-          0 2px 18px rgba(0, 0, 0, .35),
-          0 0 8px rgba(238, 234, 227, .35);
+        text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
       }
     }
 
