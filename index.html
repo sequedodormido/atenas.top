@@ -878,46 +878,68 @@
 
 
     
-    /* ESTELA DE PARTÍCULAS EN ROSA EMPOLVADO */
-    .cursor-particle {
+    /* ONDAS DE AGUA EN ROSA EMPOLVADO Y AZUL ELÉCTRICO */
+    .cursor-ripple {
       position: fixed;
       z-index: 9999;
-      width: var(--particle-size, 5px);
-      height: var(--particle-size, 5px);
+      width: 18px;
+      height: 18px;
+      border: 1.4px solid rgba(236, 224, 224, .96);
       border-radius: 50%;
-      background: rgba(236, 224, 224, .95);
+      background: radial-gradient(
+        circle,
+        rgba(236, 224, 224, .14) 0%,
+        rgba(236, 224, 224, .04) 42%,
+        transparent 72%
+      );
       box-shadow:
-        0 0 8px rgba(236, 224, 224, .72),
-        0 0 16px rgba(236, 224, 224, .32);
+        0 0 8px rgba(236, 224, 224, .42),
+        inset 0 0 6px rgba(236, 224, 224, .16);
       pointer-events: none;
-      animation: cursorParticleFade .68s ease-out forwards;
+      transform: translate(-50%, -50%) scale(.35);
+      opacity: .88;
+      animation: cursorRippleWave 760ms cubic-bezier(.12, .55, .2, 1) forwards;
       will-change: transform, opacity;
     }
 
-    .cursor-particle.is-interactive {
-      width: 7px;
-      height: 7px;
-      background: #ECE0E0;
-      box-shadow:
-        0 0 10px rgba(236, 224, 224, .95),
-        0 0 22px rgba(236, 224, 224, .55);
+    .cursor-ripple::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(236, 224, 224, .42);
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(236, 224, 224, .18);
     }
 
-    @keyframes cursorParticleFade {
+    .cursor-ripple.is-water::before {
+      border-color: rgba(45, 145, 255, .86);
+      box-shadow:
+        0 0 7px rgba(45, 145, 255, .62),
+        inset 0 0 4px rgba(45, 145, 255, .28);
+    }
+
+    .cursor-ripple.is-interactive {
+      border-color: rgba(236, 224, 224, 1);
+      box-shadow:
+        0 0 13px rgba(236, 224, 224, .72),
+        inset 0 0 8px rgba(236, 224, 224, .24);
+    }
+
+    @keyframes cursorRippleWave {
       0% {
-        opacity: .92;
-        transform: translate(-50%, -50%) scale(.65);
+        opacity: .9;
+        transform: translate(-50%, -50%) scale(.35);
       }
       100% {
         opacity: 0;
-        transform: translate(-50%, -50%) translateY(-15px) scale(1.55);
+        transform: translate(-50%, -50%) scale(3.7);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cursor-particle {
-        animation: none !important;
+      .cursor-ripple {
         display: none !important;
+        animation: none !important;
       }
     }
 
@@ -1574,49 +1596,60 @@
 
   
   <script>
-    /* Estela de partículas rosa para dispositivos con ratón */
+    /* Ondas de agua rosa con reflejo azul sobre la portada */
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (!finePointer.matches || reducedMotion.matches) return;
 
+      const ripples = [];
+      const maxRipples = 14;
       let lastX = null;
       let lastY = null;
+      let lastTime = 0;
 
-      function createParticle(x, y, interactive, extra) {
-        const particle = document.createElement("span");
-        particle.className = "cursor-particle" +
+      function createRipple(x, y, onHero, interactive) {
+        const ripple = document.createElement("span");
+        ripple.className = "cursor-ripple" +
+          (onHero ? " is-water" : "") +
           (interactive ? " is-interactive" : "");
-        const spread = extra ? 9 : 5;
-        particle.style.left = (x + (Math.random() - 0.5) * spread * 2) + "px";
-        particle.style.top = (y + (Math.random() - 0.5) * spread * 2) + "px";
-        if (!interactive && Math.random() > 0.55) {
-          particle.style.setProperty("--particle-size", "3px");
+        ripple.style.left = x + "px";
+        ripple.style.top = y + "px";
+
+        document.body.appendChild(ripple);
+        ripples.push(ripple);
+
+        while (ripples.length > maxRipples) {
+          const oldest = ripples.shift();
+          if (oldest && oldest.isConnected) oldest.remove();
         }
 
-        document.body.appendChild(particle);
-        particle.addEventListener("animationend", function () {
-          particle.remove();
+        ripple.addEventListener("animationend", function () {
+          const index = ripples.indexOf(ripple);
+          if (index !== -1) ripples.splice(index, 1);
+          ripple.remove();
         }, { once: true });
       }
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
 
-        const dx = lastX === null ? 20 : event.clientX - lastX;
-        const dy = lastY === null ? 20 : event.clientY - lastY;
-        if ((dx * dx) + (dy * dy) < 100) return;
+        const dx = lastX === null ? 30 : event.clientX - lastX;
+        const dy = lastY === null ? 30 : event.clientY - lastY;
+        const now = performance.now();
+
+        if ((dx * dx) + (dy * dy) < 28 * 28 || now - lastTime < 55) return;
 
         lastX = event.clientX;
         lastY = event.clientY;
+        lastTime = now;
 
-        const interactive = event.target instanceof Element &&
-          event.target.closest("a, button, input, textarea, select, [role='button']");
+        const target = event.target instanceof Element ? event.target : null;
+        const onHero = Boolean(target && target.closest("#inicio"));
+        const interactive = Boolean(target &&
+          target.closest("a, button, input, textarea, select, [role='button']"));
 
-        createParticle(event.clientX, event.clientY, Boolean(interactive), false);
-        if (interactive && Math.random() > 0.45) {
-          createParticle(event.clientX, event.clientY, true, true);
-        }
+        createRipple(event.clientX, event.clientY, onHero, interactive);
       });
 
       document.addEventListener("pointerleave", function () {
