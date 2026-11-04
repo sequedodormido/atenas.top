@@ -971,6 +971,20 @@
       color: var(--copper) !important;
     }
 
+  
+    /* CORRECCIÓN: mostrar un solo idioma en el menú principal */
+    .menu .english {
+      display: none !important;
+    }
+
+    body.lang-en .menu .spanish {
+      display: none !important;
+    }
+
+    body.lang-en .menu .english {
+      display: inline-block !important;
+    }
+
   </style>
 </head>
 
