@@ -876,10 +876,66 @@
     }
 
 
+
+    
+    /* HALO ROSA EMPOLVADO ALREDEDOR DEL PUNTERO */
+    .cursor-halo {
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-halo {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(236, 224, 224, .9);
+        border-radius: 50%;
+        background: rgba(236, 224, 224, .12);
+        box-shadow:
+          0 0 12px rgba(236, 224, 224, .26),
+          inset 0 0 8px rgba(236, 224, 224, .1);
+        pointer-events: none;
+        opacity: 0;
+        transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+        transition:
+          width .2s ease,
+          height .2s ease,
+          opacity .2s ease,
+          background-color .2s ease,
+          box-shadow .2s ease;
+        will-change: transform;
+      }
+
+      .cursor-halo.is-visible {
+        opacity: 1;
+      }
+
+      .cursor-halo.is-hovering {
+        width: 46px;
+        height: 46px;
+        background: rgba(236, 224, 224, .22);
+        box-shadow:
+          0 0 20px rgba(236, 224, 224, .4),
+          inset 0 0 12px rgba(236, 224, 224, .16);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-halo {
+        transition: none !important;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+  <div class="cursor-halo" aria-hidden="true"></div>
+
 
   <header>
     <a class="brand-name" href="#inicio" aria-label="Atenas, inicio">ATENAS</a>
@@ -1513,6 +1569,36 @@
 
       revealElements.forEach(function (element) {
         observer.observe(element);
+      });
+    })();
+  </script>
+
+  
+  <script>
+    /* Halo rosa que acompaña al puntero en dispositivos con ratón */
+    (function () {
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+      if (!finePointer.matches) return;
+
+      const halo = document.querySelector(".cursor-halo");
+      if (!halo) return;
+
+      document.addEventListener("pointermove", function (event) {
+        halo.style.transform =
+          "translate3d(" + event.clientX + "px, " + event.clientY + "px, 0) translate(-50%, -50%)";
+        halo.classList.add("is-visible");
+
+        const interactive = event.target instanceof Element &&
+          event.target.closest("a, button, input, textarea, select, [role='button']");
+        halo.classList.toggle("is-hovering", Boolean(interactive));
+      });
+
+      document.addEventListener("pointerleave", function () {
+        halo.classList.remove("is-visible", "is-hovering");
+      });
+
+      document.addEventListener("pointerenter", function () {
+        halo.classList.add("is-visible");
       });
     })();
   </script>
