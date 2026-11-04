@@ -93,8 +93,8 @@
 
     .brand-name:hover,
     .brand-name:focus-visible {
-      color: #fff;
-      text-shadow: 0 0 7px rgba(236, 224, 224, .55);
+      color: var(--cream);
+      text-shadow: 0 0 5px rgba(236, 224, 224, .28);
     }
 
     /* MENÚ */
@@ -917,42 +917,41 @@
     }
 
   
-    /* ACENTO CORPORATIVO: MENÚ Y PIE DE PÁGINA */
+    /* ACENTOS DISCRETOS: MENÚ Y PIE DE PÁGINA */
     .menu-item {
-      display: inline-block;
-      padding: 9px 12px;
-      border: 1px solid transparent;
-      transition: color .25s ease;
+      transition: color .3s ease, text-shadow .3s ease;
     }
 
     .menu-item:hover,
     .menu-item:focus-visible {
-      color: #2C2027 !important;
-      background-color: #ECE0E0 !important;
-      border-color: #ECE0E0 !important;
+      color: #D8BFC3 !important;
+      background: transparent !important;
+      border-color: transparent !important;
+      text-shadow: 0 0 6px rgba(216, 191, 195, .22);
     }
 
     footer {
-      background: #ECE0E0;
-      border-top-color: rgba(44, 32, 39, .15);
-      color: #59454B;
+      background: var(--background);
+      border-top-color: var(--line);
+      color: var(--muted);
     }
 
     footer .social-link {
-      color: #2C2027;
+      color: var(--muted);
+      transition: color .3s ease, transform .3s ease;
     }
 
     footer .social-link:hover,
     footer .social-link:focus-visible {
-      color: #956B74;
+      color: #D8BFC3;
     }
 
   
     .language:hover,
     .language:focus-visible {
-      background-color: #ECE0E0 !important;
-      border-color: #ECE0E0 !important;
-      color: #2C2027 !important;
+      background: transparent !important;
+      border-color: #D8BFC3 !important;
+      color: #D8BFC3 !important;
       box-shadow: none !important;
     }
 
