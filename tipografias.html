@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atenas | Comparación tipográfica</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#11100f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Chivo+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --background: #11100f;
+      --cream: #eeeae3;
+      --secondary: #bdb6ad;
+      --muted: #77716a;
+      --line: rgba(238, 234, 227, .14);
+    }
+    html { background: var(--background); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--cream);
+      font-family: 'Roboto Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      min-height: 88px;
+      padding: 22px 7%;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      color: var(--cream);
+      font: 600 16px 'Roboto Mono', monospace;
+      letter-spacing: 3px;
+    }
+    .header-note {
+      color: var(--muted);
+      font: 400 9px 'Roboto Mono', monospace;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      text-align: right;
+    }
+    main { width: min(1700px, 86%); margin: 0 auto; }
+    .intro { padding: 76px 0 48px; text-align: center; }
+    .eyebrow {
+      color: var(--muted);
+      font: 400 9px 'Roboto Mono', monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      color: var(--cream);
+      font: 500 clamp(25px, 3.1vw, 38px) 'Roboto Mono', monospace;
+      letter-spacing: .4px;
+    }
+    .intro p {
+      margin: 17px auto 0;
+      max-width: 680px;
+      color: var(--secondary);
+      font: 400 11px/1.9 'Roboto Mono', monospace;
+    }
+    .section-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      padding: 22px 0 17px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+    .section-label strong {
+      font: 500 15px 'Roboto Mono', monospace;
+      letter-spacing: .4px;
+    }
+    .section-label span {
+      color: var(--muted);
+      font: 400 9px 'Roboto Mono', monospace;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .specimens {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 22px;
+      padding-bottom: 72px;
+    }
+    .specimen {
+      min-width: 0;
+      border: 1px solid var(--line);
+      padding: 17px 15px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .specimen.current { border-color: rgba(238, 234, 227, .42); }
+    .family-label {
+      min-height: 44px;
+      color: var(--secondary);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .status {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font: 400 8px 'Roboto Mono', monospace;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin: 17px 0 17px;
+      background: #1b1917;
+    }
+    .album-title {
+      min-height: 62px;
+      color: var(--cream);
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .meta {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 1.35px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+    .description {
+      min-height: 77px;
+      margin: 13px 0 0;
+      color: var(--secondary);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .price {
+      margin-right: auto;
+      color: var(--cream);
+      font-size: 12px;
+      letter-spacing: .3px;
+    }
+    .action {
+      padding: 9px 10px;
+      border: 1px solid rgba(238, 234, 227, .32);
+      color: var(--cream);
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .closing {
+      max-width: 900px;
+      margin: 0 auto 90px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      color: var(--secondary);
+      font: 400 12px/1.9 'Roboto Mono', monospace;
+      text-align: center;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 7%;
+      color: var(--muted);
+      font: 400 9px 'Roboto Mono', monospace;
+      letter-spacing: 1.2px;
+      text-align: center;
+    }
+    .roboto { font-family: 'Roboto Mono', monospace; }
+    .jetbrains { font-family: 'JetBrains Mono', monospace; }
+    .azeret { font-family: 'Azeret Mono', monospace; }
+    .space { font-family: 'Space Mono', monospace; }
+    .chivo { font-family: 'Chivo Mono', monospace; }
+    @media (max-width: 1400px) { .specimens { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 850px) {
+      main { width: 90%; }
+      .specimens { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .intro { padding-top: 58px; }
+    }
+    @media (max-width: 540px) {
+      header { padding: 19px 6%; }
+      .header-note { max-width: 145px; line-height: 1.7; }
+      main { width: 88%; }
+      .specimens { grid-template-columns: 1fr; gap: 16px; }
+      .specimen { padding: 18px; }
+      .cover { max-height: 340px; object-fit: contain; }
+      .album-title { min-height: auto; }
+      .description { min-height: 0; }
+      .section-label { align-items: flex-start; flex-direction: column; gap: 7px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">ATENAS</div>
+    <div class="header-note">Prueba tipográfica · Comparación visual</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">Una misma página · Cinco tipografías</div>
+      <h1>SIEMPRE ES AHORA</h1>
+      <p>La composición, los textos y los tamaños son los mismos. Solo cambia la familia tipográfica, para comparar especialmente cómo funciona en la información pequeña de los discos.</p>
+    </section>
+
+    <div class="section-label">
+      <strong>Discos</strong>
+      <span>La música de Atenas · Ficha comparativa</span>
+    </div>
+
+    <section class="specimens" aria-label="Comparación de tipografías">
+      <article class="specimen current roboto">
+        <div class="family-label">Roboto Mono<span class="status">Actual · Referencia</span></div>
+        <img class="cover" src="https://atenas.top/lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque">
+        <h2 class="album-title">La flor se hace bosque</h2>
+        <p class="meta">2011 · CD · 10 canciones</p>
+        <p class="description">Canciones nacidas de distintos lugares, recuerdos y momentos. Una colección que forma parte de un viaje personal.</p>
+        <div class="actions"><span class="price">12,95 €</span><span class="action">Escuchar</span><span class="action">Comprar</span></div>
+      </article>
+
+      <article class="specimen jetbrains">
+        <div class="family-label">JetBrains Mono<span class="status">Alternativa 01</span></div>
+        <img class="cover" src="https://atenas.top/lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque">
+        <h2 class="album-title">La flor se hace bosque</h2>
+        <p class="meta">2011 · CD · 10 canciones</p>
+        <p class="description">Canciones nacidas de distintos lugares, recuerdos y momentos. Una colección que forma parte de un viaje personal.</p>
+        <div class="actions"><span class="price">12,95 €</span><span class="action">Escuchar</span><span class="action">Comprar</span></div>
+      </article>
+
+      <article class="specimen azeret">
+        <div class="family-label">Azeret Mono<span class="status">Alternativa 02</span></div>
+        <img class="cover" src="https://atenas.top/lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque">
+        <h2 class="album-title">La flor se hace bosque</h2>
+        <p class="meta">2011 · CD · 10 canciones</p>
+        <p class="description">Canciones nacidas de distintos lugares, recuerdos y momentos. Una colección que forma parte de un viaje personal.</p>
+        <div class="actions"><span class="price">12,95 €</span><span class="action">Escuchar</span><span class="action">Comprar</span></div>
+      </article>
+
+      <article class="specimen space">
+        <div class="family-label">Space Mono<span class="status">Alternativa 03</span></div>
+        <img class="cover" src="https://atenas.top/lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque">
+        <h2 class="album-title">La flor se hace bosque</h2>
+        <p class="meta">2011 · CD · 10 canciones</p>
+        <p class="description">Canciones nacidas de distintos lugares, recuerdos y momentos. Una colección que forma parte de un viaje personal.</p>
+        <div class="actions"><span class="price">12,95 €</span><span class="action">Escuchar</span><span class="action">Comprar</span></div>
+      </article>
+
+      <article class="specimen chivo">
+        <div class="family-label">Chivo Mono<span class="status">Alternativa 04</span></div>
+        <img class="cover" src="https://atenas.top/lfshb-cover-1500x1500.jpg" alt="Portada de La flor se hace bosque">
+        <h2 class="album-title">La flor se hace bosque</h2>
+        <p class="meta">2011 · CD · 10 canciones</p>
+        <p class="description">Canciones nacidas de distintos lugares, recuerdos y momentos. Una colección que forma parte de un viaje personal.</p>
+        <div class="actions"><span class="price">12,95 €</span><span class="action">Escuchar</span><span class="action">Comprar</span></div>
+      </article>
+    </section>
+
+    <p class="closing">Canciones que nacen de lugares distintos. Historias que a veces no sabemos cómo contar. Música para detenerse un instante y mirar hacia dentro.</p>
+  </main>
+
+  <footer>ATENAS · PRUEBA TIPOGRÁFICA · ESTA PÁGINA NO MODIFICA LA WEB PRINCIPAL</footer>
+</body>
+</html>
