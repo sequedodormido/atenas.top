@@ -192,19 +192,21 @@
       text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
     }
 
-    /* ENTRADA DE LA FRASE DE PORTADA */
+    /* ENTRADA DE LA FRASE DE PORTADA, EN COHERENCIA CON EL SCROLL */
     main .content h1 {
-      animation: hero-title-enter 2s cubic-bezier(.2, .7, .25, 1) both;
+      animation: hero-title-enter 1.2s ease both;
     }
 
     @keyframes hero-title-enter {
       from {
         opacity: 0;
-        transform: translateY(70px) scale(.97);
+        transform: translateY(110px);
+        filter: blur(3px);
       }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
+        filter: blur(0);
       }
     }
 
