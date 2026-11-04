@@ -31,7 +31,6 @@
       --secondary: #bdb6ad;
       --copper: #bd765c;
       --rose: #ECE0E0;
-      --rose-wash: rgba(236, 224, 224, .065);
       --rose-border: rgba(236, 224, 224, .42);
       --muted: #77716a;
       --line: rgba(238, 234, 227, .14);
@@ -131,8 +130,8 @@
 
     .language:hover,
     .language:focus-visible {
-      border-color: var(--rose-border);
-      background: var(--rose-wash);
+      border-color: var(--rose);
+      background: transparent;
       color: var(--rose);
       outline: none;
     }
@@ -223,10 +222,11 @@
     .contact-title::after {
       content: "";
       display: block;
-      width: 32px;
+      width: 42px;
       height: 1px;
       margin: 15px auto 0;
-      background: rgba(236, 224, 224, .46);
+      background: var(--rose);
+      opacity: .72;
     }
 
     .section-heading p {
@@ -308,8 +308,8 @@
 
     .music-disc-link:hover,
     .music-disc-link:focus-visible {
-      border-color: var(--rose-border);
-      background: var(--rose-wash);
+      border-color: var(--rose);
+      background: transparent;
       color: var(--rose);
       outline: none;
     }
@@ -397,8 +397,8 @@
     .buy-button:hover,
     .record-link:focus-visible,
     .buy-button:focus-visible {
-      border-color: var(--rose-border);
-      background: var(--rose-wash);
+      border-color: var(--rose);
+      background: transparent;
       color: var(--rose);
       outline: none;
     }
@@ -567,8 +567,8 @@
 
     .contact-form button:hover,
     .contact-form button:focus-visible {
-      border-color: var(--rose-border);
-      background: var(--rose-wash);
+      border-color: var(--rose);
+      background: transparent;
       color: var(--rose);
       outline: none;
     }
