@@ -1106,6 +1106,46 @@
       .record { padding: 9px; }
     }
 
+  
+    /* ELIMINAR CUALQUIER BARRA DECORATIVA JUNTO A LOS TÍTULOS DE SECCIÓN */
+    .section,
+    .section-heading,
+    .section-heading h2,
+    .about-title,
+    .contact-title {
+      border-top: 0 !important;
+      border-bottom: 0 !important;
+      background-image: none !important;
+      box-shadow: none !important;
+      text-decoration: none !important;
+    }
+
+    .section::before,
+    .section::after,
+    .section-heading::before,
+    .section-heading::after,
+    .section-heading h2::before,
+    .section-heading h2::after,
+    .about-title::before,
+    .about-title::after,
+    .contact-title::before,
+    .contact-title::after {
+      content: none !important;
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      border: 0 !important;
+      background: none !important;
+      box-shadow: none !important;
+    }
+
+    .section-heading p {
+      border: 0 !important;
+      background: none !important;
+      text-decoration: none !important;
+      box-shadow: none !important;
+    }
+
   </style>
 </head>
 
