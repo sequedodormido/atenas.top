@@ -836,6 +836,31 @@
     .spotify-player iframe {
       border-radius: 9px;
     }
+    
+    /* RELLENO ROSA AL PASAR EL RATÓN POR LOS BOTONES */
+    .language,
+    .music-disc-link,
+    .record-link,
+    .buy-button,
+    .contact-form button,
+    .shows-fallback {
+      transition:
+        color .25s ease,
+        border-color .25s ease,
+        background-color .25s ease;
+    }
+
+    .language:hover,
+    .music-disc-link:hover,
+    .record-link:hover,
+    .buy-button:hover,
+    .contact-form button:hover,
+    .shows-fallback:hover {
+      background-color: #ECE0E0 !important;
+      border-color: #ECE0E0 !important;
+      color: #2C2027 !important;
+    }
+
 
   </style>
 </head>
