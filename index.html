@@ -807,35 +807,48 @@
       }
     }
 
-    /* DETALLES EN ROSA EMPOLVADO */
+    /* ACENTOS DISCRETOS EN ENLACES Y BOTONES */
+    .language,
+    .music-disc-link,
+    .record-link,
+    .buy-button,
+    .contact-form button,
+    .shows-fallback {
+      transition:
+        color .3s ease,
+        border-color .3s ease,
+        background-color .3s ease,
+        text-shadow .3s ease;
+    }
+
+    .language:hover,
+    .language:focus-visible,
+    .music-disc-link:hover,
+    .music-disc-link:focus-visible,
+    .record-link:hover,
+    .record-link:focus-visible,
+    .buy-button:hover,
+    .buy-button:focus-visible,
+    .contact-form button:hover,
+    .contact-form button:focus-visible,
+    .shows-fallback:hover,
+    .shows-fallback:focus-visible {
+      background: transparent !important;
+      border-color: #D8BFC3 !important;
+      color: #D8BFC3 !important;
+      text-shadow: 0 0 6px rgba(216, 191, 195, .2);
+      box-shadow: none !important;
+    }
+
     .menu-item:hover,
     .menu-item:focus-visible,
-    .language:hover,
-    .music-disc-link:hover,
-    .record-link:hover,
-    .buy-button:hover,
-    .contact-form button:hover,
     .social-link:hover,
     .social-link:focus-visible,
     .shipping-note a:hover {
-      color: #ECE0E0;
+      color: #D8BFC3;
     }
 
-    .language:hover,
-    .music-disc-link:hover,
-    .record-link:hover,
-    .buy-button:hover,
-    .contact-form button:hover {
-      border-color: #ECE0E0;
-      background: transparent;
-    }
-
-    .shows-fallback:hover {
-      color: #ECE0E0;
-      border-color: #ECE0E0;
-    }
-
-    /* Marco de la playlist en el mismo rosa */
+    /* Marco de la playlist */
     .spotify-player {
       border: 2px solid #ECE0E0;
       background: #ECE0E0;
@@ -844,30 +857,6 @@
 
     .spotify-player iframe {
       border-radius: 9px;
-    }
-    
-    /* RELLENO ROSA AL PASAR EL RATÓN POR LOS BOTONES */
-    .language,
-    .music-disc-link,
-    .record-link,
-    .buy-button,
-    .contact-form button,
-    .shows-fallback {
-      transition:
-        color .25s ease,
-        border-color .25s ease,
-        background-color .25s ease;
-    }
-
-    .language:hover,
-    .music-disc-link:hover,
-    .record-link:hover,
-    .buy-button:hover,
-    .contact-form button:hover,
-    .shows-fallback:hover {
-      background-color: #ECE0E0 !important;
-      border-color: #ECE0E0 !important;
-      color: #2C2027 !important;
     }
 
 
