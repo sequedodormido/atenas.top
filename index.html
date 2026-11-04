@@ -66,10 +66,12 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 35px;
-      background: var(--background);
-      border-bottom: 1px solid var(--line);
+      background: #ECE0E0;
+      border-bottom: 1px solid rgba(44, 32, 39, .16);
       position: relative;
       z-index: 5;
+      overflow: hidden;
+      isolation: isolate;
     }
 
     .brand-name {
@@ -921,6 +923,67 @@
       }
     }
 
+    /* CABECERA ROSA CON UN FOCO OSCURO QUE SIGUE AL CURSOR */
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(
+          circle 155px at var(--cursor-x, -200px) var(--cursor-y, -200px),
+          rgba(17, 16, 15, 1) 0%,
+          rgba(17, 16, 15, .98) 48%,
+          rgba(17, 16, 15, .82) 66%,
+          rgba(17, 16, 15, .38) 82%,
+          rgba(17, 16, 15, 0) 100%
+        );
+      transition: opacity .22s ease;
+    }
+
+    header.cursor-active::before {
+      opacity: 1;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header .brand-name,
+    header .menu-item,
+    header .language {
+      color: #ECE0E0;
+      mix-blend-mode: difference;
+    }
+
+    header .brand-name:hover,
+    header .brand-name:focus-visible,
+    header .menu-item:hover,
+    header .menu-item:focus-visible,
+    header .language:hover,
+    header .language:focus-visible {
+      color: #ECE0E0;
+    }
+
+    header .language {
+      border-color: rgba(44, 32, 39, .42);
+      background: transparent;
+    }
+
+    header .language:hover {
+      background: transparent !important;
+      border-color: #ECE0E0 !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      header::before {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -1578,7 +1641,22 @@
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const header = document.querySelector("header");
       if (!finePointer.matches || reducedMotion.matches) return;
+
+      if (header) {
+        header.addEventListener("pointermove", function (event) {
+          if (event.pointerType === "touch") return;
+          const rect = header.getBoundingClientRect();
+          header.style.setProperty("--cursor-x", (event.clientX - rect.left) + "px");
+          header.style.setProperty("--cursor-y", (event.clientY - rect.top) + "px");
+          header.classList.add("cursor-active");
+        });
+
+        header.addEventListener("pointerleave", function () {
+          header.classList.remove("cursor-active");
+        });
+      }
 
       let lastX = null;
       let lastY = null;
@@ -1602,6 +1680,12 @@
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
+
+        if (header && event.target instanceof Element && event.target.closest("header")) {
+          lastX = null;
+          lastY = null;
+          return;
+        }
 
         const dx = lastX === null ? 20 : event.clientX - lastX;
         const dy = lastY === null ? 20 : event.clientY - lastY;
