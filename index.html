@@ -835,7 +835,7 @@
       }
     }
 
-    /* INTERACCIONES EN COBRE, SIN BRILLOS NI FONDOS */
+    /* INTERACCIONES DISCRETAS: SIN CAMBIO DE COLOR */
     .language,
     .menu-item,
     .music-disc-link,
@@ -845,11 +845,22 @@
     .shows-fallback,
     .social-link,
     .shipping-note a {
-      transition: color .3s ease, border-color .3s ease, background-color .3s ease;
+      transition: opacity .25s ease;
     }
 
     .language:hover,
-    .language:focus-visible,
+    .language:focus-visible {
+      color: var(--cream) !important;
+      border-color: rgba(238, 234, 227, .32) !important;
+      opacity: .72;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus-visible {
+      color: var(--secondary) !important;
+      opacity: .72;
+    }
+
     .music-disc-link:hover,
     .music-disc-link:focus-visible,
     .record-link:hover,
@@ -857,23 +868,37 @@
     .buy-button:hover,
     .buy-button:focus-visible,
     .contact-form button:hover,
-    .contact-form button:focus-visible,
-    .shows-fallback:hover,
-    .shows-fallback:focus-visible {
-      background: transparent !important;
-      border-color: var(--copper) !important;
-      color: var(--copper) !important;
-      text-shadow: none !important;
+    .contact-form button:focus-visible {
+      color: var(--cream) !important;
+      border-color: rgba(238, 234, 227, .35) !important;
+      opacity: .72;
       box-shadow: none !important;
+      text-shadow: none !important;
     }
 
-    .menu-item:hover,
-    .menu-item:focus-visible,
+    .contact-form button:hover,
+    .contact-form button:focus-visible {
+      border-color: rgba(238, 234, 227, .38) !important;
+    }
+
+    .shows-fallback:hover,
+    .shows-fallback:focus-visible {
+      color: var(--secondary) !important;
+      border-color: var(--line) !important;
+      opacity: .72;
+    }
+
     .social-link:hover,
-    .social-link:focus-visible,
-    .shipping-note a:hover {
-      color: var(--copper);
-      text-shadow: none;
+    .social-link:focus-visible {
+      color: var(--muted) !important;
+      opacity: .72;
+      transform: none !important;
+    }
+
+    .shipping-note a:hover,
+    .shipping-note a:focus-visible {
+      color: var(--secondary) !important;
+      opacity: .72;
     }
 
     footer {
