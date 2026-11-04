@@ -66,12 +66,10 @@
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 35px;
-      background: #ECE0E0;
-      border-bottom: 1px solid rgba(44, 32, 39, .16);
+      background: var(--background);
+      border-bottom: 1px solid var(--line);
       position: relative;
       z-index: 5;
-      overflow: hidden;
-      isolation: isolate;
     }
 
     .brand-name {
@@ -158,7 +156,19 @@
       position: relative;
       overflow: hidden;
       text-align: center;
-      background-image: url("./atenas-hero.jpg");
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(12, 12, 15, .68) 0%,
+          rgba(12, 12, 15, .43) 50%,
+          rgba(12, 12, 15, .35) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(12, 12, 15, .48) 0%,
+          transparent 55%
+        ),
+        url("./atenas-hero.jpg");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -591,15 +601,6 @@
       transform: translateY(-2px);
     }
 
-    footer .social-link {
-      color: #2C2027;
-    }
-
-    footer .social-link:hover,
-    footer .social-link:focus-visible {
-      color: #956B74;
-    }
-
     /* PIE DE PÁGINA */
 
     footer {
@@ -610,9 +611,9 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: #ECE0E0;
-      border-top: 1px solid rgba(44, 32, 39, .14);
-      color: #59454B;
+      background: var(--background);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
       font-size: 10px;
       letter-spacing: 1px;
     }
@@ -918,48 +919,6 @@
         animation: none !important;
         display: none !important;
       }
-    }
-
-    /* CABECERA OSCURA CON RESALTADO ROSA EN EL MENÚ */
-    header {
-      background: #23191F;
-      border-bottom: 1px solid rgba(236, 224, 224, .18);
-    }
-
-    .brand-name {
-      color: var(--cream);
-      mix-blend-mode: normal;
-    }
-
-    .menu-item {
-      color: rgba(244, 233, 232, .88);
-      padding: 8px 9px;
-      margin: -8px -9px;
-      border: 1px solid transparent;
-      mix-blend-mode: normal;
-      transition: color .25s ease, background-color .25s ease, border-color .25s ease;
-    }
-
-    .menu-item:hover,
-    .menu-item:focus-visible {
-      color: #2C2027;
-      background: #ECE0E0;
-      border-color: #ECE0E0;
-    }
-
-    header .language {
-      color: var(--cream);
-      border-color: rgba(238, 234, 227, .32);
-      background: transparent;
-      mix-blend-mode: normal;
-      transition: color .25s ease, background-color .25s ease, border-color .25s ease;
-    }
-
-    header .language:hover,
-    header .language:focus-visible {
-      background: #ECE0E0 !important;
-      border-color: #ECE0E0 !important;
-      color: #2C2027 !important;
     }
 
   </style>
@@ -1619,22 +1578,7 @@
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      const header = document.querySelector("header");
       if (!finePointer.matches || reducedMotion.matches) return;
-
-      if (header) {
-        header.addEventListener("pointermove", function (event) {
-          if (event.pointerType === "touch") return;
-          const rect = header.getBoundingClientRect();
-          header.style.setProperty("--cursor-x", (event.clientX - rect.left) + "px");
-          header.style.setProperty("--cursor-y", (event.clientY - rect.top) + "px");
-          header.classList.add("cursor-active");
-        });
-
-        header.addEventListener("pointerleave", function () {
-          header.classList.remove("cursor-active");
-        });
-      }
 
       let lastX = null;
       let lastY = null;
@@ -1658,12 +1602,6 @@
 
       document.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
-
-        if (header && event.target instanceof Element && event.target.closest("header")) {
-          lastX = null;
-          lastY = null;
-          return;
-        }
 
         const dx = lastX === null ? 20 : event.clientX - lastX;
         const dy = lastY === null ? 20 : event.clientY - lastY;
