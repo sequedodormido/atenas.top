@@ -878,55 +878,46 @@
 
 
     
-    /* HALO ROSA EMPOLVADO ALREDEDOR DEL PUNTERO */
-    .cursor-halo {
-      display: none;
+    /* ESTELA DE PARTÍCULAS EN ROSA EMPOLVADO */
+    .cursor-particle {
+      position: fixed;
+      z-index: 9999;
+      width: var(--particle-size, 5px);
+      height: var(--particle-size, 5px);
+      border-radius: 50%;
+      background: rgba(236, 224, 224, .95);
+      box-shadow:
+        0 0 8px rgba(236, 224, 224, .72),
+        0 0 16px rgba(236, 224, 224, .32);
+      pointer-events: none;
+      animation: cursorParticleFade .68s ease-out forwards;
+      will-change: transform, opacity;
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      .cursor-halo {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9999;
-        width: 34px;
-        height: 34px;
-        border: 1px solid rgba(236, 224, 224, .9);
-        border-radius: 50%;
-        background: rgba(236, 224, 224, .12);
-        box-shadow:
-          0 0 12px rgba(236, 224, 224, .26),
-          inset 0 0 8px rgba(236, 224, 224, .1);
-        pointer-events: none;
+    .cursor-particle.is-interactive {
+      width: 7px;
+      height: 7px;
+      background: #ECE0E0;
+      box-shadow:
+        0 0 10px rgba(236, 224, 224, .95),
+        0 0 22px rgba(236, 224, 224, .55);
+    }
+
+    @keyframes cursorParticleFade {
+      0% {
+        opacity: .92;
+        transform: translate(-50%, -50%) scale(.65);
+      }
+      100% {
         opacity: 0;
-        transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
-        transition:
-          width .2s ease,
-          height .2s ease,
-          opacity .2s ease,
-          background-color .2s ease,
-          box-shadow .2s ease;
-        will-change: transform;
-      }
-
-      .cursor-halo.is-visible {
-        opacity: 1;
-      }
-
-      .cursor-halo.is-hovering {
-        width: 46px;
-        height: 46px;
-        background: rgba(236, 224, 224, .22);
-        box-shadow:
-          0 0 20px rgba(236, 224, 224, .4),
-          inset 0 0 12px rgba(236, 224, 224, .16);
+        transform: translate(-50%, -50%) translateY(-15px) scale(1.55);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cursor-halo {
-        transition: none !important;
+      .cursor-particle {
+        animation: none !important;
+        display: none !important;
       }
     }
 
@@ -934,7 +925,6 @@
 </head>
 
 <body>
-  <div class="cursor-halo" aria-hidden="true"></div>
 
 
   <header>
@@ -1584,30 +1574,54 @@
 
   
   <script>
-    /* Halo rosa que acompaña al puntero en dispositivos con ratón */
+    /* Estela de partículas rosa para dispositivos con ratón */
     (function () {
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-      if (!finePointer.matches) return;
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (!finePointer.matches || reducedMotion.matches) return;
 
-      const halo = document.querySelector(".cursor-halo");
-      if (!halo) return;
+      let lastX = null;
+      let lastY = null;
+
+      function createParticle(x, y, interactive, extra) {
+        const particle = document.createElement("span");
+        particle.className = "cursor-particle" +
+          (interactive ? " is-interactive" : "");
+        const spread = extra ? 9 : 5;
+        particle.style.left = (x + (Math.random() - 0.5) * spread * 2) + "px";
+        particle.style.top = (y + (Math.random() - 0.5) * spread * 2) + "px";
+        if (!interactive && Math.random() > 0.55) {
+          particle.style.setProperty("--particle-size", "3px");
+        }
+
+        document.body.appendChild(particle);
+        particle.addEventListener("animationend", function () {
+          particle.remove();
+        }, { once: true });
+      }
 
       document.addEventListener("pointermove", function (event) {
-        halo.style.transform =
-          "translate3d(" + event.clientX + "px, " + event.clientY + "px, 0) translate(-50%, -50%)";
-        halo.classList.add("is-visible");
+        if (event.pointerType === "touch") return;
+
+        const dx = lastX === null ? 20 : event.clientX - lastX;
+        const dy = lastY === null ? 20 : event.clientY - lastY;
+        if ((dx * dx) + (dy * dy) < 100) return;
+
+        lastX = event.clientX;
+        lastY = event.clientY;
 
         const interactive = event.target instanceof Element &&
           event.target.closest("a, button, input, textarea, select, [role='button']");
-        halo.classList.toggle("is-hovering", Boolean(interactive));
+
+        createParticle(event.clientX, event.clientY, Boolean(interactive), false);
+        if (interactive && Math.random() > 0.45) {
+          createParticle(event.clientX, event.clientY, true, true);
+        }
       });
 
       document.addEventListener("pointerleave", function () {
-        halo.classList.remove("is-visible", "is-hovering");
-      });
-
-      document.addEventListener("pointerenter", function () {
-        halo.classList.add("is-visible");
+        lastX = null;
+        lastY = null;
       });
     })();
   </script>
