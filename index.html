@@ -895,21 +895,7 @@
     }
 
     .section {
-      position: relative;
-      border-top: 1px solid var(--rose-border);
-    }
-
-    .section::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      width: min(180px, 42vw);
-      height: 2px;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, transparent, var(--copper), transparent);
-      opacity: .8;
-      pointer-events: none;
+      border-top: 0;
     }
 
     .section-heading p { color: var(--muted); }
@@ -1116,7 +1102,6 @@
     }
 
     @media (max-width: 520px) {
-      .section::before { width: 108px; }
       .spotify-player { padding: 5px; }
       .record { padding: 9px; }
     }
