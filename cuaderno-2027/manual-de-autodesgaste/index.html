@@ -87,7 +87,8 @@
     .audio-times { display:flex; justify-content:space-between; margin-top:8px; color:var(--muted); font-size:10px; letter-spacing:.04em; }
     .audio-player audio { display:none; }
     .player-row { display:flex; align-items:center; justify-content:center; gap:22px; width:min(100%,780px); margin:0 auto 22px; }
-    .release-note { color:var(--muted); font-size:9px; letter-spacing:1px; line-height:1.7; text-align:center; margin:-12px 0 22px; }
+    .release-notes { display:block; width:100%; text-align:center; }
+    .release-note { display:block; position:relative; clear:both; width:100%; color:var(--muted); font-size:9px; letter-spacing:1px; line-height:1.7; text-align:center; margin:-12px auto 16px; }
     .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
     .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: opacity .25s ease; }
     .listen-link:hover, .listen-link:focus-visible { border-color: rgba(238,234,227,.4); color: var(--cream); opacity: .72; }
@@ -177,8 +178,10 @@
 
       <section class="listen">
         <p class="listen-label">ESCUCHAR LA CANCIÓN</p>
-        <p class="release-note spanish" data-release-note>CANCIÓN COMPLETA A PARTIR DEL 20 DE NOVIEMBRE</p>
-        <p class="release-note english" data-release-note>FULL SONG AVAILABLE FROM NOVEMBER 20</p>
+        <div class="release-notes">
+          <p class="release-note spanish" data-release-note>CANCIÓN COMPLETA A PARTIR DEL 20 DE NOVIEMBRE</p>
+          <p class="release-note english" data-release-note>FULL SONG AVAILABLE FROM NOVEMBER 20</p>
+        </div>
         <div class="player-row">
         <div class="audio-player" data-audio-player>
           <button class="audio-play" type="button" aria-label="Reproducir"><span class="play-symbol" aria-hidden="true">▶</span></button>
