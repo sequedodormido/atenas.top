@@ -86,6 +86,9 @@
     .audio-progress:focus-visible { outline:1px solid var(--cream); outline-offset:5px; }
     .audio-times { display:flex; justify-content:space-between; margin-top:8px; color:var(--muted); font-size:10px; letter-spacing:.04em; }
     .audio-player audio { display:none; }
+    .player-row { display:flex; align-items:center; justify-content:center; gap:22px; width:min(100%,780px); margin:0 auto 22px; }
+    .release-note { color:var(--muted); font-size:9px; letter-spacing:1px; line-height:1.7; text-align:left; }
+    @media(max-width:700px){ .player-row { flex-direction:column; gap:10px; } .release-note { text-align:center; } }
     .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
     .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: opacity .25s ease; }
     .listen-link:hover, .listen-link:focus-visible { border-color: rgba(238,234,227,.4); color: var(--cream); opacity: .72; }
@@ -175,6 +178,7 @@
 
       <section class="listen">
         <p class="listen-label">ESCUCHAR LA CANCIÓN</p>
+        <div class="player-row">
         <div class="audio-player" data-audio-player>
           <button class="audio-play" type="button" aria-label="Reproducir"><span class="play-symbol" aria-hidden="true">▶</span></button>
           <div class="audio-track">
@@ -184,6 +188,9 @@
           <audio preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture data-release="2026-11-20T00:00:00+01:00" data-preview="40">
             <source src="../../manual.mp3" type="audio/mpeg">Tu navegador no puede reproducir este archivo de audio.
           </audio>
+        </div>
+        <p class="release-note spanish" data-release-note>CANCIÓN COMPLETA A PARTIR DEL 20 DE NOVIEMBRE</p>
+        <p class="release-note english" data-release-note>FULL SONG AVAILABLE FROM NOVEMBER 20</p>
         </div>
         <div class="listen-actions"><a class="listen-link" href="https://beatclap.es/manual-de-autodesgaste-f4aa099d39ac" target="_blank" rel="noopener noreferrer">En plataformas digitales</a></div>
       </section>
@@ -316,6 +323,7 @@
 <script>
 (() => {
   const releaseTime = new Date("2026-11-20T00:00:00+01:00").getTime();
+  if (Date.now() >= releaseTime) document.querySelectorAll("[data-release-note]").forEach(note => note.remove());
   document.querySelectorAll("[data-audio-player]").forEach(player => {
     const audio=player.querySelector("audio");
     const previewSeconds=Number(audio.dataset.preview || 40);
