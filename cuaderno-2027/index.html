@@ -131,10 +131,18 @@
     }
     .story {
       display: grid;
-      grid-template-columns: 90px minmax(0, 1fr);
+      grid-template-columns: 90px minmax(180px, 280px) minmax(0, 1fr);
+      align-items: start;
       gap: 24px;
       padding: 25px 0 30px;
       border-top: 1px solid var(--line);
+    }
+    .story-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
     }
     .story-number {
       color: var(--muted);
@@ -197,8 +205,12 @@
       .intro { margin-top: 55px; }
       .archive { margin-top: 75px; }
     }
-    @media (max-width: 480px) {
+    @media (max-width: 800px) {
       .story { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; }
+      .story-image { grid-column: 2; width: min(100%, 280px); }
+      .story > div:last-child { grid-column: 2; }
+    }
+    @media (max-width: 480px) {
       .story-number { font-size: 9px; }
       footer { min-height: 82px; }
     }
@@ -239,6 +251,7 @@
         <p class="archive-label" id="archive-title-es">Las historias</p>
         <article class="story">
           <div class="story-number">01 / 2026</div>
+          <img class="story-image" src="../criogenizacion.png" alt="Ilustración de El Proceso de Criogenización Ya Se Completó">
           <div>
             <h2>El Proceso de Criogenización Ya Se Completó</h2>
             <p>Despertar en el futuro no significa encontrar un mundo mejor. A veces significa descubrir todo lo que hemos perdido.</p>
@@ -261,6 +274,7 @@
         <p class="archive-label" id="archive-title-en">The stories</p>
         <article class="story">
           <div class="story-number">01 / 2026</div>
+          <img class="story-image" src="../criogenizacion.png" alt="Illustration for El Proceso de Criogenización Ya Se Completó">
           <div>
             <h2>El Proceso de Criogenización Ya Se Completó</h2>
             <p>Waking up in the future does not necessarily mean finding a better world. Sometimes it means discovering everything we have lost.</p>
