@@ -94,40 +94,47 @@
       letter-spacing: 2px;
       line-height: 1.8;
       margin-bottom: 28px;
-      text-align: left;
+      text-align: center;
     }
     h1 {
-      max-width: none;
-      margin: 0;
+      max-width: 850px;
+      margin: 0 auto;
       color: var(--cream);
-      font-size: clamp(34px, 6vw, 66px);
+      font-size: clamp(34px, 4vw, 48px);
       font-weight: 400;
-      letter-spacing: -2px;
-      line-height: 1.12;
-      text-align: left;
-      text-transform: none;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-align: center;
+      text-transform: uppercase;
     }
     .subtitle {
-      margin: 25px 0 0;
-      color: var(--secondary);
-      font-size: clamp(14px, 1.7vw, 17px);
-      line-height: 1.9;
-      text-align: left;
+      margin: 13px auto 0;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      text-align: center;
+      text-transform: uppercase;
     }
     .intro {
-      width: 100%;
-      margin: 34px 0 0;
+      max-width: 780px;
+      margin: 48px auto 0;
       color: var(--secondary);
-      font-size: 15px;
-      line-height: 1.9;
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+    .intro p + p { margin-top: 23px; }
+    .intro .closing {
+      margin-top: 23px;
+      color: var(--secondary);
+    }
+    .intro .footer-note {
+      margin-top: 16px;
       text-align: left;
     }
-    .intro p + p { margin-top: 14px; }
-    .intro .closing {
-      margin-top: 24px;
-      color: var(--cream);
-    }
-    .intro .footer-note { margin-top: 12px; }
     .archive {
       margin-top: 55px;
       padding-top: 28px;
@@ -215,13 +222,16 @@
       .menu-item { font-size: 9px; letter-spacing: 1.3px; }
       .language { grid-column: 2; grid-row: 1; }
       main { width: 86%; padding-top: 55px; }
-      .intro { margin-top: 28px; }
+      .intro { margin-top: 38px; font-size: 20px; }
       .archive { margin-top: 42px; }
     }
     @media (max-width: 800px) {
       .story { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; }
       .story-image { grid-column: 2; width: min(100%, 280px); }
       .story > div:last-child { grid-column: 2; }
+    }
+    @media (max-width: 520px) {
+      .intro { font-size: 19px; }
     }
     @media (max-width: 480px) {
       .story-number { font-size: 9px; }
