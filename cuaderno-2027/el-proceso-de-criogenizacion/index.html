@@ -46,11 +46,35 @@
     .eyebrow { color: var(--muted); font-size: 10px; letter-spacing: 2px; line-height: 1.8; margin-bottom: 25px; }
     h1 { max-width: 650px; color: var(--cream); font-size: clamp(32px, 5vw, 58px); font-weight: 400; letter-spacing: -2px; line-height: 1.16; }
     .dek { margin-top: 28px; max-width: 540px; color: var(--secondary); font-size: clamp(14px, 1.5vw, 17px); line-height: 1.9; }
-    .article { width: min(100%, 720px); margin: clamp(55px, 7vw, 85px) auto 0; }
-    .article p { color: var(--secondary); font-size: 15px; line-height: 2; }
-    .article p + p { margin-top: 27px; }
-    .article .emphasis { margin: 48px 0; padding-left: 0; border: 0; color: var(--cream); font-size: 19px; line-height: 1.7; }
-    .article .final-line { margin-top: 48px; color: var(--cream); font-size: 19px; line-height: 1.7; }
+    .article {
+      width: min(100%, 780px);
+      margin: clamp(55px, 7vw, 85px) auto 0;
+    }
+    .article p {
+      color: var(--secondary);
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+    .article p + p { margin-top: 23px; }
+    .article .emphasis {
+      margin: 35px 0 0;
+      padding: 0;
+      border: 0;
+      color: var(--cream);
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    .article .final-line {
+      margin-top: 23px;
+      color: var(--cream);
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+    }
     .listen { margin-top: 45px; padding-top: 0; border: 0; text-align: center; }
     .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
     .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: opacity .25s ease; }
@@ -72,6 +96,10 @@
       .cover { width: min(100%, 420px); max-height: none; margin: 0 auto; }
       .story-heading { max-width: 650px; }
       .article { margin-top: 55px; }
+      .article p, .article .emphasis, .article .final-line { font-size: 20px; }
+    }
+    @media (max-width: 520px) {
+      .article p, .article .emphasis, .article .final-line { font-size: 19px; }
     }
   </style>
 </head>
