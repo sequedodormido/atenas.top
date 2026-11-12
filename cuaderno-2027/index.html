@@ -70,7 +70,7 @@
       white-space: nowrap;
       transition: opacity .25s ease;
     }
-    .menu-item:hover, .menu-item:focus-visible { opacity: .7; }
+    .menu-item:hover, .menu-item:focus-visible { color: var(--secondary); opacity: .72; }
     .menu-item.current { color: var(--cream); }
     .language {
       background: transparent;
@@ -82,11 +82,11 @@
       letter-spacing: 1.7px;
       cursor: pointer;
     }
-    .language:hover { opacity: .7; }
+    .language:hover, .language:focus-visible { color: var(--cream); border-color: rgba(238,234,227,.32); opacity: .72; }
     main {
       width: min(100% - 14%, 1040px);
       margin: 0 auto;
-      padding: clamp(95px, 14vw, 170px) 0 120px;
+      padding: clamp(58px, 7vw, 88px) 0 120px;
     }
     .eyebrow {
       color: var(--muted);
@@ -151,7 +151,7 @@
       padding-top: 7px;
     }
     .story-link { display: contents; text-decoration: none; }
-    .story-link:hover h2 { color: var(--copper); }
+    .story-link:hover h2 { color: var(--cream); opacity: .72; }
     .story-link:focus-visible { outline: 1px solid var(--copper); outline-offset: 8px; }
     .story h2 {
       color: var(--cream);
@@ -204,7 +204,7 @@
       }
       .menu-item { font-size: 9px; letter-spacing: 1.3px; }
       .language { grid-column: 2; grid-row: 1; }
-      main { width: 86%; padding-top: 90px; }
+      main { width: 86%; padding-top: 55px; }
       .intro { margin-top: 55px; }
       .archive { margin-top: 75px; }
     }
