@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de autodesgaste | Cuaderno 2027 · Atenas</title>
+  <meta name="description" content="Una casa que se cae a pedazos. Una vida que sigue funcionando por inercia. Una historia sobre el desgaste silencioso.">
+  <meta name="author" content="Atenas">
+  <meta name="theme-color" content="#11100f">
+  <link rel="canonical" href="https://atenas.top/cuaderno-2027/manual-de-autodesgaste/">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --background: #11100f;
+      --cream: #eeeae3;
+      --secondary: #bdb6ad;
+      --muted: #77716a;
+      --line: rgba(238, 234, 227, .14);
+      --copper: #bd765c;
+    }
+    html { scroll-behavior: smooth; }
+    body { min-height: 100vh; background: var(--background); color: var(--cream); font-family: 'JetBrains Mono', monospace; }
+    a { color: inherit; }
+    header {
+      width: 100%; min-height: 96px; padding: 20px 7%; display: grid;
+      grid-template-columns: auto 1fr auto; align-items: center; gap: 35px;
+      background: var(--background); border-bottom: 1px solid var(--line);
+    }
+    .brand-name { display: inline-block; padding: 9px 12px; margin: -9px -12px; color: var(--cream); font-size: 17px; font-weight: 600; letter-spacing: 3px; text-decoration: none; white-space: nowrap; }
+    .menu { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: clamp(15px, 2.5vw, 34px); }
+    .menu-item { color: var(--secondary); font-size: 10px; font-weight: 500; letter-spacing: 1.7px; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+    .menu-item:hover, .menu-item:focus-visible { color: var(--secondary); opacity: .72; }
+    .menu-item.current { color: var(--cream); }
+    .language { background: transparent; color: var(--cream); border: 1px solid rgba(238,234,227,.32); padding: 9px 14px; font-family: inherit; font-size: 10px; letter-spacing: 1.7px; cursor: pointer; transition: opacity .25s ease; }
+    .language:hover, .language:focus-visible { color: var(--cream); border-color: rgba(238,234,227,.32); opacity: .72; }
+    main { width: min(100% - 14%, 1100px); margin: 0 auto; padding: clamp(35px, 4vw, 55px) 0 90px; }
+    .back { display: inline-block; color: var(--muted); font-size: 10px; letter-spacing: 1.5px; text-decoration: none; text-transform: uppercase; margin-bottom: 30px; }
+    .back:hover { color: var(--muted); opacity: .72; }
+    .story-top { display: grid; grid-template-columns: minmax(250px, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(35px, 7vw, 85px); }
+    .cover { display: block; width: 100%; max-height: 620px; aspect-ratio: 4 / 5; object-fit: cover; }
+    .eyebrow { color: var(--muted); font-size: 10px; letter-spacing: 2px; line-height: 1.8; margin-bottom: 25px; }
+    h1 { max-width: 650px; color: var(--cream); font-size: clamp(30px, 4vw, 48px); font-weight: 400; letter-spacing: -1.5px; line-height: 1.16; }
+    .dek { margin-top: 28px; max-width: 540px; color: var(--secondary); font-size: clamp(14px, 1.5vw, 17px); line-height: 1.9; }
+    .article {
+      width: min(100%, 780px);
+      margin: clamp(55px, 7vw, 85px) auto 0;
+    }
+    .article p {
+      color: var(--secondary);
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+    .article p + p { margin-top: 23px; }
+    .article .emphasis {
+      margin: 35px 0 0;
+      padding: 0;
+      border: 0;
+      color: var(--cream);
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    .article .final-line {
+      margin-top: 23px;
+      color: var(--cream);
+      font-size: 21px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    .listen { margin-top: 45px; padding-top: 0; border: 0; text-align: center; }
+    .audio-player { display:flex; align-items:center; gap:17px; width:min(100%,560px); margin:0 auto 22px; }
+    .audio-play { flex:0 0 42px; width:42px; height:42px; border:1px solid var(--muted); border-radius:50%; background:transparent; color:var(--cream); cursor:pointer; display:grid; place-items:center; font-size:13px; padding:0; }
+    .audio-play:hover { border-color:var(--cream); }
+    .audio-play.is-playing .play-symbol { display:block; width:12px; height:14px; background:linear-gradient(to right, var(--cream) 0 4px, transparent 4px 8px, var(--cream) 8px 12px); }
+    .audio-track { flex:1; min-width:0; }
+    .audio-progress { height:2px; background:var(--muted); position:relative; cursor:pointer; outline:none; }
+    .audio-progress::before { content:""; display:block; width:var(--progress,0%); height:2px; background:var(--cream); }
+    .audio-progress:focus-visible { outline:1px solid var(--cream); outline-offset:5px; }
+    .audio-times { display:flex; justify-content:space-between; margin-top:8px; color:var(--muted); font-size:10px; letter-spacing:.04em; }
+    .audio-player audio { display:none; }
+    .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
+    .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: opacity .25s ease; }
+    .listen-link:hover, .listen-link:focus-visible { border-color: rgba(238,234,227,.4); color: var(--cream); opacity: .72; }
+    footer { min-height: 90px; padding: 22px 8%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; letter-spacing: 1px; text-align: center; }
+    .footer-note { color: var(--muted); font-size: 9px; letter-spacing: .3px; }
+    .english { display: none; }
+    body.lang-en .spanish { display: none !important; }
+    body.lang-en .english { display: revert; }
+    @media (max-width: 800px) {
+      header { grid-template-columns: 1fr auto; gap: 18px; padding: 19px 7% 16px; }
+      .brand-name { font-size: 16px; }
+      .menu { grid-column: 1 / -1; grid-row: 2; justify-content: center; gap: 14px 20px; }
+      .menu-item { font-size: 9px; letter-spacing: 1.3px; }
+      .language { grid-column: 2; grid-row: 1; }
+      main { width: 86%; padding-top: 35px; }
+      .back { margin-bottom: 35px; }
+      .story-top { grid-template-columns: minmax(0, 1fr); gap: 35px; }
+      .cover { width: min(100%, 420px); max-height: none; margin: 0 auto; }
+      .story-heading { max-width: 650px; }
+      .article { margin-top: 55px; }
+      .article p, .article .emphasis, .article .final-line { font-size: 20px; }
+    }
+    @media (max-width: 520px) {
+      .article p, .article .emphasis, .article .final-line { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand-name" href="../../" aria-label="Atenas, inicio">ATENAS</a>
+    <nav class="menu" aria-label="Menú principal">
+      <a class="menu-item spanish" href="../../#musica">Música</a>
+      <a class="menu-item english" href="../../#musica">Music</a>
+      <a class="menu-item spanish" href="../../#discos">Discos</a>
+      <a class="menu-item english" href="../../#discos">Records</a>
+      <a class="menu-item spanish" href="../../#actuaciones">En directo</a>
+      <a class="menu-item english" href="../../#actuaciones">Live shows</a>
+      <a class="menu-item spanish" href="../../#sobre">Sobre Atenas</a>
+      <a class="menu-item english" href="../../#sobre">About</a>
+      <a class="menu-item spanish current" href="../">Cuaderno 2027</a>
+      <a class="menu-item english current" href="../">Notebook 2027</a>
+      <a class="menu-item spanish" href="../../#contacto">Contacto</a>
+      <a class="menu-item english" href="../../#contacto">Contact</a>
+    </nav>
+    <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
+  </header>
+
+  <main>
+    <div class="spanish">
+      <a class="back" href="../">← Volver al cuaderno</a>
+      <section class="story-top">
+        <img class="cover" src="../../manual.png" alt="Ilustración de Manual de autodesgaste">
+        <div class="story-heading">
+          <p class="eyebrow">ATENAS · CUADERNO 2027 · PÁGINA 02</p>
+          <h1>Manual de autodesgaste</h1>
+          <p class="dek">Seguir cumpliendo con todo mientras por dentro todo se viene abajo</p>
+          <div class="rule"></div>
+        </div>
+      </section>
+
+      <article class="article">
+        <p>Hay casas que no se derrumban de golpe. Primero llegan las grietas, después las tejas, y luego esos pequeños desperfectos que nadie encuentra el momento o las fuerzas de reparar.</p>
+        <p>Dentro, la vida continúa como si nada ocurriera. Las cortinas llevan demasiado tiempo cerradas. Las habitaciones se quedan en silencio. Y, en medio de todo ese abandono, todavía hay una camisa limpia y bien planchada. Cada mañana alguien se la pone y sale hacia la oficina.</p>
+        <p>Hay una habilidad extraña en aprender a tener buen aspecto. Llegar a tiempo. Hacer lo que se espera. Mantener la voz firme. Aceptar los elogios, incluso cuando el trabajo ya no significa nada. Desde fuera, puede parecer que todo está perfectamente bajo control.</p>
+        <p>Pero la casa cuenta otra historia. También las cosas guardadas en el sótano, las habitaciones que nadie abre y las partes de una vida que se han quedado en cajas porque nunca llegó el momento adecuado para enfrentarse a ellas.</p>
+        <p>Y después están las obligaciones que permanecen cuando todo lo demás ha cambiado. Las facturas, los colegios, las citas, las llamadas que uno preferiría no hacer. La gente sigue adelante. Papá ya no siempre puede ayudar. Alguien con quien compartiste una vida ha empezado otra. Y, aun así, vuelve a llegar el lunes.</p>
+        <p>A veces hace falta terapia simplemente para no explotar. A veces uno sigue moviéndose porque detenerse significaría mirar de frente todo lo que lleva tiempo evitando. Como un hámster en su rueda: siempre en movimiento, sin llegar a ninguna parte.</p>
+        <p>Esta canción habla de esa forma silenciosa de venirse abajo. De quienes siguen trabajando, pagando, sonriendo y cumpliendo mientras su mundo privado se desmorona poco a poco. No es la historia de una ruptura ni de alguien a quien señalar. Es la distancia agotadora entre lo que los demás ven y lo que realmente está pasando por dentro.</p>
+        <p class="emphasis">Me pagan por callar mientras me pudro.</p>
+        <p class="final-line">Y sigo corriendo porque no sé qué haré al parar.</p>
+      </article>
+
+      <section class="listen">
+        <p class="listen-label">ESCUCHAR LA CANCIÓN</p>
+        <div class="audio-player" data-audio-player>
+          <button class="audio-play" type="button" aria-label="Reproducir"><span class="play-symbol" aria-hidden="true">▶</span></button>
+          <div class="audio-track">
+            <div class="audio-progress" role="slider" aria-label="Progreso de reproducción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"></div>
+            <div class="audio-times"><span class="audio-current">0:00</span><span class="audio-duration">0:00</span></div>
+          </div>
+          <audio preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture>
+            <source src="../../manual.mp3" type="audio/mpeg">Tu navegador no puede reproducir este archivo de audio.
+          </audio>
+        </div>
+        <a class="listen-link" href="https://beatclap.es/manual-de-autodesgaste-f4aa099d39ac" target="_blank" rel="noopener noreferrer">En plataformas digitales</a>
+      </section>
+    </div>
+
+    <div class="english">
+      <a class="back" href="../">← Back to the notebook</a>
+      <section class="story-top">
+        <img class="cover" src="../../manual.png" alt="Illustration for Manual de autodesgaste">
+        <div class="story-heading">
+          <p class="eyebrow">ATENAS · NOTEBOOK 2027 · PAGE 02</p>
+          <h1>Manual de autodesgaste</h1>
+         <article class="article">
+        <p>Some houses do not fall apart all at once. First come the cracks, then the roof tiles, and then the small things nobody finds the time or strength to put right.</p>
+        <p>Inside, life carries on as if nothing were happening. The curtains have been closed for far too long. The rooms grow quiet. And somewhere in the middle of all that neglect, there is still a clean, neatly ironed shirt. Every morning, someone puts it on and leaves for the office.</p>
+        <p>There is a strange skill in learning to look fine. Arrive on time. Do what is expected. Keep your voice steady. Accept the praise, even when the work no longer means anything. From the outside, it can look as though everything is perfectly under control.</p>
+        <p>But the house tells another story. So do the things stored in the basement, the rooms nobody opens, and the parts of a life left in boxes because the right moment to face them never came.</p>
+        <p>And then there are the obligations that remain after everything else has changed. The bills, the school costs, the appointments, the calls you would rather not make. People move on. Your father cannot always help. Someone you once shared a life with has started another one. And still, Monday comes around.</p>
+        <p>Sometimes you need therapy simply to keep from exploding. Sometimes you keep moving because stopping would mean looking straight at everything you have been avoiding. Like a hamster on its wheel: always moving, never getting anywhere.</p>
+        <p>This song is about that quiet kind of collapse. About people who keep working, paying, smiling and showing up while their private world slowly falls apart. It is not a story about one breakup or someone to blame. It is about the exhausting distance between what everyone sees and what is really happening inside.</p>
+        <p class="emphasis">They pay me to stay quiet while I rot.</p>
+        <p class="final-line">And I keep running because I don't know what I'll do if I stop.</p>
+      </article> class="emphasis">Manual de autodesgaste.</p>
+        <p class="final-line">And perhaps there is still time for us to truly wake up.</p>
+      </article>
+
+      <section class="listen">
+        <p class="listen-label">LISTEN TO THE SONG</p>
+        <div class="audio-player" data-audio-player>
+          <button class="audio-play" type="button" aria-label="Reproducir"><span class="play-symbol" aria-hidden="true">▶</span></button>
+          <div class="audio-track">
+            <div class="audio-progress" role="slider" aria-label="Progreso de reproducción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"></div>
+            <div class="audio-times"><span class="audio-current">0:00</span><span class="audio-duration">0:00</span></div>
+          </div>
+          <audio preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture>
+            <source src="../../manual.mp3" type="audio/mpeg">Your browser cannot play this audio file.
+          </audio>
+        </div>
+        <a class="listen-link" href="https://beatclap.es/manual-de-autodesgaste-f4aa099d39ac" target="_blank" rel="noopener noreferrer">On digital platforms</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span class="spanish footer-note">Imágenes generadas por estupidez humana.</span>
+    <span class="english footer-note">Images generated by human stupidity.</span>
+    <span class="spanish">© 2026 Atenas. Todos los derechos reservados.</span>
+    <span class="english">© 2026 Atenas. All rights reserved.</span>
+  </footer>
+
+  <script>
+    function toggleLanguage() {
+      const english = document.body.classList.toggle("lang-en");
+      document.documentElement.lang = english ? "en" : "es";
+      document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
+    }
+  </script>
+<script>
+(() => {
+  document.querySelectorAll("[data-audio-player]").forEach(player => {
+    const audio=player.querySelector("audio"), button=player.querySelector(".audio-play");
+    const symbol=player.querySelector(".play-symbol"), progress=player.querySelector(".audio-progress");
+    const current=player.querySelector(".audio-current"), duration=player.querySelector(".audio-duration");
+    const format=value=>Number.isFinite(value)?Math.floor(value/60)+":"+String(Math.floor(value%60)).padStart(2,"0"):"0:00";
+    const update=()=>{
+      const pct=audio.duration?audio.currentTime/audio.duration*100:0;
+      progress.style.setProperty("--progress",pct+"%");
+      progress.setAttribute("aria-valuenow",String(Math.round(pct)));
+      current.textContent=format(audio.currentTime);
+    };
+    button.addEventListener("click",async()=>{
+      if(audio.paused){try{await audio.play();}catch(e){return;}}else audio.pause();
+    });
+    audio.addEventListener("play",()=>{symbol.textContent="";button.classList.add("is-playing");button.setAttribute("aria-label","Pausar");});
+    audio.addEventListener("pause",()=>{symbol.textContent="▶";button.classList.remove("is-playing");button.setAttribute("aria-label","Reproducir");});
+    audio.addEventListener("loadedmetadata",()=>duration.textContent=format(audio.duration));
+    audio.addEventListener("timeupdate",update);
+    audio.addEventListener("ended",update);
+    progress.addEventListener("click",event=>{
+      if(!audio.duration)return;
+      const rect=progress.getBoundingClientRect();
+      audio.currentTime=Math.max(0,Math.min(1,(event.clientX-rect.left)/rect.width))*audio.duration;
+    });
+    progress.addEventListener("keydown",event=>{
+      if(!audio.duration)return;
+      if(event.key==="ArrowRight")audio.currentTime=Math.min(audio.duration,audio.currentTime+5);
+      else if(event.key==="ArrowLeft")audio.currentTime=Math.max(0,audio.currentTime-5);
+      else return;
+      event.preventDefault();
+    });
+    player.addEventListener("contextmenu",event=>event.preventDefault());
+  });
+})();
+</script>
+</body>
+</html>
