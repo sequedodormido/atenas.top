@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuaderno 2027 | Atenas</title>
+  <meta name="description" content="Historias, imágenes y reflexiones alrededor de las canciones del próximo álbum de Atenas. Un disco en construcción. Una canción cada vez.">
+  <meta name="author" content="Atenas">
+  <meta name="theme-color" content="#11100f">
+  <link rel="canonical" href="https://atenas.top/cuaderno-2027/">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --background: #11100f;
+      --cream: #eeeae3;
+      --secondary: #bdb6ad;
+      --muted: #77716a;
+      --line: rgba(238, 234, 227, .14);
+      --copper: #bd765c;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--cream);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    a { color: inherit; }
+    header {
+      width: 100%;
+      min-height: 96px;
+      padding: 20px 7%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 35px;
+      background: var(--background);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-name {
+      display: inline-block;
+      padding: 9px 12px;
+      margin: -9px -12px;
+      color: var(--cream);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: clamp(15px, 2.5vw, 34px);
+    }
+    .menu-item {
+      color: var(--secondary);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.7px;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: opacity .25s ease;
+    }
+    .menu-item:hover, .menu-item:focus-visible { opacity: .7; }
+    .menu-item.current { color: var(--cream); }
+    .language {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(238, 234, 227, .32);
+      padding: 9px 14px;
+      font-family: inherit;
+      font-size: 10px;
+      letter-spacing: 1.7px;
+      cursor: pointer;
+    }
+    .language:hover { opacity: .7; }
+    main {
+      width: min(100% - 14%, 1040px);
+      margin: 0 auto;
+      padding: clamp(95px, 14vw, 170px) 0 120px;
+    }
+    .eyebrow {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    h1 {
+      max-width: 850px;
+      color: var(--cream);
+      font-size: clamp(34px, 6vw, 66px);
+      font-weight: 400;
+      letter-spacing: -2px;
+      line-height: 1.12;
+      text-transform: none;
+    }
+    .subtitle {
+      margin-top: 25px;
+      color: var(--secondary);
+      font-size: clamp(14px, 1.7vw, 17px);
+      line-height: 1.9;
+    }
+    .intro {
+      max-width: 740px;
+      margin-top: 70px;
+      color: var(--secondary);
+      font-size: 15px;
+      line-height: 2;
+    }
+    .intro p + p { margin-top: 20px; }
+    .archive {
+      margin-top: 100px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .archive-label {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      margin-bottom: 35px;
+    }
+    .story {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 24px;
+      padding: 25px 0 30px;
+      border-top: 1px solid var(--line);
+    }
+    .story-number {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding-top: 7px;
+    }
+    .story h2 {
+      color: var(--cream);
+      font-size: clamp(20px, 3vw, 27px);
+      font-weight: 400;
+      line-height: 1.4;
+      text-transform: none;
+    }
+    .story p {
+      max-width: 650px;
+      margin-top: 12px;
+      color: var(--secondary);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    footer {
+      min-height: 90px;
+      padding: 22px 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .english { display: none; }
+    body.lang-en .spanish { display: none !important; }
+    body.lang-en .english { display: revert; }
+    @media (max-width: 800px) {
+      header {
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        padding: 19px 7% 16px;
+      }
+      .brand-name { font-size: 16px; }
+      .menu {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-content: center;
+        gap: 14px 20px;
+      }
+      .menu-item { font-size: 9px; letter-spacing: 1.3px; }
+      .language { grid-column: 2; grid-row: 1; }
+      main { width: 86%; padding-top: 90px; }
+      .intro { margin-top: 55px; }
+      .archive { margin-top: 75px; }
+    }
+    @media (max-width: 480px) {
+      .story { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; }
+      .story-number { font-size: 9px; }
+      footer { min-height: 82px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand-name" href="../" aria-label="Atenas, inicio">ATENAS</a>
+    <nav class="menu" aria-label="Menú principal">
+      <a class="menu-item spanish" href="../#musica">Música</a>
+      <a class="menu-item english" href="../#musica">Music</a>
+      <a class="menu-item spanish" href="../#discos">Discos</a>
+      <a class="menu-item english" href="../#discos">Records</a>
+      <a class="menu-item spanish" href="../#actuaciones">En directo</a>
+      <a class="menu-item english" href="../#actuaciones">Live shows</a>
+      <a class="menu-item spanish" href="../#sobre">Sobre Atenas</a>
+      <a class="menu-item english" href="../#sobre">About</a>
+      <a class="menu-item spanish current" href="./" aria-current="page">Cuaderno 2027</a>
+      <a class="menu-item english current" href="./" aria-current="page">Notebook 2027</a>
+      <a class="menu-item spanish" href="../#contacto">Contacto</a>
+      <a class="menu-item english" href="../#contacto">Contact</a>
+    </nav>
+    <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
+  </header>
+
+  <main>
+    <div class="spanish">
+      <p class="eyebrow">ATENAS · CUADERNO 2027</p>
+      <h1>Un disco en construcción.<br>Una canción cada vez.</h1>
+      <p class="subtitle">Historias, imágenes y reflexiones alrededor de las canciones del próximo álbum.</p>
+
+      <div class="intro">
+        <p>Este cuaderno reúne las historias que acompañan la creación de un disco. Cada canción abre una pequeña ventana a su propio mundo: las ideas que la hicieron nacer, las imágenes que la rodean y las preguntas que quizá se quedan con nosotros después de escucharla.</p>
+        <p>Un lugar para leer y escuchar, sin tener que reaccionar. Sin prisa y sin necesidad de dejar nada a cambio.</p>
+      </div>
+
+      <section class="archive" aria-labelledby="archive-title-es">
+        <p class="archive-label" id="archive-title-es">Las historias</p>
+        <article class="story">
+          <div class="story-number">01 / 2026</div>
+          <div>
+            <h2>El Proceso de Criogenización Ya Se Completó</h2>
+            <p>Despertar en el futuro no significa encontrar un mundo mejor. A veces significa descubrir todo lo que hemos perdido.</p>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <div class="english">
+      <p class="eyebrow">ATENAS · NOTEBOOK 2027</p>
+      <h1>A record in progress.<br>One song at a time.</h1>
+      <p class="subtitle">Stories, images and reflections around the songs on the upcoming album.</p>
+
+      <div class="intro">
+        <p>This notebook brings together the stories behind the making of a record. Each song opens a small window into its own world: the ideas that gave it life, the images surrounding it, and the questions that may stay with us after listening.</p>
+        <p>A place to read and listen, without having to react. No rush, and nothing expected in return.</p>
+      </div>
+
+      <section class="archive" aria-labelledby="archive-title-en">
+        <p class="archive-label" id="archive-title-en">The stories</p>
+        <article class="story">
+          <div class="story-number">01 / 2026</div>
+          <div>
+            <h2>El Proceso de Criogenización Ya Se Completó</h2>
+            <p>Waking up in the future does not necessarily mean finding a better world. Sometimes it means discovering everything we have lost.</p>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span class="spanish">© 2026 Atenas. Todos los derechos reservados.</span>
+    <span class="english">© 2026 Atenas. All rights reserved.</span>
+  </footer>
+
+  <script>
+    function toggleLanguage() {
+      const english = document.body.classList.toggle("lang-en");
+      document.documentElement.lang = english ? "en" : "es";
+      document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
+    }
+  </script>
+</body>
+</html>
