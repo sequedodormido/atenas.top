@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El proceso de criogenización ya se completó | Cuaderno 2027 · Atenas</title>
+  <meta name="description" content="Despertar en el futuro. No reconocer el mundo. Sentirse un extraño en él. Una historia sobre la deshumanización y la pérdida de identidad.">
+  <meta name="author" content="Atenas">
+  <meta name="theme-color" content="#11100f">
+  <link rel="canonical" href="https://atenas.top/cuaderno-2027/el-proceso-de-criogenizacion/">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --background: #11100f;
+      --cream: #eeeae3;
+      --secondary: #bdb6ad;
+      --muted: #77716a;
+      --line: rgba(238, 234, 227, .14);
+      --copper: #bd765c;
+    }
+    html { scroll-behavior: smooth; }
+    body { min-height: 100vh; background: var(--background); color: var(--cream); font-family: 'JetBrains Mono', monospace; }
+    a { color: inherit; }
+    header {
+      width: 100%; min-height: 96px; padding: 20px 7%; display: grid;
+      grid-template-columns: auto 1fr auto; align-items: center; gap: 35px;
+      background: var(--background); border-bottom: 1px solid var(--line);
+    }
+    .brand-name { display: inline-block; padding: 9px 12px; margin: -9px -12px; color: var(--cream); font-size: 17px; font-weight: 600; letter-spacing: 3px; text-decoration: none; white-space: nowrap; }
+    .menu { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: clamp(15px, 2.5vw, 34px); }
+    .menu-item { color: var(--secondary); font-size: 10px; font-weight: 500; letter-spacing: 1.7px; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+    .menu-item:hover, .menu-item:focus-visible { opacity: .7; }
+    .menu-item.current { color: var(--cream); }
+    .language { background: transparent; color: var(--cream); border: 1px solid rgba(238,234,227,.32); padding: 9px 14px; font-family: inherit; font-size: 10px; letter-spacing: 1.7px; cursor: pointer; }
+    main { width: min(100% - 14%, 1100px); margin: 0 auto; padding: clamp(65px, 9vw, 112px) 0 110px; }
+    .back { display: inline-block; color: var(--muted); font-size: 10px; letter-spacing: 1.5px; text-decoration: none; text-transform: uppercase; margin-bottom: 55px; }
+    .back:hover { color: var(--cream); }
+    .story-top { display: grid; grid-template-columns: minmax(250px, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(35px, 7vw, 85px); }
+    .cover { display: block; width: 100%; max-height: 620px; aspect-ratio: 4 / 5; object-fit: cover; }
+    .eyebrow { color: var(--muted); font-size: 10px; letter-spacing: 2px; line-height: 1.8; margin-bottom: 25px; }
+    h1 { max-width: 650px; color: var(--cream); font-size: clamp(32px, 5vw, 58px); font-weight: 400; letter-spacing: -2px; line-height: 1.16; }
+    .dek { margin-top: 28px; max-width: 540px; color: var(--secondary); font-size: clamp(14px, 1.5vw, 17px); line-height: 1.9; }
+    .rule { width: 42px; height: 1px; margin-top: 35px; background: var(--copper); }
+    .article { width: min(100%, 720px); margin: clamp(75px, 10vw, 125px) auto 0; }
+    .article p { color: var(--secondary); font-size: clamp(14px, 1.25vw, 15px); line-height: 2.15; }
+    .article p + p { margin-top: 27px; }
+    .article .emphasis { margin: 58px 0; padding-left: 24px; border-left: 1px solid var(--copper); color: var(--cream); font-size: clamp(18px, 2.2vw, 23px); line-height: 1.65; }
+    .article .final-line { margin-top: 65px; color: var(--cream); font-size: clamp(19px, 2.4vw, 25px); line-height: 1.7; }
+    .listen { margin-top: 90px; padding-top: 35px; border-top: 1px solid var(--line); text-align: center; }
+    .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
+    .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: border-color .2s ease, color .2s ease; }
+    .listen-link:hover { border-color: var(--copper); color: var(--copper); }
+    footer { min-height: 90px; padding: 22px 8%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; letter-spacing: 1px; text-align: center; }
+    .footer-note { color: var(--muted); font-size: 9px; letter-spacing: .3px; }
+    .english { display: none; }
+    body.lang-en .spanish { display: none !important; }
+    body.lang-en .english { display: revert; }
+    @media (max-width: 800px) {
+      header { grid-template-columns: 1fr auto; gap: 18px; padding: 19px 7% 16px; }
+      .brand-name { font-size: 16px; }
+      .menu { grid-column: 1 / -1; grid-row: 2; justify-content: center; gap: 14px 20px; }
+      .menu-item { font-size: 9px; letter-spacing: 1.3px; }
+      .language { grid-column: 2; grid-row: 1; }
+      main { width: 86%; padding-top: 55px; }
+      .back { margin-bottom: 35px; }
+      .story-top { grid-template-columns: minmax(0, 1fr); gap: 35px; }
+      .cover { width: min(100%, 420px); max-height: none; margin: 0 auto; }
+      .story-heading { max-width: 650px; }
+      .article { margin-top: 75px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand-name" href="../../" aria-label="Atenas, inicio">ATENAS</a>
+    <nav class="menu" aria-label="Menú principal">
+      <a class="menu-item spanish" href="../../#musica">Música</a>
+      <a class="menu-item english" href="../../#musica">Music</a>
+      <a class="menu-item spanish" href="../../#discos">Discos</a>
+      <a class="menu-item english" href="../../#discos">Records</a>
+      <a class="menu-item spanish" href="../../#actuaciones">En directo</a>
+      <a class="menu-item english" href="../../#actuaciones">Live shows</a>
+      <a class="menu-item spanish" href="../../#sobre">Sobre Atenas</a>
+      <a class="menu-item english" href="../../#sobre">About</a>
+      <a class="menu-item spanish current" href="../">Cuaderno 2027</a>
+      <a class="menu-item english current" href="../">Notebook 2027</a>
+      <a class="menu-item spanish" href="../../#contacto">Contacto</a>
+      <a class="menu-item english" href="../../#contacto">Contact</a>
+    </nav>
+    <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
+  </header>
+
+  <main>
+    <div class="spanish">
+      <a class="back" href="../">← Volver al cuaderno</a>
+      <section class="story-top">
+        <img class="cover" src="../../criogenizacion.png" alt="Ilustración de El proceso de criogenización ya se completó">
+        <div class="story-heading">
+          <p class="eyebrow">ATENAS · CUADERNO 2027 · 01 / 2026</p>
+          <h1>El proceso de criogenización ya se completó</h1>
+          <p class="dek">Despertar en el futuro. No reconocer el mundo. Sentirse un extraño en él.</p>
+          <div class="rule"></div>
+        </div>
+      </section>
+
+      <article class="article">
+        <p>El futuro llegó. Y no era lo que esperábamos.</p>
+        <p>Despertar después de tantos años y descubrir que el mundo sigue ahí, pero ya no significa lo mismo. Las calles permanecen, las ciudades funcionan, las luces siguen encendidas. Sin embargo, algo ha desaparecido. Algo que no sabemos nombrar y que quizá tampoco sabemos cómo recuperar.</p>
+        <p>Aprendemos, pero dejamos de preguntar. Nos comunicamos, pero apenas nos miramos. Opinamos de todo, pero cada vez parece que pensamos menos. Amamos, o creemos hacerlo, siguiendo instrucciones que alguien ha escrito por nosotros. Confundimos estar conectados con estar cerca, tenerlo todo al alcance de la mano con no necesitar nada más.</p>
+        <p>Todo parece avanzar, aunque no siempre sepamos hacia dónde. Y quizá lo más inquietante sea que nos hemos acostumbrado. A la indiferencia, a la ausencia, a la sustitución de las cosas auténticas por versiones cada vez más perfectas y vacías de sí mismas.</p>
+        <p>Hay algo profundamente triste en contemplar este paisaje. No es un mundo destruido, sino uno que continúa funcionando después de haber perdido buena parte de su alma. Un lugar donde todavía quedan edificios, pantallas, normas y promesas, pero donde cada vez cuesta más encontrar algo que nos recuerde quiénes somos.</p>
+        <p>A veces pienso que la única manera de conservar cierta libertad es mantenerse un poco al margen. Apartarse del ruido, de la obligación de participar, de esa maquinaria que parece exigirnos atención, opinión y presencia a todas horas. Intentar vivir de otra manera, recuperar las pequeñas cosas y encontrar un espacio donde todavía sea posible pensar, sentir y mirar a alguien a los ojos.</p>
+        <p>No sé si sirve de algo. Pero sé que no soy el único que siente esta extrañeza. Hay mucha gente que mira a su alrededor y tampoco termina de reconocerse en el mundo que le ha tocado vivir.</p>
+        <p>Esta canción nace de esa sensación. De mirar alrededor y no reconocerse. De despertar en un lugar que debería ser el nuestro y descubrir que nos hemos convertido en extraños.</p>
+        <p class="emphasis">El proceso de criogenización ya se completó.</p>
+        <p class="final-line">Y quizá todavía estemos a tiempo de despertar de verdad.</p>
+      </article>
+
+      <section class="listen">
+        <p class="listen-label">LA CANCIÓN</p>
+        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Escuchar la canción</a>
+      </section>
+    </div>
+
+    <div class="english">
+      <a class="back" href="../">← Back to the notebook</a>
+      <section class="story-top">
+        <img class="cover" src="../../criogenizacion.png" alt="Illustration for The cryogenic process has been completed">
+        <div class="story-heading">
+          <p class="eyebrow">ATENAS · NOTEBOOK 2027 · 01 / 2026</p>
+          <h1>The cryogenic process has been completed</h1>
+          <p class="dek">Waking up in the future. Not recognizing the world. Feeling like a stranger in it.</p>
+          <div class="rule"></div>
+        </div>
+      </section>
+
+      <article class="article">
+        <p>The future is here. And it wasn't what we expected.</p>
+        <p>Waking up after so many years to discover that the world is still here, but no longer means the same thing. The streets remain, the cities keep running, the lights are still on. And yet something has disappeared. Something we cannot quite name, and perhaps do not know how to recover.</p>
+        <p>We learn, but stop asking questions. We communicate, but barely look at one another. We have an opinion about everything, yet seem to think less and less. We love, or believe we do, following instructions someone else has written for us. We confuse being connected with being close, having everything at our fingertips with needing nothing more.</p>
+        <p>Everything seems to move forward, though we do not always know where it is heading. Perhaps the most unsettling thing is that we have grown used to it. To indifference, to absence, to replacing authentic things with increasingly perfect and empty versions of themselves.</p>
+        <p>There is something deeply sad about looking at this landscape. It is not a destroyed world, but one that carries on functioning after losing much of its soul. A place where buildings, screens, rules and promises remain, yet it is becoming harder to find anything that reminds us who we are.</p>
+        <p>Sometimes I think the only way to preserve a little freedom is to stand slightly apart. To step away from the noise, from the obligation to take part, from a machine that seems to demand our attention, opinions and presence at every hour. To try to live differently, recover the small things and find a space where it is still possible to think, feel and look someone in the eye.</p>
+        <p>I don't know whether it makes any difference. But I know I'm not the only one who feels this estrangement. Many people look around and no longer quite recognize themselves in the world they have been given.</p>
+        <p>This song comes from that feeling. From looking around and not recognizing what you see. From waking up in a place that should be ours and discovering that we have become strangers.</p>
+        <p class="emphasis">The cryogenic process has been completed.</p>
+        <p class="final-line">And perhaps there is still time for us to truly wake up.</p>
+      </article>
+
+      <section class="listen">
+        <p class="listen-label">THE SONG</p>
+        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Listen to the song</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span class="spanish footer-note">Imágenes generadas por estupidez humana.</span>
+    <span class="english footer-note">Images generated by human stupidity.</span>
+    <span class="spanish">© 2026 Atenas. Todos los derechos reservados.</span>
+    <span class="english">© 2026 Atenas. All rights reserved.</span>
+  </footer>
+
+  <script>
+    function toggleLanguage() {
+      const english = document.body.classList.toggle("lang-en");
+      document.documentElement.lang = english ? "en" : "es";
+      document.querySelector(".language").textContent = english ? "ESPAÑOL" : "ENGLISH";
+    }
+  </script>
+</body>
+</html>
