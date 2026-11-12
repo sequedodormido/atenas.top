@@ -76,6 +76,7 @@
       text-align: justify;
     }
     .listen { margin-top: 45px; padding-top: 0; border: 0; text-align: center; }
+    .audio-player { display: block; width: min(100%, 560px); margin: 0 auto 22px; }
     .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
     .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: opacity .25s ease; }
     .listen-link:hover, .listen-link:focus-visible { border-color: rgba(238,234,227,.4); color: var(--cream); opacity: .72; }
@@ -150,8 +151,12 @@
       </article>
 
       <section class="listen">
-        <p class="listen-label">LA CANCIÓN</p>
-        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Escuchar la canción</a>
+        <p class="listen-label">ESCUCHAR LA CANCIÓN</p>
+        <audio class="audio-player" controls preload="none">
+          <source src="../../criogenizacion.mp3" type="audio/mpeg">
+          Tu navegador no puede reproducir este archivo de audio.
+        </audio>
+        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Otras plataformas</a>
       </section>
     </div>
 
@@ -181,8 +186,12 @@
       </article>
 
       <section class="listen">
-        <p class="listen-label">THE SONG</p>
-        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Listen to the song</a>
+        <p class="listen-label">LISTEN TO THE SONG</p>
+        <audio class="audio-player" controls preload="none">
+          <source src="../../criogenizacion.mp3" type="audio/mpeg">
+          Your browser cannot play this audio file.
+        </audio>
+        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Other platforms</a>
       </section>
     </div>
   </main>
