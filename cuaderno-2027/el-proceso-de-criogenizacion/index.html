@@ -89,6 +89,19 @@
     .listen-label { color: var(--muted); font-size: 10px; letter-spacing: 2px; margin-bottom: 23px; }
     .listen-link { display: inline-block; padding: 14px 22px; border: 1px solid rgba(238,234,227,.4); color: var(--cream); font-size: 10px; letter-spacing: 1.8px; text-decoration: none; text-transform: uppercase; transition: opacity .25s ease; }
     .listen-link:hover, .listen-link:focus-visible { border-color: rgba(238,234,227,.4); color: var(--cream); opacity: .72; }
+
+    .listen-actions { display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap; }
+    .listen-link { margin:0; }
+    .lyrics { width:min(100%,780px); margin:42px auto 0; text-align:left; }
+    .lyrics details { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .lyrics summary { list-style:none; cursor:pointer; padding:19px 0; color:var(--cream); font-size:10px; letter-spacing:1.8px; text-align:center; }
+    .lyrics summary::-webkit-details-marker { display:none; }
+    .lyrics summary::after { content:"＋"; color:var(--muted); margin-left:12px; }
+    .lyrics details[open] summary::after { content:"−"; }
+    .lyrics-content { padding:8px 0 30px; }
+    .lyrics-content p { color:var(--secondary); font-size:16px; line-height:1.8; margin:0 0 19px; text-align:left; }
+    .lyrics-content .translation { display:inline-block; color:var(--muted); font-size:14px; font-style:italic; }
+    @media(max-width:520px){ .lyrics-content p{font-size:15px;} .lyrics-content .translation{font-size:13px;} }
     footer { min-height: 90px; padding: 22px 8%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; letter-spacing: 1px; text-align: center; }
     .footer-note { color: var(--muted); font-size: 9px; letter-spacing: .3px; }
     .english { display: none; }
@@ -167,11 +180,41 @@
             <div class="audio-progress" role="slider" aria-label="Progreso de reproducción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"></div>
             <div class="audio-times"><span class="audio-current">0:00</span><span class="audio-duration">0:00</span></div>
           </div>
-          <audio preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture>
+          <audio preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture data-release="2026-11-20T00:00:00+01:00" data-preview="40">
             <source src="../../criogenizacion.mp3" type="audio/mpeg">Tu navegador no puede reproducir este archivo de audio.
           </audio>
         </div>
-        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">En plataformas digitales</a>
+        <div class="listen-actions"><a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">En plataformas digitales</a><a class="listen-link" href="#letra"><span class="spanish">Letra</span><span class="english">Lyrics</span></a></div>
+      </section>
+
+      <section class="lyrics" id="letra">
+        <details>
+          <summary><span class="spanish">LETRA</span><span class="english">LYRICS</span></summary>
+          <div class="lyrics-content">
+            <p>El proceso de criogenización ya se completó.<br><span class="translation">The cryogenic process has been completed.</span></p>
+            <p>Llegó a la última fase y ahora no sé dónde estoy.<br><span class="translation">It reached its final stage, and now I don't know where I am.</span></p>
+            <p>Me siento tan extraño ahora en este viejo y nuevo lugar.<br><span class="translation">I feel so strange now in this old and new place.</span></p>
+            <p>Las vacas no dan leche y el pan no sabe a pan.<br><span class="translation">The cows give no milk, and bread no longer tastes like bread.</span></p>
+            <p>Me vendieron un futuro y enfriaron este loco corazón.<br><span class="translation">They sold me a future and froze this restless heart.</span></p>
+            <p>Me han despertado demasiado tarde y no sé dónde estoy.<br><span class="translation">They woke me up too late, and I don't know where I am.</span></p>
+            <p>La gente no me mira a la cara al hablar.<br><span class="translation">People don't look me in the eye when they speak.</span></p>
+            <p>No hay niños en las plazas y la flor no huele a azahar.<br><span class="translation">There are no children in the squares, and the blossom has lost its orange scent.</span></p>
+            <p>Ya no hay madres que griten tu nombre<br><span class="translation">There are no mothers shouting your name anymore</span><br>ni poetas que inventen caminos.<br><span class="translation">nor poets inventing new paths.</span></p>
+            <p>Solo hay ecos que nunca responden a mis recuerdos<br><span class="translation">There are only echoes that never answer my memories</span><br>ni a lo que fuimos ayer.<br><span class="translation">or what we were yesterday.</span></p>
+            <p>El proceso de criogenización ya se completó.<br><span class="translation">The cryogenic process has been completed.</span></p>
+            <p>Llegó a la última fase y ahora no sé dónde estoy.<br><span class="translation">It reached its final stage, and now I don't know where I am.</span></p>
+            <p>Todo programado. En la escuela les enseñan a no preguntar.<br><span class="translation">Everything is programmed. At school, they're taught not to ask questions.</span></p>
+            <p>Un algoritmo dicta a quién deben amar.<br><span class="translation">An algorithm decides whom they should love.</span></p>
+            <p>Me pusieron en pausa, me apagaron el sol y el reloj.<br><span class="translation">They put me on pause, switched off the sun and stopped the clock.</span></p>
+            <p>Me han despertado demasiado tarde y no sé dónde voy.<br><span class="translation">They woke me up too late, and I don't know where I'm going.</span></p>
+            <p>Las iglesias se quedaron vacías y ya no existe Dios.<br><span class="translation">The churches emptied, and God no longer exists.</span></p>
+            <p>Y un falso mesías llegó y un hombre sin alma ni espada se rindió<br><span class="translation">And a false messiah came, and a man without a soul or a sword surrendered</span><br>y se abrazó a una simulación.<br><span class="translation">and embraced a simulation.</span></p>
+            <p>Ya no hay madres que griten tu nombre<br><span class="translation">There are no mothers shouting your name anymore</span><br>ni poetas que inventen caminos.<br><span class="translation">nor poets inventing new paths.</span></p>
+            <p>Solo hay ecos que nunca responden a mis recuerdos<br><span class="translation">There are only echoes that never answer my memories</span><br>ni a lo que fuimos ayer.<br><span class="translation">or what we were yesterday.</span></p>
+            <p>Ya no hay madres que griten tu nombre<br><span class="translation">There are no mothers shouting your name anymore</span><br>ni poetas que cambien destinos.<br><span class="translation">nor poets changing destinies.</span></p>
+            <p>Solo hay ecos que nunca responden a mis recuerdos.<br><span class="translation">There are only echoes that never answer my memories.</span></p>
+          </div>
+        </details>
       </section>
     </div>
 
@@ -212,7 +255,37 @@
             <source src="../../criogenizacion.mp3" type="audio/mpeg">Your browser cannot play this audio file.
           </audio>
         </div>
-        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">On digital platforms</a>
+        <div class="listen-actions"><a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">On digital platforms</a><a class="listen-link" href="#letra"><span class="spanish">Letra</span><span class="english">Lyrics</span></a></div>
+      </section>
+
+      <section class="lyrics" id="letra">
+        <details>
+          <summary><span class="spanish">LETRA</span><span class="english">LYRICS</span></summary>
+          <div class="lyrics-content">
+            <p>El proceso de criogenización ya se completó.<br><span class="translation">The cryogenic process has been completed.</span></p>
+            <p>Llegó a la última fase y ahora no sé dónde estoy.<br><span class="translation">It reached its final stage, and now I don't know where I am.</span></p>
+            <p>Me siento tan extraño ahora en este viejo y nuevo lugar.<br><span class="translation">I feel so strange now in this old and new place.</span></p>
+            <p>Las vacas no dan leche y el pan no sabe a pan.<br><span class="translation">The cows give no milk, and bread no longer tastes like bread.</span></p>
+            <p>Me vendieron un futuro y enfriaron este loco corazón.<br><span class="translation">They sold me a future and froze this restless heart.</span></p>
+            <p>Me han despertado demasiado tarde y no sé dónde estoy.<br><span class="translation">They woke me up too late, and I don't know where I am.</span></p>
+            <p>La gente no me mira a la cara al hablar.<br><span class="translation">People don't look me in the eye when they speak.</span></p>
+            <p>No hay niños en las plazas y la flor no huele a azahar.<br><span class="translation">There are no children in the squares, and the blossom has lost its orange scent.</span></p>
+            <p>Ya no hay madres que griten tu nombre<br><span class="translation">There are no mothers shouting your name anymore</span><br>ni poetas que inventen caminos.<br><span class="translation">nor poets inventing new paths.</span></p>
+            <p>Solo hay ecos que nunca responden a mis recuerdos<br><span class="translation">There are only echoes that never answer my memories</span><br>ni a lo que fuimos ayer.<br><span class="translation">or what we were yesterday.</span></p>
+            <p>El proceso de criogenización ya se completó.<br><span class="translation">The cryogenic process has been completed.</span></p>
+            <p>Llegó a la última fase y ahora no sé dónde estoy.<br><span class="translation">It reached its final stage, and now I don't know where I am.</span></p>
+            <p>Todo programado. En la escuela les enseñan a no preguntar.<br><span class="translation">Everything is programmed. At school, they're taught not to ask questions.</span></p>
+            <p>Un algoritmo dicta a quién deben amar.<br><span class="translation">An algorithm decides whom they should love.</span></p>
+            <p>Me pusieron en pausa, me apagaron el sol y el reloj.<br><span class="translation">They put me on pause, switched off the sun and stopped the clock.</span></p>
+            <p>Me han despertado demasiado tarde y no sé dónde voy.<br><span class="translation">They woke me up too late, and I don't know where I'm going.</span></p>
+            <p>Las iglesias se quedaron vacías y ya no existe Dios.<br><span class="translation">The churches emptied, and God no longer exists.</span></p>
+            <p>Y un falso mesías llegó y un hombre sin alma ni espada se rindió<br><span class="translation">And a false messiah came, and a man without a soul or a sword surrendered</span><br>y se abrazó a una simulación.<br><span class="translation">and embraced a simulation.</span></p>
+            <p>Ya no hay madres que griten tu nombre<br><span class="translation">There are no mothers shouting your name anymore</span><br>ni poetas que inventen caminos.<br><span class="translation">nor poets inventing new paths.</span></p>
+            <p>Solo hay ecos que nunca responden a mis recuerdos<br><span class="translation">There are only echoes that never answer my memories</span><br>ni a lo que fuimos ayer.<br><span class="translation">or what we were yesterday.</span></p>
+            <p>Ya no hay madres que griten tu nombre<br><span class="translation">There are no mothers shouting your name anymore</span><br>ni poetas que cambien destinos.<br><span class="translation">nor poets changing destinies.</span></p>
+            <p>Solo hay ecos que nunca responden a mis recuerdos.<br><span class="translation">There are only echoes that never answer my memories.</span></p>
+          </div>
+        </details>
       </section>
     </div>
   </main>
@@ -265,6 +338,34 @@
       event.preventDefault();
     });
     player.addEventListener("contextmenu",event=>event.preventDefault());
+  });
+})();
+</script>
+
+<script>
+(() => {
+  const releaseTime = new Date("2026-11-20T00:00:00+01:00").getTime();
+  document.querySelectorAll("[data-audio-player]").forEach(player => {
+    const audio=player.querySelector("audio");
+    const previewSeconds=Number(audio.dataset.preview || 40);
+    const isPreview=Date.now()<releaseTime;
+    let previewStopped=false;
+    if(isPreview){
+      audio.addEventListener("timeupdate",()=>{
+        if(audio.currentTime>=previewSeconds && !previewStopped){
+          previewStopped=true;
+          audio.pause();
+          audio.currentTime=previewSeconds;
+        }
+      });
+      audio.addEventListener("seeking",()=>{
+        if(audio.currentTime>previewSeconds) audio.currentTime=previewSeconds;
+      });
+      audio.addEventListener("loadedmetadata",()=>{
+        const duration=player.querySelector(".audio-duration");
+        if(duration) duration.textContent="0:40";
+      });
+    }
   });
 })();
 </script>
