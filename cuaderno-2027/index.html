@@ -150,6 +150,9 @@
       letter-spacing: 1px;
       padding-top: 7px;
     }
+    .story-link { display: contents; text-decoration: none; }
+    .story-link:hover h2 { color: var(--copper); }
+    .story-link:focus-visible { outline: 1px solid var(--copper); outline-offset: 8px; }
     .story h2 {
       color: var(--cream);
       font-size: clamp(20px, 3vw, 27px);
@@ -252,10 +255,12 @@
         <article class="story">
           <div class="story-number">01 / 2026</div>
           <img class="story-image" src="../criogenizacion.png" alt="Ilustración de El Proceso de Criogenización Ya Se Completó">
-          <div>
-            <h2>El Proceso de Criogenización Ya Se Completó</h2>
-            <p>Despertar en el futuro no significa encontrar un mundo mejor. A veces significa descubrir todo lo que hemos perdido.</p>
-          </div>
+          <a class="story-link" href="el-proceso-de-criogenizacion/">
+            <div>
+              <h2>El proceso de criogenización ya se completó</h2>
+              <p>Despertar en el futuro. No reconocer el mundo. Sentirse un extraño en él.</p>
+            </div>
+          </a>
         </article>
       </section>
     </div>
@@ -275,10 +280,12 @@
         <article class="story">
           <div class="story-number">01 / 2026</div>
           <img class="story-image" src="../criogenizacion.png" alt="Illustration for El Proceso de Criogenización Ya Se Completó">
-          <div>
-            <h2>El Proceso de Criogenización Ya Se Completó</h2>
-            <p>Waking up in the future does not necessarily mean finding a better world. Sometimes it means discovering everything we have lost.</p>
-          </div>
+          <a class="story-link" href="el-proceso-de-criogenizacion/">
+            <div>
+              <h2>El proceso de criogenización ya se completó</h2>
+              <p>Waking up in the future. Not recognizing the world. Feeling like a stranger in it.</p>
+            </div>
+          </a>
         </article>
       </section>
     </div>
