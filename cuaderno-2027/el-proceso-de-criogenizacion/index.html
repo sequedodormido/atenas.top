@@ -79,6 +79,7 @@
     .audio-player { display:flex; align-items:center; gap:17px; width:min(100%,560px); margin:0 auto 22px; }
     .audio-play { flex:0 0 42px; width:42px; height:42px; border:1px solid var(--muted); border-radius:50%; background:transparent; color:var(--cream); cursor:pointer; display:grid; place-items:center; font-size:13px; padding:0; }
     .audio-play:hover { border-color:var(--cream); }
+    .audio-play.is-playing .play-symbol { display:block; width:12px; height:14px; background:linear-gradient(to right, var(--cream) 0 4px, transparent 4px 8px, var(--cream) 8px 12px); }
     .audio-track { flex:1; min-width:0; }
     .audio-progress { height:2px; background:var(--muted); position:relative; cursor:pointer; outline:none; }
     .audio-progress::before { content:""; display:block; width:var(--progress,0%); height:2px; background:var(--cream); }
@@ -170,7 +171,7 @@
             <source src="../../criogenizacion.mp3" type="audio/mpeg">Tu navegador no puede reproducir este archivo de audio.
           </audio>
         </div>
-        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Otras plataformas</a>
+        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">También disponible en</a>
       </section>
     </div>
 
@@ -211,7 +212,7 @@
             <source src="../../criogenizacion.mp3" type="audio/mpeg">Your browser cannot play this audio file.
           </audio>
         </div>
-        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Other platforms</a>
+        <a class="listen-link" href="https://beatclap.es/el-proceso-de-criogenizacion-ya-se-completo-752e7e72b008" target="_blank" rel="noopener noreferrer">Also available on</a>
       </section>
     </div>
   </main>
@@ -246,8 +247,8 @@
     button.addEventListener("click",async()=>{
       if(audio.paused){try{await audio.play();}catch(e){return;}}else audio.pause();
     });
-    audio.addEventListener("play",()=>{symbol.textContent="Ⅱ";button.setAttribute("aria-label","Pausar");});
-    audio.addEventListener("pause",()=>{symbol.textContent="▶";button.setAttribute("aria-label","Reproducir");});
+    audio.addEventListener("play",()=>{symbol.textContent="";button.classList.add("is-playing");button.setAttribute("aria-label","Pausar");});
+    audio.addEventListener("pause",()=>{symbol.textContent="▶";button.classList.remove("is-playing");button.setAttribute("aria-label","Reproducir");});
     audio.addEventListener("loadedmetadata",()=>duration.textContent=format(audio.duration));
     audio.addEventListener("timeupdate",update);
     audio.addEventListener("ended",update);
